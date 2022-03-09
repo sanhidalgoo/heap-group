@@ -34,8 +34,7 @@ class BeerController extends Controller
             $viewData["subtitle"] =  $beer["name"];
             $viewData["beer"] = $beer;
             return view('beers.show')->with("viewData", $viewData);
-        }
-        catch (ModelNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
             return redirect()->route('beers.index');
         }
     }
@@ -100,8 +99,7 @@ class BeerController extends Controller
             $beer = Beer::findOrFail($id);
             $beer->delete();
             return redirect()->route('beers.index')->with('delete', __('beers.delete.success'));
-        }
-        catch (ModelNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
             return redirect()->route('beers.index');
         }
     }

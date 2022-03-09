@@ -46,51 +46,63 @@ class Beer extends Model
         'image_url',
     ];
 
-    public function getId() {
+    public function getId()
+    {
         return $this->attributes['id'];
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->attributes['name'];
     }
 
-    public function getBrand() {
+    public function getBrand()
+    {
         return $this->attributes['brand'];
     }
 
-    public function getOrigin() {
+    public function getOrigin()
+    {
         return $this->attributes['origin'];
     }
 
-    public function getAbv() {
+    public function getAbv()
+    {
         return $this->attributes['abv'] * 100;
     }
 
-    public function getIngredient() {
+    public function getIngredient()
+    {
         return $this->attributes['ingredient'];
     }
 
-    public function getFlavor() {
+    public function getFlavor()
+    {
         return $this->attributes['flavor'];
     }
 
-    public function getFormat() {
+    public function getFormat()
+    {
         return $this->attributes['format'];
     }
 
-    public function getPrice() {
+    public function getPrice()
+    {
         return $this->attributes['price'];
     }
 
-    public function getDetails() {
+    public function getDetails()
+    {
         return $this->attributes['details'];
     }
 
-    public function getQuantity() {
+    public function getQuantity()
+    {
         return $this->attributes['quantity_available'];
     }
 
-    public function getURL() {
+    public function getURL()
+    {
         return $this->attributes['image_url'];
     }
 }
