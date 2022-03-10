@@ -50,18 +50,22 @@ class Beer extends Model
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'required|gte:0',
             'brand' => 'required|max:255',
             'origin' => 'required|max:255',
             'abv' => 'required|numeric|gte:0|lte:1',
             'ingredient' => 'required|max:255',
             'flavor' => 'required|max:255',
             'format' => 'required|max:255',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|gte:0',
             'details' => '',
             'quantity_available' => 'required|numeric',
             'image_url' => 'required|max:2048',
         ]);
+    }
+
+    public function setId($id)
+    {
+        $this->attributes['id'] = $id;
     }
 
     public function getId()
@@ -69,9 +73,19 @@ class Beer extends Model
         return $this->attributes['id'];
     }
 
+    public function setName($name)
+    {
+        $this->attributes['name'] = $name;
+    }
+
     public function getName()
     {
         return $this->attributes['name'];
+    }
+
+    public function setBrand($brand)
+    {
+        $this->attributes['brand'] = $brand;
     }
 
     public function getBrand()
@@ -79,9 +93,19 @@ class Beer extends Model
         return $this->attributes['brand'];
     }
 
+    public function setOrigin($origin)
+    {
+        $this->attributes['origin'] = $origin;
+    }
+
     public function getOrigin()
     {
         return $this->attributes['origin'];
+    }
+
+    public function setAbv($abv)
+    {
+        $this->attributes['abv'] = $abv;
     }
 
     public function getAbv()
@@ -89,9 +113,19 @@ class Beer extends Model
         return $this->attributes['abv'] * 100;
     }
 
+    public function setIngredient($ingredient)
+    {
+        $this->attributes['ingredient'] = $ingredient;
+    }
+
     public function getIngredient()
     {
         return $this->attributes['ingredient'];
+    }
+
+    public function setFlavor($flavor)
+    {
+        $this->attributes['flavor'] = $flavor;
     }
 
     public function getFlavor()
@@ -99,9 +133,20 @@ class Beer extends Model
         return $this->attributes['flavor'];
     }
 
+    public function setFormat($format)
+    {
+        $this->attributes['format'] = $format;
+    }
+
     public function getFormat()
     {
         return $this->attributes['format'];
+    }
+
+
+    public function setPrice($price)
+    {
+        $this->attributes['price'] = $price;
     }
 
     public function getPrice()
@@ -109,14 +154,29 @@ class Beer extends Model
         return $this->attributes['price'];
     }
 
+    public function setDetails($details)
+    {
+        $this->attributes['details'] = $details;
+    }
+
     public function getDetails()
     {
         return $this->attributes['details'];
     }
 
+    public function setQuantity($quantity)
+    {
+        $this->attributes['quantity_available'] = $quantity;
+    }
+
     public function getQuantity()
     {
         return $this->attributes['quantity_available'];
+    }
+
+    public function setURL($url)
+    {
+        $this->attributes['image_url'] = $url;
     }
 
     public function getURL()
