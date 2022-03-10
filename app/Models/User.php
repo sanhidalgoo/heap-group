@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'birthdate',
+        'address',
+        'cash_available',
     ];
 
     /**
@@ -29,6 +33,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'created_at',
         'password',
         'remember_token',
     ];
@@ -41,4 +46,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function validate($request) {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+            'birthdate' => 'required',
+            'address' => 'required',
+            'cash_available' => 'required',
+        ]);
+    }
+
+    public function favoriteBeers()
+    {
+        return $this->belongsToMany(Beer::class)->get();
+    }
 }
