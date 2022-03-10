@@ -186,6 +186,6 @@ class Beer extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->get();
+        return $this->belongsToMany(User::class);
     }
 }

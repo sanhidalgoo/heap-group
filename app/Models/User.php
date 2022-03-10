@@ -13,6 +13,19 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * USER ATTRIBUTES
+     * $this->attributes['id'] - int - contains the user primary key (id)
+     * $this->attributes['name'] - string - contains the user name
+     * $this->attributes['email'] - string - contains the user email
+     * $this->attributes['password'] - string - contains the user password (encrypted)
+     * $this->attributes['role'] - string - contains the user role
+     * $this->attributes['birthdate'] - Date - contains the user birthdate
+     * $this->attributes['address'] - string - contains the user address
+     * $this->attributes['cash_available'] - string - contains the user cash available
+     * $this->attributes['created_at'] - Date - is the user creation date
+     */
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -61,6 +74,6 @@ class User extends Authenticatable
 
     public function favoriteBeers()
     {
-        return $this->belongsToMany(Beer::class)->get();
+        return $this->belongsToMany(Beer::class);
     }
 }
