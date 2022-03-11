@@ -60,7 +60,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function validate($request) {
+    public static function validate($request)
+    {
         $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -75,5 +76,10 @@ class User extends Authenticatable
     public function favoriteBeers()
     {
         return $this->belongsToMany(Beer::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }
