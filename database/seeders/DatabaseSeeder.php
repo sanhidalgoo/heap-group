@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Beer;
+use App\Models\RefundOrder;
 use App\Models\User;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             BeerUserSeeder::class,
             ReviewSeeder::class,
+            RefundOrderSeeder::class,
         ]);
     }
 }
