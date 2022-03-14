@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('refund_orders', function (Blueprint $table) {
-            $table->id();
-            $table->string('motive');
-            $table->dateTime('request_date');
-            $table->dateTime('approval_date');
-            $table->dateTime('delivery_date');
-            $table->string('state');
-            $table->timestamps();
+        Schema::table('refund_orders', function (Blueprint $table) {
+            $table->foreignId('order_id')->constrained('orders');
         });
     }
 
@@ -31,6 +25,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('refund_orders');
+        Schema::table('refund_orders', function (Blueprint $table) {
+            $table->dropForeign(['order_id']);
+            $table->dropColumn('order_id');
+        });
     }
 };

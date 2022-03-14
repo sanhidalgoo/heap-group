@@ -69,4 +69,9 @@ class RefundOrder extends Model
     {
         $this->attributes['state'] = $state;
     }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

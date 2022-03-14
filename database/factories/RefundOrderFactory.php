@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+use App\Models\Order;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RefundOrder>
@@ -22,10 +22,11 @@ class RefundOrderFactory extends Factory
         $deliveryDate = $this->faker->dateTimeBetween($approvalDate->format('Y-m-d H:i:s') . ' +15 days', $approvalDate->format('Y-m-d H:i:s') . ' +30 days');
         return [
             'motive' => $this->faker->word(),
-            'requestDate' => $requestDate,
-            'approvalDate' => $approvalDate,
-            'deliveryDate' => $deliveryDate,
+            'request_date' => $requestDate,
+            'approval_date' => $approvalDate,
+            'delivery_date' => $deliveryDate,
             'state' => $this->faker->word(),
+            'order_id' => Order::all()->random(1)->pluck('id')->first(),
         ];
     }
 }

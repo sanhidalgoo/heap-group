@@ -104,4 +104,14 @@ class Order extends Model
         ];
         $request->validate($rules);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function refundOrder()
+    {
+        return $this->hasOne(RefundOrder::class);
+    }
 }

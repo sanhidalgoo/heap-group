@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Beer;
+use App\Models\Order;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OrderItem>
@@ -20,7 +21,8 @@ class OrderItemFactory extends Factory
         return [
             'subtotal' => $this->faker->numberBetween($min = 1500, $max = 600000),
             'quantity' => $this->faker->numberBetween(0, 10),
-            'beer_id' => Beer::all()->random(1)->pluck('id')->first()
+            'beer_id' => Beer::all()->random(1)->pluck('id')->first(),
+            'order_id' => Order::all()->random(1)->pluck('id')->first(),
         ];
     }
 }

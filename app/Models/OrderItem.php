@@ -51,4 +51,9 @@ class OrderItem extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
