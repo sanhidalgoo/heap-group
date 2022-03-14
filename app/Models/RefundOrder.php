@@ -11,8 +11,11 @@ class RefundOrder extends Model
     /**
      * REVIEW ATTRIBUTES
      * $this->attributes['id'] - int - contains the review primary key (id)
-     * $this->comment['comment'] - string - contains the review comment
-     * $this->attributes['score'] - int - contains the review score
+     * $this->comment['motive'] - string - contains the motive for the refund
+     * $this->attributes['requestDate'] - datetime - contains the datetime the request mas made
+     * $this->attributes['approvalDate'] - datetime - contains the datetime the request mas approved
+     * $this->attributes['deliveryDate'] - datetime - contains the datetime refund was made
+     * $this->attributes['state'] - string - contains the current state of the orrder
      */
 
     protected $fillable = ['motive', 'requestDate', 'approvalDate', 'deliveryDate', 'state'];

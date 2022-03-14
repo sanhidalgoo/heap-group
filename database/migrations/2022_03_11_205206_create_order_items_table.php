@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('refund_orders', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->string('motive');
-            $table->dateTime('requestDate');
-            $table->dateTime('approvalDate');
-            $table->dateTime('deliveryDate');
-            $table->string('state');
+            $table->decimal('subtotal');
+            $table->integer('quantity');
+            $table->foreignId('beer_id')->constrained('beers');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('refund_orders');
+        Schema::dropIfExists('order_items');
     }
 };

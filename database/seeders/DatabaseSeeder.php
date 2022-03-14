@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Beer;
+use App\Models\OrderItem;
 use App\Models\RefundOrder;
 use App\Models\User;
 
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
             BeerUserSeeder::class,
             ReviewSeeder::class,
             RefundOrderSeeder::class,
+            OrderItemSeeder::class,
         ]);
     }
 }

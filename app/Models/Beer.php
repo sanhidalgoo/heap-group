@@ -188,4 +188,9 @@ class Beer extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function orderItems()
+    {
+        return $this->belongsToMany(OrderItem::class);
+    }
 }
