@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('address');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('refund_order_id')->constrained('refund_orders')->nullable();
+            $table->foreignId('refund_order_id')->nullable()->constrained('refund_orders');
         });
     }
 

@@ -26,7 +26,7 @@ class RefundOrderFactory extends Factory
             'approval_date' => $approvalDate,
             'delivery_date' => $deliveryDate,
             'state' => $this->faker->word(),
-            'order_id' => Order::all()->random(1)->pluck('id')->first(),
+            'order_id' => Order::doesnthave('refundOrder')->get()->random(1)->pluck('id')->first(),
         ];
     }
 }

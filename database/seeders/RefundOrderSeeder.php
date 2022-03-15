@@ -14,6 +14,11 @@ class RefundOrderSeeder extends Seeder
      */
     public function run()
     {
-        RefundOrder::factory(10)->create();
+        for ($var = 0; $var < 3; $var++) {
+            $refundOrder = RefundOrder::factory()->create();
+            $order = $refundOrder->order;
+            $order->refund_order_id = $refundOrder->id;
+            $order->save();
+        }
     }
 }
