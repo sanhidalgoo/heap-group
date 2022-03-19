@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -13,12 +13,12 @@ class BeerAdminController extends Controller
     {
         $viewData = [];
         $viewData["beers"] = Beer::all();
-        return view('admin.beers.index')->with("viewData", $viewData);
+        return view('adminspace.beers.index')->with("viewData", $viewData);
     }
 
     public function create()
     {
-        return view('admin.beers.create');
+        return view('adminspace.beers.create');
     }
 
     public function save(Request $request)
@@ -58,7 +58,7 @@ class BeerAdminController extends Controller
             $viewData = [];
             $viewData["subtitle"] =  $beer->getName();
             $viewData["beer"] = $beer;
-            return view('admin.beers.show')->with("viewData", $viewData);
+            return view('adminspace.beers.show')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('admin.beers.index');
         }

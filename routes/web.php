@@ -13,19 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
-Route::get('/beers', 'App\Http\Controllers\BeerController@index')->name('beers.index');
-Route::get('/beers/create', 'App\Http\Controllers\BeerController@create')->name('beers.create');
-Route::post('/beers/save', 'App\Http\Controllers\BeerController@save')->name('beers.save');
-Route::get('/beers/{id}', 'App\Http\Controllers\BeerController@show')->name('beers.show');
-Route::post('/beers/delete/{id}', 'App\Http\Controllers\BeerController@delete')->name('beers.delete');
-
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/admin', 'App\Http\Controllers\Admin\AdminController@')->name('admin.index');
+Route::get('/admin', 'App\Http\Controllers\HomeController@admin')->name('admin.home.index');
 
 Route::get('/admin/users', 'App\Http\Controllers\Admin\UserAdminController@index')->name('admin.users.index');
 Route::get('/admin/users/create', 'App\Http\Controllers\Admin\UserAdminController@create')->name('admin.users.create');
@@ -37,18 +30,18 @@ Route::post('/admin/users/{id}/edit', 'App\Http\Controllers\Admin\UserAdminContr
 
 Route::get('/admin/beers', 'App\Http\Controllers\Admin\BeerAdminController@index')->name('admin.beers.index');
 Route::get('/admin/beers/create', 'App\Http\Controllers\Admin\BeerAdminController@create')->name('admin.beers.create');
-Route::get('/admin/beers/save', 'App\Http\Controllers\Admin\BeerAdminController@save')->name('admin.beers.save');
-Route::get('/admin/beers/delete', 'App\Http\Controllers\Admin\BeerAdminController@delete')->name('admin.beers.delete');
+Route::post('/admin/beers/save', 'App\Http\Controllers\Admin\BeerAdminController@save')->name('admin.beers.save');
+Route::post('/admin/beers/delete', 'App\Http\Controllers\Admin\BeerAdminController@delete')->name('admin.beers.delete');
 Route::get('/admin/beers/{id}', 'App\Http\Controllers\Admin\BeerAdminController@show')->name('admin.beers.show');
 Route::get('/admin/beers/{id}/edit', 'App\Http\Controllers\Admin\BeerAdminController@edit')->name('admin.beers.edit');
-Route::get('/admin/beers/{id}/edit', 'App\Http\Controllers\Admin\BeerAdminController@update')->name('admin.beers.update');
+Route::post('/admin/beers/{id}/edit', 'App\Http\Controllers\Admin\BeerAdminController@update')->name('admin.beers.update');
 
 /*
 |--------------------------------------------------------------------------
 | User Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/', 'App\Http\Controllers\User\HomeController@index')->name('home.index');
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 Route::get('/beers', 'App\Http\Controllers\User\BeerController@index')->name('user.beers.index');
 Route::get('/beers/{id}', 'App\Http\Controllers\User\BeerController@show')->name('user.beers.show');
 Route::get('/beers/{id}/reviews/create', 'App\Http\Controllers\User\ReviewController@create')->name('user.reviews.create');

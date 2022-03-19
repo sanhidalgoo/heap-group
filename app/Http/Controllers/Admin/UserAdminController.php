@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -13,30 +13,25 @@ class UserAdminController extends Controller
     {
         $viewData = [];
         $viewData["users"] = User::all();
-        return view('admin.users.index')->with("viewData", $viewData);
+        return view('adminspace.users.index')->with("viewData", $viewData);
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('adminspace.users.create');
     }
 
     public function save(Request $request)
     {
         User::validate($request);
-        Ueer::create($request->only([
+        User::create($request->only([
             'name',
-            'price',
-            'brand',
-            'origin',
-            'abv',
-            'ingredient',
-            'flavor',
-            'format',
-            'price',
-            'details',
-            'quantity_available',
-            'image_url',
+            'email',
+            'password',
+            'role',
+            'birthdate',
+            'address',
+            'cash_available',
         ]));
         return redirect()->back()->with('success', __('users.create.success'));
     }
@@ -58,7 +53,7 @@ class UserAdminController extends Controller
             $viewData = [];
             $viewData["subtitle"] =  $user->getName();
             $viewData["user"] = $user;
-            return view('admin.users.show')->with("viewData", $viewData);
+            return view('adminspace.users.show')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('admin.users.index');
         }
@@ -66,11 +61,33 @@ class UserAdminController extends Controller
 
     public function edit($id)
     {
-        // Like show?
+        try {
+            $beer = User::findOrFail($id);
+            $viewData = [];
+            $viewData["subtitle"] =  $user->getName();
+            $viewData["user"] = $user;
+            return view('adminspace.users.edit')->with("viewData", $viewData);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('admin.users.index');
+        }
     }
 
-    public function update($id)
+    public function update(Request $request)
     {
-        // Like edit?
+        try {
+            User::validate($request);
+            User::findOrFail($id)->update($request->only([
+                'name',
+                'email',
+                'password',
+                'role',
+                'birthdate',
+                'address',
+                'cash_available',
+            ]));
+            return redirect()->route('admin.users.index')->with('delete', __('users.delete.success'));
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('admin.users.index');
+        }
     }
 }
