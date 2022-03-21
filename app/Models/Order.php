@@ -95,14 +95,13 @@ class Order extends Model
 
     public static function validate(Request $request)
     {
-        $rules = [
+        $request->validate([
             "total" => "required|numeric|min:0|not_in:0",
             "paymentMethod" => "required|in:CREDIT_CARD,CASH,PSE",
             "department" => "required",
             "city" => "required",
             "address" => "required"
-        ];
-        $request->validate($rules);
+        ]);
     }
 
     public function user()

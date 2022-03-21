@@ -20,7 +20,7 @@
                     </ul>
                     @endif
 
-                    <form method="POST" action="{{ route('beers.save') }}">
+                    <form method="POST" action="{{ route('admin.beers.save') }}">
                         @csrf
                         <input type="text" class="form-control mb-2" placeholder="{{ __('beers.name') }}" name="name" value="{{ old('name') }}" />
                         <div class="row">
