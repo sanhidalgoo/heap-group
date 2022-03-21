@@ -1,6 +1,6 @@
 @extends('layouts.navbar')
 @section('logo')
-    @include('adminspace.components.logo')
+    <a class="navbar-brand fw-bold" href="{{ route('admin.home.index') }}">{{ __('messages.title') }} ADMIN</a>
 @endsection
 @section('links')
     <a class="nav-link px-3 {{ request()->routeIs('admin.home.index') ? 'active' : '' }}" href="{{ route('admin.home.index') }}">{{ __('navigation.home') }}</a>

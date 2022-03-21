@@ -28,10 +28,27 @@ return [
     'title' => 'Beers',
     'cost' => 'Cost',
     'currency' => 'COP',
+
+    'index.add' => 'Add a new beer',
+    'index.details' => 'Details',
+    'index.edit' => 'Edit',
+    'index.delete' => 'Delete',
+
+    'index.col.id' => 'ID',
+    'index.col.name' => 'Name',
+    'index.col.ingredient' => 'Ingredient',
+    'index.col.format' => 'Format',
+    'index.col.price' => 'Price (COP)',
+    'index.col.actions' => 'Actions',
+
     'create.title' => 'Create beer',
     'create.description' => 'Add information of a beer',
     'create.success' => 'Beer added!',
 
+    'edit.title' => 'Edit user',
+    'edit.description' => 'Add information to edit',
+
+    'update.success' => 'Beer updated!',
     'delete.button' => 'Delete this beer',
     'delete.success' => 'Beer deleted!',
 ];

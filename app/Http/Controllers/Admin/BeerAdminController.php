@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\Beer;
+use App\Http\Requests\UpdateBeerRequest;
 
 class BeerAdminController extends Controller
 {
@@ -56,7 +57,7 @@ class BeerAdminController extends Controller
         try {
             $beer = Beer::findOrFail($id);
             $viewData = [];
-            $viewData["subtitle"] =  $beer->getName();
+            $viewData["subtitle"] = $beer->getName();
             $viewData["beer"] = $beer;
             return view('adminspace.beers.show')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {
@@ -69,7 +70,7 @@ class BeerAdminController extends Controller
         try {
             $beer = Beer::findOrFail($id);
             $viewData = [];
-            $viewData["subtitle"] =  $beer->getName();
+            $viewData["subtitle"] = $beer->getName();
             $viewData["beer"] = $beer;
             return view('adminspace.beers.edit')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {
@@ -77,25 +78,12 @@ class BeerAdminController extends Controller
         }
     }
 
-    public function update($id)
+    public function update(UpdateBeerRequest $request, $id)
     {
         try {
-            Beer::validate($request);
-            Beer::findOrFail($id)->update($request->only([
-                'name',
-                'price',
-                'brand',
-                'origin',
-                'abv',
-                'ingredient',
-                'flavor',
-                'format',
-                'price',
-                'details',
-                'quantity_available',
-                'image_url',
-            ]));
-            return redirect()->route('admin.beers.index')->with('delete', __('beers.delete.success'));
+            $beer = Beer::findOrFail($id);
+            $beer->update($request->validated());
+            return redirect()->route('admin.beers.index')->with('update', __('beers.update.success'));
         } catch (ModelNotFoundException $e) {
             return redirect()->route('admin.beers.index');
         }

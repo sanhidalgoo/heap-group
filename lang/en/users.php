@@ -23,6 +23,17 @@ return [
     'cash-available' => 'Cash available',
 
     'title' => 'Users',
+
+    'index.add' => 'Add a new user',
+    'index.details' => 'Details',
+    'index.edit' => 'Edit',
+    'index.delete' => 'Delete',
+
+    'index.col.id' => 'ID',
+    'index.col.email' => 'Email',
+    'index.col.created-at' => 'Created at',
+    'index.col.actions' => 'Actions',
+
     'create.title' => 'Create user',
     'create.description' => 'Add information of a user',
     'create.success' => 'User added!',

@@ -1,4 +1,4 @@
-@extends('layouts.form-only')
+@extends('adminspace.layouts.app')
 @section('subtitle', __('beers.create.title'))
 @section('content')
 <div class="container">

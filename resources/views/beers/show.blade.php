@@ -24,7 +24,7 @@
                 </div>
                 <p class="card-text col"><strong>{{ __('beers.details') }}: </strong>{{ $viewData["beer"]->getDetails() }}</p>
                 <div class="row">
-                    <p class="card-text col"><strong>{{ __('beers.abv') }}: </strong>{{ $viewData["beer"]->getAbv() }} %</p>
+                    <p class="card-text col"><strong>{{ __('beers.abv') }}: </strong>{{ $viewData["beer"]->getAbvPercentage() }} %</p>
                     <p class="card-text col"><strong>{{ __('beers.format') }}: </strong>{{ $viewData["beer"]->getFormat() }}</p>
                     <p class="card-text col"><strong>{{ __('beers.origin') }}: </strong>{{ $viewData["beer"]->getOrigin() }}</p>
                 </div>
