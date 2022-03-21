@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->decimal('subtotal');
             $table->integer('quantity');
-            $table->foreignId('beer_id')->constrained('beers');
+            $table->foreignId('beer_id')->nullable()->constrained('beers')->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

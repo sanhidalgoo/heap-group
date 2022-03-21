@@ -110,6 +110,11 @@ class Beer extends Model
 
     public function getAbv()
     {
+        return $this->attributes['abv'];
+    }
+
+    public function getAbvPercentage()
+    {
         return $this->attributes['abv'] * 100;
     }
 

@@ -15,6 +15,7 @@ return [
 
     'home' => 'Home',
     'create' => 'Create beer',
+    'users' => 'Users',
     'beers' => 'Beers',
     'back' => 'Go back',
 ];

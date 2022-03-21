@@ -65,12 +65,87 @@ class User extends Authenticatable
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            'password' => 'required|confirmed',
             'role' => 'required',
             'birthdate' => 'required',
             'address' => 'required',
             'cash_available' => 'required',
         ]);
+    }
+
+    public function setId($id)
+    {
+        $this->attributes['id'] = $id;
+    }
+
+    public function getId()
+    {
+        return $this->attributes['id'];
+    }
+
+    public function setName($name)
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function getName()
+    {
+        return $this->attributes['name'];
+    }
+
+    public function setEmail($email)
+    {
+        $this->attributes['email'] = $email;
+    }
+
+    public function getEmail()
+    {
+        return $this->attributes['email'];
+    }
+
+    public function setRole($role)
+    {
+        $this->attributes['role'] = $role;
+    }
+
+    public function getRole()
+    {
+        return $this->attributes['role'];
+    }
+
+    public function setBirthdate($birthdate)
+    {
+        $this->attributes['birthdate'] = $birthdate;
+    }
+
+    public function getBirthdate()
+    {
+        return $this->attributes['birthdate'];
+    }
+
+    public function setAddress($address)
+    {
+        $this->attributes['address'] = $address;
+    }
+
+    public function getAddress()
+    {
+        return $this->attributes['address'];
+    }
+
+    public function setCashAvailable($cashAvailable)
+    {
+        $this->attributes['cash_available'] = $cashAvailable;
+    }
+
+    public function getCashAvailable()
+    {
+        return $this->attributes['cash_available'];
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->attributes['created_at'];
     }
 
     public function favoriteBeers()

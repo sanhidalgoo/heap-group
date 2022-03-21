@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('beer_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('beer_id')->constrained('beers');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('beer_id')->constrained('beers')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

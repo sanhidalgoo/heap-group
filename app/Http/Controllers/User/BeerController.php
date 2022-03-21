@@ -13,7 +13,7 @@ class BeerController extends Controller
     {
         $viewData = [];
         $viewData["beers"] = Beer::all();
-        return view('beers.index')->with("viewData", $viewData);
+        return view('adminspace.beers.index')->with("viewData", $viewData);
     }
 
     public function show($id)
@@ -25,7 +25,7 @@ class BeerController extends Controller
             $viewData["beer"] = $beer;
             return view('beers.show')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('beers.index');
+            return redirect()->route('admin.beers.index');
         }
     }
 
@@ -58,9 +58,9 @@ class BeerController extends Controller
     {
         try {
             $beer = Beer::destroy($id);
-            return redirect()->route('beers.index')->with('delete', __('beers.delete.success'));
+            return redirect()->route('admin.beers.index')->with('delete', __('beers.delete.success'));
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('beers.index');
+            return redirect()->route('admin.beers.index');
         }
     }
 }
