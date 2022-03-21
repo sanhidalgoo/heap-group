@@ -1,6 +1,11 @@
 @extends('adminspace.layouts.app')
 @section('subtitle', __('users.title'))
 @section('content')
+@if(session('update'))
+    <div class="alert alert-info">
+        {{ session('update') }}
+    </div>
+@endif
 @if(session('delete'))
     <div class="alert alert-warning">
         {{ session('delete') }}

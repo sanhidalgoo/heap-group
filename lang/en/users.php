@@ -27,6 +27,11 @@ return [
     'create.description' => 'Add information of a user',
     'create.success' => 'User added!',
 
+    'edit.title' => 'Edit user',
+    'edit.description' => 'Add information to edit',
+
+    'update.success' => 'User updated!',
+
     'delete.button' => 'Delete this user',
     'delete.success' => 'User deleted!',
 ];

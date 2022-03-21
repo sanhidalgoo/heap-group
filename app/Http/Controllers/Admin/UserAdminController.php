@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserAdminController extends Controller
 {
@@ -62,7 +63,7 @@ class UserAdminController extends Controller
     public function edit($id)
     {
         try {
-            $beer = User::findOrFail($id);
+            $user = User::findOrFail($id);
             $viewData = [];
             $viewData["subtitle"] =  $user->getName();
             $viewData["user"] = $user;
@@ -72,20 +73,12 @@ class UserAdminController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(UpdateUserRequest $request, $id)
     {
         try {
-            User::validate($request);
-            User::findOrFail($id)->update($request->only([
-                'name',
-                'email',
-                'password',
-                'role',
-                'birthdate',
-                'address',
-                'cash_available',
-            ]));
-            return redirect()->route('admin.users.index')->with('delete', __('users.delete.success'));
+            $user = User::findOrFail($id);
+            $user->update($request->validated());
+            return redirect()->route('admin.users.index')->with('update', __('users.update.success'));
         } catch (ModelNotFoundException $e) {
             return redirect()->route('admin.users.index');
         }
