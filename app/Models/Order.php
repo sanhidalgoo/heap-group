@@ -16,7 +16,7 @@ class Order extends Model
      * $this->attributes['total'] - float - total bill of the order
      * $this->attributes['orderState'] - string - contains the order state. Initially the order state is pendind
      * $this->attributes['paymentMethod'] - string - contains the payment method for the order
-     * $this->attributes['department'] - string - department of the destination 
+     * $this->attributes['department'] - string - department of the destination
      * $this->attributes['city'] - string - city of the destination
      * $this->attributes['address'] - string - address of the destination
      */
