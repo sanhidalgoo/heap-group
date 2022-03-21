@@ -50,9 +50,9 @@ class UserAdminController extends Controller
     public function show($id)
     {
         try {
-            $beer = User::findOrFail($id);
+            $user = User::findOrFail($id);
             $viewData = [];
-            $viewData["subtitle"] =  $user->getName();
+            $viewData["subtitle"] = $user->getName();
             $viewData["user"] = $user;
             return view('adminspace.users.show')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {
