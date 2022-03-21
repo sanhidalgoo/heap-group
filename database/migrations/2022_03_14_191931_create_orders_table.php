@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('department');
             $table->string('city');
             $table->string('address');
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('refund_order_id')->nullable()->constrained('refund_orders');
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('refund_order_id')->nullable()->constrained('refund_orders')->cascadeOnUpdate()->nullOnDelete();
         });
     }
 

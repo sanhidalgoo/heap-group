@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('comment');
             $table->string('score');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

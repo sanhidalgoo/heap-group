@@ -66,11 +66,38 @@ class BeerAdminController extends Controller
 
     public function edit($id)
     {
-        // Like show?
+        try {
+            $beer = Beer::findOrFail($id);
+            $viewData = [];
+            $viewData["subtitle"] =  $beer->getName();
+            $viewData["beer"] = $beer;
+            return view('adminspace.beers.edit')->with("viewData", $viewData);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('admin.beers.index');
+        }
     }
 
     public function update($id)
     {
-        // Like edit?
+        try {
+            Beer::validate($request);
+            Beer::findOrFail($id)->update($request->only([
+                'name',
+                'price',
+                'brand',
+                'origin',
+                'abv',
+                'ingredient',
+                'flavor',
+                'format',
+                'price',
+                'details',
+                'quantity_available',
+                'image_url',
+            ]));
+            return redirect()->route('admin.beers.index')->with('delete', __('beers.delete.success'));
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('admin.beers.index');
+        }
     }
 }
