@@ -11309,6 +11309,7 @@ textarea.form-control-lg {
 }
 .sidebar__link {
   font-size: larger;
+  font-weight: 700;
   text-decoration: none;
   color: inherit;
   display: block;

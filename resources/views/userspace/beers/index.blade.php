@@ -1,26 +1,29 @@
 @extends('userspace.layouts.app')
-@section('subtitle', __('beers.title'))
+@section('title', __('beers.title'))
 @section('content')
-    @if (session('delete'))
+    @if (session('cart-delete'))
         <div class="alert alert-warning">
-            {{ session('delete') }}
+            {{ session('cart-delete') }}
         </div>
     @endif
     <div class="row card-grid">
         @forelse ($viewData["beers"] as $beer)
-            <div class="col-md-4 col-lg-3 mb-2">
-                <div class="card">
-                    <div class="card-image-container">
+            <div class="col-md-4 mb-2">
+                <div class="card flex-row">
+                    <div class="align-self-center mh-25 w-25">
                         <img src="{{ $beer->getURL() }}" class="card-img-top img-card">
                     </div>
-                    <div class="card-body text-center align-items-center">
-                        <p>ref: <span class="id-detail">{{ $beer->getId() }}</span></p>
-                        <p class="h2">{{ $beer->getName() }}</p>
-                        <p><strong>{{ __('beers.cost') . ': ' . $beer->getPrice() . ' ' . __('beers.currency') }}</strong>
+                    <div class="card-body align-items-center">
+                        <p class="h4 fw-bold">{{ $beer->getName() }}</p>
+                        <p>
+                            {{ $beer->getIngredient() }}
+                            <i>From {{ $beer->getOrigin() }}</i>
                         </p>
-                        <a href="{{ route('user.beers.show', ['id' => $beer->getId()]) }}"
-                            class="col-md-6 btn bg-primary text-white">
-                            Ver más
+                        <p>{{ $beer->getFormat() }}</p>
+                        <p><strong class="h5 fw-bold">{{ $beer->getPrice() . ' ' . __('beers.currency') }}</strong>
+                        </p>
+                        <a class="btn btn-primary" href="{{ route('user.beers.show', ['id' => $beer->getId()]) }}">
+                            Add to cart
                         </a>
                     </div>
                 </div>
