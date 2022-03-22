@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'title' => 'Homework-01',
-    'welcome' => 'Welcome to the first homework page!',
+    'title' => 'Heap Group',
+    'welcome' => 'Welcome!',
     'description' => 'Check the links in the navbar for testing this application.',
     'no-data' => 'No data to show',
 
