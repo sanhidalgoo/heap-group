@@ -45,7 +45,7 @@ Route::middleware(['admin'])->group(function() {
 | User Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('user.home.index');
 Route::get('/beers', 'App\Http\Controllers\User\BeerController@index')->name('user.beers.index');
 Route::get('/beers/{id}', 'App\Http\Controllers\User\BeerController@show')->name('user.beers.show');
 Route::get('/beers/{id}/reviews/create', 'App\Http\Controllers\User\ReviewController@create')->name('user.reviews.create');

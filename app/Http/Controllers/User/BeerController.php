@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -13,7 +13,7 @@ class BeerController extends Controller
     {
         $viewData = [];
         $viewData["beers"] = Beer::all();
-        return view('adminspace.beers.index')->with("viewData", $viewData);
+        return view('userspace.beers.index')->with("viewData", $viewData);
     }
 
     public function show($id)
@@ -23,44 +23,9 @@ class BeerController extends Controller
             $viewData = [];
             $viewData["subtitle"] =  $beer->getName();
             $viewData["beer"] = $beer;
-            return view('beers.show')->with("viewData", $viewData);
+            return view('userspace.beers.show')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('admin.beers.index');
-        }
-    }
-
-    public function create()
-    {
-        return view('beers.create');
-    }
-
-    public function save(Request $request)
-    {
-        Beer::validate($request);
-        Beer::create($request->only([
-            'name',
-            'price',
-            'brand',
-            'origin',
-            'abv',
-            'ingredient',
-            'flavor',
-            'format',
-            'price',
-            'details',
-            'quantity_available',
-            'image_url',
-        ]));
-        return redirect()->back()->with('success', __('beers.create.success'));
-    }
-
-    public function delete($id)
-    {
-        try {
-            $beer = Beer::destroy($id);
-            return redirect()->route('admin.beers.index')->with('delete', __('beers.delete.success'));
-        } catch (ModelNotFoundException $e) {
-            return redirect()->route('admin.beers.index');
+            return redirect()->route('user.beers.index');
         }
     }
 }
