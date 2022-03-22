@@ -1,8 +1,140 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Rye');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+$sidebar-size: 270px;
+
+.sidebar {
+    width: $sidebar-size;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #A57945;
+    color: #fff;
+    transition: all 0.3s;
+
+    &__header {
+        width: 70%;
+        margin: 0 auto;
+        overflow: hidden;
+        img {
+            width: 100%;
+            mix-blend-mode: darken;
+        }
+    }
+
+    &__link {
+        font-size: larger;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        &:hover {
+            color: inherit;
+        }
+    }
+
+    &__nav-button {
+        padding: 0.8rem 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 150ms;
+
+        &:hover {
+            background-color: #604028;
+        }
+
+        &.active {
+            background-color: #604028;
+        }
+    }
+
+    &__hr {
+        padding: 1px;
+        background: white;
+        color: white;
+        margin: 0.5rem;
+    }
+}
+
+.button {
+    margin: 1.2rem;
+    border-radius: 10px;
+    padding: 0.5rem 1.5rem;
+    text-align: center;
+
+    &--solid {
+        font-weight: 700;
+        background-color: #604028;
+        outline: 5px solid #604028;
+        color: white;
+    }
+
+    &--outlined {
+        font-weight: 700;
+        background-color: #FFFFFF;
+        outline: 5px solid #604028;
+        color: #604028;
+    }
+
+    &--flex-end {
+        justify-self: flex-end;
+    }
+}
+
+.content {
+    margin-left: $sidebar-size;
+    width: calc(100% - 270px);
+    margin-left: 270px;
+    padding: 0;
+
+    .title {
+        margin: 1rem;
+        font-family: 'Rye', 'Nunito', sans-serif;
+        font-size: 28px;
+        font-weight: bold;
+        color: #604028;
+        text-align: center;
+    }
+
+    .main {
+        padding: 0 2rem;
+    }
+}
+
+.site-navbar {
+    height: 200px;
+    background-color: #604028;
+    overflow: hidden;
+    position: relative;
+
+    &__img {
+        width: 100%;
+        margin-top: -20%;
+    }
+
+    &__title {
+        font-family: 'Rye', 'Nunito', sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #604028;
+        -webkit-text-stroke: thin #392517;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        width: max-content;
+    }
+}
