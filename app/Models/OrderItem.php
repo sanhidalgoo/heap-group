@@ -11,11 +11,11 @@ class OrderItem extends Model
     /**
      * REVIEW ATTRIBUTES
      * $this->attributes['id'] - int - contains the review primary key (id)
-     * $this->comment['subtotal'] - float - contains subtotalprice of the item
+     * $this->attributes['subtotal'] - float - contains subtotalprice of the item
      * $this->attributes['quantity'] - int - contains the quantity of the item
      */
 
-    protected $fillable = ['subtotal', 'quantity'];
+    protected $fillable = ['subtotal', 'quantity', ];
 
     public function getId()
     {
@@ -45,6 +45,26 @@ class OrderItem extends Model
     public function setQuantity($quantity)
     {
         $this->attributes['quantity'] = $quantity;
+    }
+
+    public function getBeerId()
+    {
+        return $this->attributes['beer_id'];
+    }
+
+    public function setBeerId($beerId)
+    {
+        $this->attributes['beer_id'] = $beerId;
+    }
+
+    public function getOrderId()
+    {
+        return $this->attributes['order_id'];
+    }
+
+    public function setOrderId($orderId)
+    {
+        $this->attributes['order_id'] = $orderId;
     }
 
     public function beer()

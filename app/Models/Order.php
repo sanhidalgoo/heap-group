@@ -14,14 +14,14 @@ class Order extends Model
      * ORDER ATTRIBUTES
      * $this->attributes['id'] - int - contains the product primary key (id)
      * $this->attributes['total'] - float - total bill of the order
-     * $this->attributes['orderState'] - string - contains the order state. Initially the order state is pendind
-     * $this->attributes['paymentMethod'] - string - contains the payment method for the order
+     * $this->attributes['order_state'] - string - contains the order state. Initially the order state is pendind
+     * $this->attributes['payment_method'] - string - contains the payment method for the order
      * $this->attributes['department'] - string - department of the destination
      * $this->attributes['city'] - string - city of the destination
      * $this->attributes['address'] - string - address of the destination
      */
 
-    protected $fillable = ['total', 'orderState', 'paymentMethod', 'department', 'city', 'address'];
+    protected $fillable = ['total', 'order_state', 'payment_method', 'department', 'city', 'address'];
 
     public function getId()
     {
@@ -45,22 +45,22 @@ class Order extends Model
 
     public function getOrderState()
     {
-        return $this->attributes['orderState'];
+        return $this->attributes['order_state'];
     }
 
     public function setOrderState($orderState)
     {
-        $this->attributes['orderState'] = $orderState;
+        $this->attributes['order_state'] = $orderState;
     }
 
     public function getPaymentMethod()
     {
-        return $this->attributes['paymentMethod'];
+        return $this->attributes['payment_method'];
     }
 
     public function setPaymentMethod($paymentMethod)
     {
-        $this->attributes['paymentMethod'] = $paymentMethod;
+        $this->attributes['payment_method'] = $paymentMethod;
     }
 
     public function getDepartment()

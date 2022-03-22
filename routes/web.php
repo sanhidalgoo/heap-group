@@ -46,3 +46,9 @@ Route::get('/beers', 'App\Http\Controllers\User\BeerController@index')->name('us
 Route::get('/beers/{id}', 'App\Http\Controllers\User\BeerController@show')->name('user.beers.show');
 Route::get('/beers/{id}/reviews/create', 'App\Http\Controllers\User\ReviewController@create')->name('user.reviews.create');
 Route::post('/beers/{id}/reviews/save', 'App\Http\Controllers\User\ReviewController@save')->name('user.reviews.save');
+
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name("user.cart.index");
+Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
+Route::get('/cart/bill', 'App\Http\Controllers\CartController@bill')->name("user.cart.bill");
+Route::post('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name("user.cart.purchase");
+Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name("cart.removeAll");
