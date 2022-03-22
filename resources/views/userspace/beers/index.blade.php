@@ -7,7 +7,7 @@
         </div>
     @endif
     <div class="row card-grid">
-        @forelse ($viewData["beers"]->reverse() as $beer)
+        @forelse ($viewData["beers"] as $beer)
             <div class="col-md-4 col-lg-3 mb-2">
                 <div class="card">
                     <div class="card-image-container">
