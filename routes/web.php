@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 | Admin Routes
 |--------------------------------------------------------------------------
 */
+
 Route::get('/admin', 'App\Http\Controllers\HomeController@admin')->name('admin.home.index');
 
 Route::get('/admin/users', 'App\Http\Controllers\Admin\UserAdminController@index')->name('admin.users.index');
@@ -46,3 +47,6 @@ Route::get('/beers', 'App\Http\Controllers\User\BeerController@index')->name('us
 Route::get('/beers/{id}', 'App\Http\Controllers\User\BeerController@show')->name('user.beers.show');
 Route::get('/beers/{id}/reviews/create', 'App\Http\Controllers\User\ReviewController@create')->name('user.reviews.create');
 Route::post('/beers/{id}/reviews/save', 'App\Http\Controllers\User\ReviewController@save')->name('user.reviews.save');
+
+Route::get('/orders', 'App\Http\Controllers\User\OrderController@index')->name('user.orders.index');
+Route::get('/orders/{id}', 'App\Http\Controllers\User\OrderController@show')->name('user.orders.show');
