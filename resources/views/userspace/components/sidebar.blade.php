@@ -1,6 +1,6 @@
 <nav class="sidebar">
     <div class="sidebar__header">
-        <img src="https://image.shutterstock.com/image-vector/vintage-craft-beer-logo-wheat-260nw-1112383865.jpg" />
+        <img src="{{ asset('../assets/logo-solid-black.svg') }}" />
     </div>
 
     <ul class="sidebar__nav list-unstyled components">

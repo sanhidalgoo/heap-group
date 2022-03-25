@@ -8,12 +8,12 @@
     @endif
     <div class="row card-grid">
         @forelse ($viewData["beers"] as $beer)
-            <div class="col-md-4 mb-2">
-                <div class="card flex-row">
-                    <div class="align-self-center mh-25 w-25">
-                        <img src="{{ $beer->getURL() }}" class="card-img-top img-card">
+            <div class="col-lg-4 col-md-6 mb-2">
+                <div class="beer-card">
+                    <div class="beer-card__img-wrapper">
+                        <img src="{{ $beer->getURL() }}" class="beer-card__img">
                     </div>
-                    <div class="card-body align-items-center">
+                    <div class="beer-card__body">
                         <p class="h4 fw-bold">{{ $beer->getName() }}</p>
                         <p>
                             {{ $beer->getIngredient() }}
@@ -22,8 +22,22 @@
                         <p>{{ $beer->getFormat() }}</p>
                         <p><strong class="h5 fw-bold">{{ $beer->getPrice() . ' ' . __('beers.currency') }}</strong>
                         </p>
-                        <a class="btn btn-primary" href="{{ route('user.beers.show', ['id' => $beer->getId()]) }}">
+                        <div class="beer-card__rating">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+
+                        <a class="btn btn-success beer-card__btn--block mb-2" href="{{ route('user.beers.show', ['id' => $beer->getId()]) }}">
+                            Details
+                        </a>
+                        <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="#">
                             Add to cart
+                        </a>
+                        <a class="btn btn-danger beer-card__btn--block" href="#">
+                            Remove from cart
                         </a>
                     </div>
                 </div>
