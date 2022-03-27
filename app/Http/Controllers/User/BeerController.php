@@ -21,8 +21,9 @@ class BeerController extends Controller
         try {
             $beer = Beer::findOrFail($id);
             $viewData = [];
-            $viewData["subtitle"] =  $beer->getName();
+            $viewData["subtitle"] = $beer->getName();
             $viewData["beer"] = $beer;
+            $viewData["reviews"] = $beer->reviews()->get();
             return view('userspace.beers.show')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('user.beers.index');

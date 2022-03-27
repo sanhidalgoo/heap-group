@@ -126,6 +126,15 @@ $sidebar-size: 270px;
         text-align: center;
     }
 
+    .h2-title {
+        margin: 1rem;
+        font-family: 'Rye', 'Nunito', sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: $brand-primary;
+        text-align: center;
+    }
+
     .main {
         padding: 0 2rem;
     }
@@ -224,5 +233,15 @@ $sidebar-size: 270px;
             object-fit: contain;
             object-position: center;
         }
+    }
+}
+
+.beer-container {
+    &__feature {
+        border: 2px solid $brand-primary;
+        background-color: white;
+        color: $brand-primary;
+        border-radius: 10px;
+        padding: 1rem 2rem;
     }
 }
