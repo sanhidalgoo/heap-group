@@ -83,21 +83,57 @@
                     {{ $viewData['beer']->getDetails() }}
                 </p>
 
-                @if(!$viewData['reviews']->isEmpty())
-                <div class="card-body px-5">
-                    <div class="d-flex flex-column justify-content-center text-center my-4">
-                        <h2 class="h2-title">
-                            Reviews
-                        </h2>
-                        @foreach($viewData['reviews'] as $review)
-                            <div class="card-text">
-                                <strong>{{ $review->user()->get() }}</strong>
-                                <br/>
+                <div class="d-flex flex-column justify-content-center text-center">
+                    <h2 class="h2-title">
+                        Reviews
+                    </h2>
+                    @foreach($viewData['reviews'] as $review)
+                        <div class="row review-card">
+                            <div class="col-md-2 review-card__aside">
+                                <div class="review-card__img-wrapper"></div>
+                            </div>
+                            <div class="col-md-10 review-card__body">
+                                <div class="review-card__header">
+                                    <div>
+                                        <p class="review-card__info m-0">Published by username, one year ago</p>
+                                        <div class="d-flex">
+                                            <div class="mr-2 rating">
+                                                <span class="fa fa-star {{ $review->getScore() >= 0.5 ? 'checked' : '' }}"></span>
+                                                <span class="fa fa-star {{ $review->getScore() >= 1.5 ? 'checked' : '' }}"></span>
+                                                <span class="fa fa-star {{ $review->getScore() >= 2.5 ? 'checked' : '' }}"></span>
+                                                <span class="fa fa-star {{ $review->getScore() >= 3.5 ? 'checked' : '' }}"></span>
+                                                <span class="fa fa-star {{ $review->getScore() >= 4.5 ? 'checked' : '' }}"></span>
+                                            </div>
+                                            <div class="total-reviews">
+                                                {{ $review->getScore() }} / 5 score
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <form class="d-inline-block col-md-1" method="POST" action="#">
+                                        @csrf
+                                        <button type="submit" class="btn btn-block btn-danger w-100">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                                {{ $review->getComment() }}
+                                {{ $review->getComment() }}
                                 {{ $review->getComment() }}
                             </div>
-                        @endforeach
+                        </div>
+                    @endforeach
+                    <div class="row review-card border-3 border-success">
+                        <a href="#" class="text-decoration-none text-success">
+                            <div class="col d-flex justify-content-center align-items-center">
+                                <div class="btn btn-success rounded-circle">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                                <h3 class="d-inline-block mx-3 my-0 fw-bold">Add a review</h3>
+                            </div>
+                        </a>
                     </div>
-                @endif
+                </div>
             </div>
         </div>
     </div>

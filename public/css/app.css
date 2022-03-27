@@ -11429,11 +11429,14 @@ textarea.form-control-lg {
   width: max-content;
 }
 
-.beer-card {
+.review-card, .beer-card {
   background-color: white;
   box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   display: flex;
+}
+
+.beer-card {
   height: 100%;
   padding: 0.5rem 0.8rem;
 }
@@ -11497,4 +11500,40 @@ textarea.form-control-lg {
   color: #604028;
   border-radius: 10px;
   padding: 1rem 2rem;
+}
+
+.review-card {
+  margin: 1rem;
+  padding: 1.5rem 0.5rem;
+}
+.review-card__aside {
+  overflow: hidden;
+}
+.review-card__img-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+}
+.review-card__img-wrapper::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  border-radius: 30px;
+}
+.review-card__header {
+  height: 40px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.review-card__info {
+  text-align: left;
+  color: #191919;
+  font-size: 12px;
 }
