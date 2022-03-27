@@ -29,7 +29,7 @@ class BeerFactory extends Factory
                 'price' => 2200,
                 'details' => 'A traditional Colombian beer from Antioquia',
                 'quantity_available' => $this->faker->numberBetween(100, 150),
-                'image_url' => 'https://www.licoexpress.co/wp-content/uploads/2020/05/pilsen-600x600-1.jpg',
+                'image_url' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG_Og8rmtrU_DHBeu6jPK9y9p36DmzzDqXp_5oUQyQrpzL4gs8nUM-ByV8pdvIaipZYb4&usqp=CAU',
             ],
             [
                 'name' => 'Águila ' . $this->faker->name(),
