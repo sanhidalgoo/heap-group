@@ -194,9 +194,19 @@ class Beer extends Model
         return $this->attributes['image_url'];
     }
 
+    public function getRating()
+    {
+        return 3;
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 
     public function orderItems()

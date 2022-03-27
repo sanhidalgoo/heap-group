@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('comment');
             $table->string('score');
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('beer_id')->constrained('beers')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

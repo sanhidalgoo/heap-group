@@ -73,4 +73,9 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function beer()
+    {
+        return $this->belongsTo(Beer::class);
+    }
 }
