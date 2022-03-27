@@ -51,8 +51,9 @@ Route::post('/beers/{id}/reviews/save', 'App\Http\Controllers\User\ReviewControl
 Route::get('/cart', 'App\Http\Controllers\User\CartController@index')->name("user.cart.index");
 Route::get('/cart/add/{id}', 'App\Http\Controllers\User\CartController@add')->name("cart.add");
 Route::get('/cart/increment/{id}', 'App\Http\Controllers\User\CartController@increment')->name("user.cart.increment");
-Route::get('/cart/bill', 'App\Http\Controllers\User\CartController@bill')->name("user.cart.bill");
+Route::get('/cart/decrement/{id}', 'App\Http\Controllers\User\CartController@decrement')->name("user.cart.decrement");
 Route::post('/cart/purchase', 'App\Http\Controllers\User\CartController@purchase')->name("user.cart.purchase");
 Route::get('/cart/removeAll/', 'App\Http\Controllers\User\CartController@removeAll')->name("cart.removeAll");
 Route::get('/orders', 'App\Http\Controllers\User\OrderController@index')->name('user.orders.index');
+Route::post('/orders/save', 'App\Http\Controllers\User\OrderController@save')->name('user.orders.save');
 Route::get('/orders/{id}', 'App\Http\Controllers\User\OrderController@show')->name('user.orders.show');

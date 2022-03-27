@@ -1,5 +1,8 @@
 <?php
 
+// Authors: Santiago 
+
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,14 +17,18 @@ class Order extends Model
      * ORDER ATTRIBUTES
      * $this->attributes['id'] - int - contains the product primary key (id)
      * $this->attributes['total'] - float - total bill of the order
-     * $this->attributes['order_state'] - string - contains the order state. Initially the order state is pendind
+     * $this->attributes['order_state'] - string - contains the order state. Initially the order state is pending
      * $this->attributes['payment_method'] - string - contains the payment method for the order
      * $this->attributes['department'] - string - department of the destination
      * $this->attributes['city'] - string - city of the destination
      * $this->attributes['address'] - string - address of the destination
+     * $this->attributes['created_at'] - Date - Date of creation
+     * $this->attributes['updated_at'] - Date - Date of update
      */
 
     protected $fillable = ['total', 'order_state', 'payment_method', 'department', 'city', 'address'];
+
+    public static $STATES = ['PENDING' => 'PENDING', 'CANCELLED' => 'CANCELLED', 'SHIPPED' => 'SHIPPED', 'DELIVERED' => 'DELIVERED', 'MISSING' => 'MISSING'];
 
     public function getId()
     {
@@ -98,10 +105,24 @@ class Order extends Model
         return $this->attributes['created_at'];
     }
 
+    public function setCreatedDate($createdAt)
+    {
+        $this->attributes['created_at'] = $createdAt;
+    }
+
+    public function getUpdatedDate()
+    {
+        return $this->attributes['updated_at'];
+    }
+
+    public function setUpdatedDate($updatedAt)
+    {
+        $this->attributes['updated_at'] = $updatedAt;
+    }
+
     public static function validate(Request $request)
     {
         $request->validate([
-            "total" => "required|numeric|min:0|not_in:0",
             "paymentMethod" => "required|in:CREDIT_CARD,CASH,PSE",
             "department" => "required",
             "city" => "required",
@@ -114,7 +135,8 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function orderItems(){
+    public function orderItems()
+    {
         return $this->hasMany(OrderItem::class);
     }
 
@@ -122,5 +144,4 @@ class Order extends Model
     {
         return $this->hasOne(RefundOrder::class);
     }
-
 }

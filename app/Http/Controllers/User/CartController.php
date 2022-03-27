@@ -1,5 +1,8 @@
 <?php
 
+// Authors: Santiago Hidalgo
+
+
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
@@ -52,41 +55,17 @@ class CartController extends Controller
         }
     }
 
-    public function bill()
+    public function decrement($id, Request $request)
     {
-        return view('cart.bill');
-    }
-    public function purchase(Request $request)
-    {
-
-        dd($request[]);
-        $beersInSession = $request->session()->get("beers");
-
-        $beers = Beer::findMany(array_keys($beersInSession));
-        $order = new Order();
-        $order->setTotal(0);
-        $order->setOrderState("PENDING");
-        $order->setPaymentMethod($request['paymentMethod']);
-        $order->setDepartment($request['department']);
-        $order->setCity($request['city']);
-        $order->setAddress($request['address']);
-        $order->save();
-        $total = 0;
-
-        foreach ($beers as $key => $beer) {
-            $item = new OrderItem();
-            $item->setQuantity(1);
-            $item->setBeerId($beer->getId());
-            $item->setSubtotal($beer->getPrice());
-            $item->setOrderId($order->getId());
-            $item->save();
-            $total = $total + $beer->getPrice();
+        $beers = $request->session()->get("beers");
+        if ($beers[$id] > 0) {
+            $beers[$id]--;
+            if ($beers[$id] == 0) {
+                unset($beers[$id]);
+            }
+            $request->session()->put('beers', $beers);
+            return back();
         }
-
-        $order->setTotal($total);
-        $order->save();
-
-        dd("Felicitaciones");
     }
 
     public function removeAll(Request $request)

@@ -1,5 +1,7 @@
 <?php
 
+// Authors: Santiago Hidalgo, David Calle
+
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
@@ -7,6 +9,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Beer;
+
 
 class OrderController extends Controller
 {
@@ -34,28 +38,32 @@ class OrderController extends Controller
     public function save(Request $request)
     {
         Order::validate($request);
-        $orderItems = $request['orderItems'];
-        foreach ($orderItems as $orderItem) {
-            OrderItem::validate($orderItem);
-        }
-
         $newOrder = new Order();
-        $newOrder->setTotal($request['total']);
-        $newOrder->setOrderState('created');
+        $newOrder->setOrderState(Order::$STATES['PENDING']);
         $newOrder->setPaymentMethod($request['paymentMethod']);
         $newOrder->setDepartment($request['department']);
         $newOrder->setCity($request['city']);
         $newOrder->setAddress($request['address']);
-        $newOrder->create();
+        $newOrder->setTotal(0);
+        $newOrder->save();
 
-        foreach ($orderItems as $orderItem) {
+        $beersInSession = $request->session()->get("beers"); //we get the ids of the beers stored in session
+        $beersInCart = Beer::findMany(array_keys($beersInSession));
+
+        $total = 0;
+        foreach ($beersInCart as $beer) {
             $newOrderItem = new OrderItem();
-            $newOrderItem->setQuantity($orderItem['quantity']);
-            $newOrderItem->setSubtotal($orderItem['subtotal']);
-            $newOrderItem->setBeer($orderItem['beer']);
-            $newOrderItem->setOrder($newOrder->getId());
-            $newOrderItem->create();
+            $beerQuantity = $beersInSession[$beer->getId()];
+            $newOrderItem->setQuantity($beerQuantity);
+            $newOrderItem->setSubtotal($beer->getPrice() * $beerQuantity);
+            $newOrderItem->setBeerId($beer->getId());
+            $newOrderItem->setOrderId($newOrder->getId());
+            $newOrderItem->save();
+            $total += $newOrderItem->getSubtotal();
         }
+
+        $newOrder->setTotal($total);
+        $newOrder->save();
 
         return redirect()->back()->with('success', __('orders.create.success'));
     }

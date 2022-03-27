@@ -11,6 +11,11 @@
             {{ session('delete') }}
         </div>
     @endif
+    @if (session('success'))
+        <div class="alert alert-warning">
+            {{ session('success') }}
+        </div>
+    @endif
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -29,8 +34,6 @@
             </div>
         </div>
 
-        <a href="{{ route('user.cart.bill') }}">Comprar</a>
-
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <h1>beers in cart</h1>
@@ -42,7 +45,7 @@
                             Price: {{ $beer['beer']['price'] }} -
                             Quantity {{ $beer['quantity'] }} -
                             <a href="{{ route('user.cart.increment', ['id' => $beer['beer']['id']]) }}">Add</a> - 
-                            
+                            <a href="{{ route('user.cart.decrement', ['id' => $beer['beer']['id']]) }}">Substract</a>
                         </li>
                     @endforeach
                 </ul>
@@ -51,7 +54,7 @@
         </div>
 
 
-        <form method="POST" action="{{ route('user.cart.purchase') }}">
+        <form method="POST" action="{{ route('user.orders.save') }}">
             @csrf
             <p class="form-control mb-2">
                 <label for="cars">{{ __('billing.payment-method') }}</label>

@@ -14,9 +14,13 @@ class OrderItem extends Model
      * $this->attributes['id'] - int - contains the review primary key (id)
      * $this->attributes['subtotal'] - float - contains subtotalprice of the item
      * $this->attributes['quantity'] - int - contains the quantity of the item
+     * $this->attributes['beer_id'] - int - id of beer item
+     * $this->attributes['order_id']- int - id of the order to which belongs the item
+     * $this->attributes['created_at'] - Date - Date of creation
+     * $this->attributes['updated_at'] - Date - Date of update
      */
 
-    protected $fillable = ['subtotal', 'quantity', ];
+    protected $fillable = ['subtotal', 'quantity',];
 
     public function getId()
     {
@@ -66,6 +70,26 @@ class OrderItem extends Model
     public function setOrderId($orderId)
     {
         $this->attributes['order_id'] = $orderId;
+    }
+
+    public function getCreatedDate()
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function setCreatedDate($createdAt)
+    {
+        $this->attributes['created_at'] = $createdAt;
+    }
+
+    public function getUpdatedDate()
+    {
+        return $this->attributes['updated_at'];
+    }
+
+    public function setUpdatedDate($updatedAt)
+    {
+        $this->attributes['updated_at'] = $updatedAt;
     }
 
     public function beer()
