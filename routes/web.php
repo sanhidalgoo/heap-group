@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 | Admin Routes
 |--------------------------------------------------------------------------
 */
+
 Route::get('/admin', 'App\Http\Controllers\HomeController@admin')->name('admin.home.index');
 
 Route::get('/admin/users', 'App\Http\Controllers\Admin\UserAdminController@index')->name('admin.users.index');
@@ -41,7 +42,7 @@ Route::post('/admin/beers/{id}/delete', 'App\Http\Controllers\Admin\BeerAdminCon
 | User Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('user.home.index');
 Route::get('/beers', 'App\Http\Controllers\User\BeerController@index')->name('user.beers.index');
 Route::get('/beers/{id}', 'App\Http\Controllers\User\BeerController@show')->name('user.beers.show');
 Route::get('/beers/{id}/reviews/create', 'App\Http\Controllers\User\ReviewController@create')->name('user.reviews.create');
@@ -53,3 +54,5 @@ Route::get('/cart/increment/{id}', 'App\Http\Controllers\User\CartController@inc
 Route::get('/cart/bill', 'App\Http\Controllers\User\CartController@bill')->name("user.cart.bill");
 Route::post('/cart/purchase', 'App\Http\Controllers\User\CartController@purchase')->name("user.cart.purchase");
 Route::get('/cart/removeAll/', 'App\Http\Controllers\User\CartController@removeAll')->name("cart.removeAll");
+Route::get('/orders', 'App\Http\Controllers\User\OrderController@index')->name('user.orders.index');
+Route::get('/orders/{id}', 'App\Http\Controllers\User\OrderController@show')->name('user.orders.show');

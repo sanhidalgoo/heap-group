@@ -18,4 +18,6 @@ return [
     'users' => 'Users',
     'beers' => 'Beers',
     'back' => 'Go back',
+    'login' => 'Login',
+    'cart' => 'Cart',
 ];

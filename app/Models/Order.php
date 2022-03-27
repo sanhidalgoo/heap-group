@@ -93,6 +93,11 @@ class Order extends Model
         $this->attributes['address'] = $address;
     }
 
+    public function getCreatedDate()
+    {
+        return $this->attributes['created_at'];
+    }
+
     public static function validate(Request $request)
     {
         $request->validate([

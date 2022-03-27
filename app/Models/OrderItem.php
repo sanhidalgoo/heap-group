@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class OrderItem extends Model
 {
@@ -75,5 +76,13 @@ class OrderItem extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public static function validate(Request $request)
+    {
+        $request->validate([
+            "subtotal" => "required|numeric|min:0|not_in:0",
+            "quantity" => "required|numeric|min:0|not_in:0"
+        ]);
     }
 }
