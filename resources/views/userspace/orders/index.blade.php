@@ -1,4 +1,4 @@
-@extends('adminspace.layouts.app')
+@extends('userspace.layouts.app')
 @section('subtitle', __('orders.title'))
 @section('content')
     <table class="table">

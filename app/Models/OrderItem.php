@@ -23,7 +23,7 @@ class OrderItem extends Model
      * $this->attributes['updated_at'] - Date - Date of update
      */
 
-    protected $fillable = ['subtotal', 'quantity',];
+    protected $fillable = ['subtotal', 'quantity'];
 
     public function getId()
     {
@@ -75,24 +75,14 @@ class OrderItem extends Model
         $this->attributes['order_id'] = $orderId;
     }
 
-    public function getCreatedDate()
+    public function getCreatedAt()
     {
         return $this->attributes['created_at'];
     }
 
-    public function setCreatedDate($createdAt)
-    {
-        $this->attributes['created_at'] = $createdAt;
-    }
-
-    public function getUpdatedDate()
+    public function getUpdatedAt()
     {
         return $this->attributes['updated_at'];
-    }
-
-    public function setUpdatedDate($updatedAt)
-    {
-        $this->attributes['updated_at'] = $updatedAt;
     }
 
     public function beer()

@@ -100,24 +100,14 @@ class Order extends Model
         $this->attributes['address'] = $address;
     }
 
-    public function getCreatedDate()
+    public function getCreatedAt()
     {
         return $this->attributes['created_at'];
     }
 
-    public function setCreatedDate($createdAt)
-    {
-        $this->attributes['created_at'] = $createdAt;
-    }
-
-    public function getUpdatedDate()
+    public function getUpdatedAt()
     {
         return $this->attributes['updated_at'];
-    }
-
-    public function setUpdatedDate($updatedAt)
-    {
-        $this->attributes['updated_at'] = $updatedAt;
     }
 
     public static function validate(Request $request)

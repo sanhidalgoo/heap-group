@@ -11,6 +11,7 @@ use App\Models\Beer;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Arr;
+
 class CartController extends Controller
 {
     public function index(Request $request)
@@ -42,14 +43,18 @@ class CartController extends Controller
 
     public function increment($id, Request $request)
     {
-        $beers = $request->session()->get("beers");
-        $beer = Beer::findOrFail($id);
-        if (($beer->getQuantity() > $beers[$id])) {
-            $beers[$id]++;
-            $request->session()->put('beers', $beers);
-            return back();
-        } else {
-            return back()->with('error', "No puede pedir más");
+        try {
+            $beers = $request->session()->get("beers");
+            $beer = Beer::findOrFail($id);
+            if (($beer->getQuantity() > $beers[$id])) {
+                $beers[$id]++;
+                $request->session()->put('beers', $beers);
+                return back();
+            } else {
+                return back()->with('error', __('cart.increment.unallowed'));
+            }
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('user.cart.index');
         }
     }
 

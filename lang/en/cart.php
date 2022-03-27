@@ -13,5 +13,6 @@ return [
     |
     */
 
-    'title' => 'Cart - Beer Online Store',
+    'title' => 'Cart - Cart - The Craft Beer Store',
+    'increment.unallowed' => 'You can not add more. Stock sold out',
 ];
