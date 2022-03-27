@@ -1,5 +1,7 @@
 <?php
 
+// Authors: Santiago Hidalgo, Juan S. Díaz, David Calle
+
 use Illuminate\Support\Facades\Route;
 
 /*

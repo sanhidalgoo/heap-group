@@ -1,6 +1,6 @@
 <?php
 
-// Authors: Santiago 
+// Authors: Santiago Hidalgo, David Calle
 
 
 namespace App\Models;

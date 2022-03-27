@@ -2,7 +2,6 @@
 
 // Authors: Santiago Hidalgo
 
-
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
@@ -12,7 +11,6 @@ use App\Models\Beer;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Arr;
-
 class CartController extends Controller
 {
     public function index(Request $request)

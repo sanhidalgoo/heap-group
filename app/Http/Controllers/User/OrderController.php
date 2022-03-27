@@ -11,7 +11,6 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Beer;
 
-
 class OrderController extends Controller
 {
     public function index()
