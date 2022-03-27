@@ -1,9 +1,13 @@
 <?php
 
+// Authors: Santiago Hidalgo, David Calle
+
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class OrderItem extends Model
 {
@@ -11,8 +15,12 @@ class OrderItem extends Model
     /**
      * REVIEW ATTRIBUTES
      * $this->attributes['id'] - int - contains the review primary key (id)
-     * $this->comment['subtotal'] - float - contains subtotalprice of the item
+     * $this->attributes['subtotal'] - float - contains subtotalprice of the item
      * $this->attributes['quantity'] - int - contains the quantity of the item
+     * $this->attributes['beer_id'] - int - id of beer item
+     * $this->attributes['order_id']- int - id of the order to which belongs the item
+     * $this->attributes['created_at'] - Date - Date of creation
+     * $this->attributes['updated_at'] - Date - Date of update
      */
 
     protected $fillable = ['subtotal', 'quantity'];
@@ -47,6 +55,36 @@ class OrderItem extends Model
         $this->attributes['quantity'] = $quantity;
     }
 
+    public function getBeerId()
+    {
+        return $this->attributes['beer_id'];
+    }
+
+    public function setBeerId($beerId)
+    {
+        $this->attributes['beer_id'] = $beerId;
+    }
+
+    public function getOrderId()
+    {
+        return $this->attributes['order_id'];
+    }
+
+    public function setOrderId($orderId)
+    {
+        $this->attributes['order_id'] = $orderId;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->attributes['updated_at'];
+    }
+
     public function beer()
     {
         return $this->hasOne(User::class);
@@ -55,5 +93,13 @@ class OrderItem extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public static function validate(Request $request)
+    {
+        $request->validate([
+            "subtotal" => "required|numeric|min:0|not_in:0",
+            "quantity" => "required|numeric|min:0|not_in:0"
+        ]);
     }
 }

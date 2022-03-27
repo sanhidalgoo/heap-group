@@ -1,5 +1,8 @@
 <?php
 
+// Authors: Santiago Hidalgo, David Calle
+
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,14 +17,18 @@ class Order extends Model
      * ORDER ATTRIBUTES
      * $this->attributes['id'] - int - contains the product primary key (id)
      * $this->attributes['total'] - float - total bill of the order
-     * $this->attributes['orderState'] - string - contains the order state. Initially the order state is pendind
-     * $this->attributes['paymentMethod'] - string - contains the payment method for the order
+     * $this->attributes['order_state'] - string - contains the order state. Initially the order state is pending
+     * $this->attributes['payment_method'] - string - contains the payment method for the order
      * $this->attributes['department'] - string - department of the destination
      * $this->attributes['city'] - string - city of the destination
      * $this->attributes['address'] - string - address of the destination
+     * $this->attributes['created_at'] - Date - Date of creation
+     * $this->attributes['updated_at'] - Date - Date of update
      */
 
-    protected $fillable = ['total', 'orderState', 'paymentMethod', 'department', 'city', 'address'];
+    protected $fillable = ['total', 'order_state', 'payment_method', 'department', 'city', 'address'];
+
+    public static $STATES = ['PENDING' => 'PENDING', 'CANCELLED' => 'CANCELLED', 'SHIPPED' => 'SHIPPED', 'DELIVERED' => 'DELIVERED', 'MISSING' => 'MISSING'];
 
     public function getId()
     {
@@ -45,22 +52,22 @@ class Order extends Model
 
     public function getOrderState()
     {
-        return $this->attributes['orderState'];
+        return $this->attributes['order_state'];
     }
 
     public function setOrderState($orderState)
     {
-        $this->attributes['orderState'] = $orderState;
+        $this->attributes['order_state'] = $orderState;
     }
 
     public function getPaymentMethod()
     {
-        return $this->attributes['paymentMethod'];
+        return $this->attributes['payment_method'];
     }
 
     public function setPaymentMethod($paymentMethod)
     {
-        $this->attributes['paymentMethod'] = $paymentMethod;
+        $this->attributes['payment_method'] = $paymentMethod;
     }
 
     public function getDepartment()
@@ -93,10 +100,19 @@ class Order extends Model
         $this->attributes['address'] = $address;
     }
 
+    public function getCreatedAt()
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->attributes['updated_at'];
+    }
+
     public static function validate(Request $request)
     {
         $request->validate([
-            "total" => "required|numeric|min:0|not_in:0",
             "paymentMethod" => "required|in:CREDIT_CARD,CASH,PSE",
             "department" => "required",
             "city" => "required",
@@ -107,6 +123,11 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 
     public function refundOrder()
