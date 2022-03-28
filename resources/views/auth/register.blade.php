@@ -1,5 +1,5 @@
 @extends('userspace.layouts.app')
-@section('title', __('Register'))
+@section('title', __('auth.register'))
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -10,7 +10,7 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('auth.register.name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('auth.register.email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('auth.register.password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('auth.register.password.confirm') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="birthdate" class="col-md-4 col-form-label text-md-end">{{ __('Birthdate') }}</label>
+                            <label for="birthdate" class="col-md-4 col-form-label text-md-end">{{ __('auth.register.birthdate') }}</label>
 
                             <div class="col-md-6">
                                 <input id="birthdate" type="date" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}" required autocomplete="birthdate">
@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('auth.register.address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
@@ -88,7 +88,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="cash_available" class="col-md-4 col-form-label text-md-end">{{ __('Cash Available') }}</label>
+                            <label for="cash_available" class="col-md-4 col-form-label text-md-end">{{ __('auth.register.cash-available') }}</label>
 
                             <div class="col-md-6">
                                 <input id="cash_available" type="number" class="form-control @error('cash_available') is-invalid @enderror" name="cash_available" value="{{ old('cash_available') }}" required autocomplete="cash_available">
@@ -104,7 +104,7 @@
                         <div class="row mb-0">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
-                                    {{ __('Register') }}
+                                    {{ __('auth.register.button') }}
                                 </button>
                             </div>
                         </div>

@@ -31,13 +31,13 @@
                         </div>
 
                         <a class="btn btn-success beer-card__btn--block mb-2" href="{{ route('user.beers.show', ['id' => $beer->getId()]) }}">
-                            Details
+                            {{ __('beers.details') }}
                         </a>
                         <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="#">
-                            Add to cart
+                            {{ __('beers.cart.add.button') }}
                         </a>
                         <a class="btn btn-danger beer-card__btn--block" href="#">
-                            Remove from cart
+                            {{ __('beers.cart.remove.button') }}
                         </a>
                     </div>
                 </div>

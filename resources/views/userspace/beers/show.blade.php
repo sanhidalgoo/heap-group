@@ -1,5 +1,5 @@
 @extends('userspace.layouts.app')
-@section('subtitle', $viewData['subtitle'])
+@section('title', $viewData['subtitle'])
 @section('content')
     <div class="card mb-3 px-5 py-2">
         <div class="row g-0">
@@ -21,7 +21,7 @@
                                 <span class="fa fa-star {{ $viewData['beer']->getRating() >= 4.5 ? 'checked' : '' }}"></span>
                             </div>
                             <div class="total-reviews">
-                                {{ $viewData['reviews']->count() }} reviews
+                                {{ $viewData['reviews']->count() . ' ' . __('beers.reviews') }}
                             </div>
                         </div>
                     </div>
@@ -68,10 +68,10 @@
                             {{ $viewData['beer']->getQuantity() }}
                         </p>
                         <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="#">
-                            Add to cart
+                            {{ __('beers.cart.add.button') }}
                         </a>
                         <a class="btn btn-danger beer-card__btn--block" href="#">
-                            Remove from cart
+                            {{ __('beers.cart.remove.button') }}
                         </a>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                                                 <span class="fa fa-star {{ $review->getScore() >= 4.5 ? 'checked' : '' }}"></span>
                                             </div>
                                             <div class="total-reviews">
-                                                {{ $review->getScore() }} / 5 score
+                                                {{ $review->getScore() }} / 5 {{ __('beers.score') }}
                                             </div>
                                         </div>
                                     </div>
@@ -129,7 +129,7 @@
                                 <div class="btn btn-success rounded-circle">
                                     <i class="fa-solid fa-plus"></i>
                                 </div>
-                                <h3 class="d-inline-block mx-3 my-0 fw-bold">Add a review</h3>
+                                <h3 class="d-inline-block mx-3 my-0 fw-bold">{{ __('beers.reviews.add') }}</h3>
                             </div>
                         </a>
                     </div>

@@ -27,6 +27,8 @@ return [
 
     'title' => 'Beers',
     'cost' => 'Cost',
+    'reviews' => 'Reviews',
+    'score' => 'Score',
     'currency' => 'COP',
 
     'index.add' => 'Add a new beer',
@@ -51,4 +53,11 @@ return [
     'update.success' => 'Beer updated!',
     'delete.button' => 'Delete this beer',
     'delete.success' => 'Beer deleted!',
+
+    'reviews.add' => 'Add a review',
+
+    'details.button' => 'Details',
+    'cart.add.button' => 'Add to cart',
+    'cart.remove.button' => 'Remove from cart',
+
 ];

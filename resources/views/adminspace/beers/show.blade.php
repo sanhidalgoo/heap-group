@@ -4,7 +4,7 @@
 <div class="card mb-3">
     <div class="row g-0">
         <div class="col-md-4 align-items-center">
-            <img src="{{ $viewData["beer"]->getURL() }}" class="img-fluid rounded-start">
+            <img src="{{ $viewData['beer']->getURL() }}" class="img-fluid rounded-start">
         </div>
         <div class="col-md-8">
             <div class="card-body px-5">

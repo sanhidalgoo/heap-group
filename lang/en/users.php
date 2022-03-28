@@ -22,6 +22,9 @@ return [
     'address' => 'Address',
     'cash-available' => 'Cash available',
 
+    'role.user' => 'User',
+    'role.admin' => 'Admin',
+
     'title' => 'Users',
 
     'index.add' => 'Add a new user',
