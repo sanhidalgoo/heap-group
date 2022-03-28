@@ -1,5 +1,8 @@
 <?php
 
+// Authors: Juan S. Díaz, Santiago Hidalgo
+
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,6 +33,8 @@ class Beer extends Model
      * $this->attributes['details'] - string - contains details about beer
      * $this->attributes['quantity_available'] - int - contains available amount of this beer
      * $this->attributes['image_url'] - string - contains the beer image url
+     * $this->attributes['created_at'] - Date - Date of creation
+     * $this->attributes['updated_at'] - Date - Date of update
      */
 
     protected $fillable = [
@@ -207,5 +212,15 @@ class Beer extends Model
     public function orderItems()
     {
         return $this->belongsToMany(OrderItem::class);
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->attributes['updated_at'];
     }
 }
