@@ -9,11 +9,23 @@ use App\Models\Beer;
 
 class BeerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $viewData = [];
-        $viewData["beers"] = Beer::all();
+        $beers = Beer::query();
+
+        if ($request->has('minPrice')) {
+            $beers = $beers->where('price', '>', $request->minPrice);
+            $viewData['minPrice'] = $request->minPrice;
+        }
+        $viewData["beers"] = $beers->get();
         return view('userspace.beers.index')->with("viewData", $viewData);
+    }
+
+    public function filter()
+    {
+        $viewData = [];
+        $viewData["beers"] = Beer::where('price', '<', 2250)->get();
     }
 
     public function show($id)
