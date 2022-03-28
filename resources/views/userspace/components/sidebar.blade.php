@@ -14,8 +14,13 @@
             <li class="sidebar__nav-button {{ request()->routeIs('user.beers.index') ? 'active' : '' }}">
                 <a class="sidebar__link" href="{{ route('user.beers.index') }}">{{ __('navigation.orders') }}</a>
             </li>
-            <li class="sidebar__nav-button {{ request()->routeIs('user.beers.index') ? 'active' : '' }}">
-                <a class="sidebar__link" href="{{ route('user.beers.index') }}">{{ __('navigation.cart') }}</a>
+            <li class="sidebar__nav-button {{ request()->routeIs('user.cart.index') ? 'active' : '' }}">
+                <a class="sidebar__link" href="{{ route('user.cart.index') }}">
+                    {{ __('navigation.cart') }}
+                    @if (isset($viewData['beersInCart']) && count($viewData['beersInCart']) > 0)
+                        <span class="sidebar__notification">{{ count($viewData['beersInCart']) }}</span>
+                    @endif
+                </a>
             </li>
         @endauth
         <hr class="sidebar__hr" />

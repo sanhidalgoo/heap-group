@@ -1,11 +1,6 @@
 @extends('userspace.layouts.app')
 @section('title', __('beers.title'))
 @section('content')
-    @if (session('cart-delete'))
-        <div class="alert alert-warning">
-            {{ session('cart-delete') }}
-        </div>
-    @endif
     <div class="row card-grid">
         @forelse ($viewData["beers"] as $beer)
             <div class="col-lg-4 col-md-6 mb-2">
@@ -33,12 +28,17 @@
                         <a class="btn btn-success beer-card__btn--block mb-2" href="{{ route('user.beers.show', ['id' => $beer->getId()]) }}">
                             {{ __('beers.details') }}
                         </a>
-                        <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="#">
-                            {{ __('beers.cart.add.button') }}
-                        </a>
-                        <a class="btn btn-danger beer-card__btn--block" href="#">
-                            {{ __('beers.cart.remove.button') }}
-                        </a>
+                        @auth
+                            @if(array_key_exists($beer->getId(), $viewData['beersInCart']))
+                                <a class="btn btn-danger beer-card__btn--block" href="{{ route('user.cart.remove', ['id' => $beer->getId()]) }}">
+                                    {{ __('cart.remove.button') }}
+                                </a>
+                            @else
+                                <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="{{ route('user.cart.add', ['id' => $beer->getId()]) }}">
+                                    {{ __('cart.add.button') }}
+                                </a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>

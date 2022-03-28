@@ -57,7 +57,5 @@ return [
     'reviews.add' => 'Add a review',
 
     'details.button' => 'Details',
-    'cart.add.button' => 'Add to cart',
-    'cart.remove.button' => 'Remove from cart',
 
 ];

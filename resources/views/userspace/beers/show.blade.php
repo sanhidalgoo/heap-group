@@ -67,12 +67,17 @@
                             <strong>{{ __('beers.quantity') }}: </strong>
                             {{ $viewData['beer']->getQuantity() }}
                         </p>
-                        <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="#">
-                            {{ __('beers.cart.add.button') }}
-                        </a>
-                        <a class="btn btn-danger beer-card__btn--block" href="#">
-                            {{ __('beers.cart.remove.button') }}
-                        </a>
+                        @auth
+                            @if(array_key_exists($beer->getId(), $viewData['beersInCart']))
+                                <a class="btn btn-danger beer-card__btn--block" href="{{ route('user.cart.remove', ['id' => $beer->getId()]) }}">
+                                    {{ __('cart.remove.button') }}
+                                </a>
+                            @else
+                                <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="{{ route('user.cart.add', ['id' => $beer->getId()]) }}">
+                                    {{ __('cart.add.button') }}
+                                </a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -84,6 +89,7 @@
                 </p>
 
                 <div class="d-flex flex-column justify-content-center text-center">
+                    @if(!$viewData['reviews']->isEmpty())
                     <h2 class="h2-title">
                         Reviews
                     </h2>
@@ -109,13 +115,16 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <form class="d-inline-block col-md-1" method="POST" action="#">
-                                        @csrf
-                                        <button type="submit" class="btn btn-block btn-danger w-100">
-                                            <i class="fa-solid fa-trash-can"></i>
-                                        </button>
-                                    </form>
+                                    @auth
+                                        @if($review->getUserId() == Auth::user()->getId())
+                                        <form class="d-inline-block col-md-1" method="POST" action="{{ route('user.review.delete', ['id' => $review->getId()]) }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-block btn-danger w-100">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </form>
+                                        @endif
+                                    @endauth
                                 </div>
                                 {{ $review->getComment() }}
                                 {{ $review->getComment() }}
@@ -123,16 +132,19 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="row review-card border-3 border-success">
-                        <a href="#" class="text-decoration-none text-success">
-                            <div class="col d-flex justify-content-center align-items-center">
-                                <div class="btn btn-success rounded-circle">
-                                    <i class="fa-solid fa-plus"></i>
+                    @endif
+                    @auth
+                        <div class="row review-card border-3 border-success">
+                            <a href="#" class="text-decoration-none text-success">
+                                <div class="col d-flex justify-content-center align-items-center">
+                                    <div class="btn btn-success rounded-circle">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </div>
+                                    <h3 class="d-inline-block mx-3 my-0 fw-bold">{{ __('beers.reviews.add') }}</h3>
                                 </div>
-                                <h3 class="d-inline-block mx-3 my-0 fw-bold">{{ __('beers.reviews.add') }}</h3>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    @endauth
                 </div>
             </div>
         </div>

@@ -1,38 +1,7 @@
-@extends('layouts.app')
-@section('subtitle', __('cart.title'))
-@section('content')
-    @if (session('error'))
-        <div class="alert alert-warning">
-            {{ session('error') }}
-        </div>
-    @endif
-    @if (session('delete'))
-        <div class="alert alert-warning">
-            {{ session('delete') }}
-        </div>
-    @endif
-    @if (session('success'))
-        <div class="alert alert-warning">
-            {{ session('success') }}
-        </div>
-    @endif
+@extends('userspace.layouts.app')
+@section('title', __('cart.title'))
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <h1>Available beers</h1>
-                <ul>
-                    @foreach ($viewData['beers'] as $key => $beer)
-                        <li>
-                            Id: {{ $beer->getId() }} -
-                            Name: {{ $beer->getName() }} -
-                            Price: {{ $beer->getPrice() }} -
-                            <a href="{{ route('cart.add', ['id' => $beer->getId()]) }}">Add to cart</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
 
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -44,7 +13,7 @@
                             Name: {{ $beer['beer']['name'] }} -
                             Price: {{ $beer['beer']['price'] }} -
                             Quantity {{ $beer['quantity'] }} -
-                            <a href="{{ route('user.cart.increment', ['id' => $beer['beer']['id']]) }}">Add</a> - 
+                            <a href="{{ route('user.cart.increment', ['id' => $beer['beer']['id']]) }}">Add</a> -
                             <a href="{{ route('user.cart.decrement', ['id' => $beer['beer']['id']]) }}">Substract</a>
                         </li>
                     @endforeach
@@ -52,7 +21,6 @@
 
             </div>
         </div>
-
 
         <form method="POST" action="{{ route('user.orders.save') }}">
             @csrf
@@ -74,4 +42,5 @@
         </form>
     </div>
 
-    <div><a href="{{ route('cart.removeAll') }}">Remove all beers from cart</a></div>
+    <div><a href="{{ route('user.cart.removeAll') }}">Remove all beers from cart</a></div>
+@endsection

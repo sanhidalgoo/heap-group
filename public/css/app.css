@@ -11354,6 +11354,18 @@ textarea.form-control-lg {
   color: white;
   margin: 0.5rem;
 }
+.sidebar__notification {
+  padding: 0 0.4rem;
+  background: white;
+  color: #604028;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+  position: absolute;
+  top: 6px;
+}
 
 .button {
   margin: 1.2rem;
