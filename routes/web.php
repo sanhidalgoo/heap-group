@@ -52,15 +52,17 @@ Route::get('/beers', 'App\Http\Controllers\User\BeerController@index')->name('us
 Route::get('/beers/{id}', 'App\Http\Controllers\User\BeerController@show')->name('user.beers.show');
 Route::get('/beers/{id}/reviews/create', 'App\Http\Controllers\User\ReviewController@create')->name('user.reviews.create');
 Route::post('/beers/{id}/reviews/save', 'App\Http\Controllers\User\ReviewController@save')->name('user.reviews.save');
+Route::post('/beers/reviews/{id}/delete', 'App\Http\Controllers\User\ReviewController@delete')->name('user.reviews.delete');
 
 Route::get('/cart', 'App\Http\Controllers\User\CartController@index')->name("user.cart.index");
-Route::get('/cart/add/{id}', 'App\Http\Controllers\User\CartController@add')->name("user.cart.add");
-Route::get('/cart/remove/{id}', 'App\Http\Controllers\User\CartController@remove')->name("user.cart.remove");
-Route::get('/cart/increment/{id}', 'App\Http\Controllers\User\CartController@increment')->name("user.cart.increment");
-Route::get('/cart/decrement/{id}', 'App\Http\Controllers\User\CartController@decrement')->name("user.cart.decrement");
+Route::post('/cart/add/{id}', 'App\Http\Controllers\User\CartController@add')->name("user.cart.add");
+Route::post('/cart/remove/{id}', 'App\Http\Controllers\User\CartController@remove')->name("user.cart.remove");
+Route::post('/cart/increment/{id}', 'App\Http\Controllers\User\CartController@increment')->name("user.cart.increment");
+Route::post('/cart/decrement/{id}', 'App\Http\Controllers\User\CartController@decrement')->name("user.cart.decrement");
 Route::get('/cart/removeAll', 'App\Http\Controllers\User\CartController@removeAll')->name("user.cart.removeAll");
 Route::post('/cart/purchase', 'App\Http\Controllers\User\CartController@purchase')->name("user.cart.purchase");
 Route::get('/orders', 'App\Http\Controllers\User\OrderController@index')->name('user.orders.index');
+
 Route::post('/orders/save', 'App\Http\Controllers\User\OrderController@save')->name('user.orders.save');
 Route::get('/orders/{id}', 'App\Http\Controllers\User\OrderController@show')->name('user.orders.show');
 Route::get('/orders/{id}/download', 'App\Http\Controllers\User\OrderController@download')->name('user.orders.download');

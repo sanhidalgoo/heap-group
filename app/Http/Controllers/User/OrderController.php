@@ -19,6 +19,7 @@ class OrderController extends Controller
     {
         $orders = Order::where('user_id', '=', Auth::id())->get();
         $viewData = [];
+
         $viewData["orders"] =  $orders;
         return view('userspace.orders.index')->with("viewData", $viewData);
     }
@@ -49,6 +50,7 @@ class OrderController extends Controller
         $newOrder->setDepartment($request['department']);
         $newOrder->setCity($request['city']);
         $newOrder->setAddress($request['address']);
+        $newOrder->setUserId(Auth::id());
         $newOrder->setTotal(0);
         $newOrder->save();
 

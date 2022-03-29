@@ -1,3 +1,4 @@
+{{-- Authors: Santiago Hidalgo, Juan S. Díaz --}}
 @extends('userspace.layouts.app')
 @section('title', $viewData['subtitle'])
 @section('content')
@@ -14,11 +15,16 @@
                         </h3>
                         <div class="d-flex justify-content-center mb-2">
                             <div class="mr-2 rating">
-                                <span class="fa fa-star {{ $viewData['beer']->getRating() >= 0.5 ? 'checked' : '' }}"></span>
-                                <span class="fa fa-star {{ $viewData['beer']->getRating() >= 1.5 ? 'checked' : '' }}"></span>
-                                <span class="fa fa-star {{ $viewData['beer']->getRating() >= 2.5 ? 'checked' : '' }}"></span>
-                                <span class="fa fa-star {{ $viewData['beer']->getRating() >= 3.5 ? 'checked' : '' }}"></span>
-                                <span class="fa fa-star {{ $viewData['beer']->getRating() >= 4.5 ? 'checked' : '' }}"></span>
+                                <span
+                                    class="fa fa-star {{ $viewData['beer']->getRating() >= 0.5 ? 'checked' : '' }}"></span>
+                                <span
+                                    class="fa fa-star {{ $viewData['beer']->getRating() >= 1.5 ? 'checked' : '' }}"></span>
+                                <span
+                                    class="fa fa-star {{ $viewData['beer']->getRating() >= 2.5 ? 'checked' : '' }}"></span>
+                                <span
+                                    class="fa fa-star {{ $viewData['beer']->getRating() >= 3.5 ? 'checked' : '' }}"></span>
+                                <span
+                                    class="fa fa-star {{ $viewData['beer']->getRating() >= 4.5 ? 'checked' : '' }}"></span>
                             </div>
                             <div class="total-reviews">
                                 {{ $viewData['reviews']->count() . ' ' . __('beers.reviews') }}
@@ -29,32 +35,32 @@
                         <div class="row">
                             <p class="card-text col-6 m-0">
                                 <strong>{{ __('beers.brand') }}</strong>
-                                <br/>
+                                <br />
                                 {{ $viewData['beer']->getBrand() }}
                             </p>
                             <p class="card-text col-6 m-0">
                                 <strong>{{ __('beers.ingredient') }}</strong>
-                                <br/>
+                                <br />
                                 {{ $viewData['beer']->getIngredient() }}
                             </p>
                             <p class="card-text col-6 m-0">
                                 <strong>{{ __('beers.flavor') }}</strong>
-                                <br/>
+                                <br />
                                 {{ $viewData['beer']->getFlavor() }}
                             </p>
                             <p class="card-text col-6 m-0">
                                 <strong>{{ __('beers.abv') }}</strong>
-                                <br/>
+                                <br />
                                 {{ $viewData['beer']->getAbvPercentage() }} %
                             </p>
                             <p class="card-text col-6 m-0">
                                 <strong>{{ __('beers.format') }}</strong>
-                                <br/>
+                                <br />
                                 {{ $viewData['beer']->getFormat() }}
                             </p>
                             <p class="card-text col-6 m-0">
                                 <strong>{{ __('beers.origin') }}</strong>
-                                <br/>
+                                <br />
                                 {{ $viewData['beer']->getOrigin() }}
                             </p>
                         </div>
@@ -68,14 +74,24 @@
                             {{ $viewData['beer']->getQuantity() }}
                         </p>
                         @auth
-                            @if(array_key_exists($viewData['beer']->getId(), $viewData['beersInCart']))
-                                <a class="btn btn-danger beer-card__btn--block" href="{{ route('user.cart.remove', ['id' => $viewData['beer']->getId()]) }}">
-                                    {{ __('cart.remove.button') }}
-                                </a>
+                            @if (array_key_exists($viewData['beer']->getId(), $viewData['beersInCart']))
+                                <form method="POST"
+                                    action="{{ route('user.cart.remove', ['id' => $viewData['beer']->getId()]) }}"
+                                    class="btn btn-danger beer-card__btn--block p-0">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger beer-card__btn--block">
+                                        {{ __('cart.remove.button') }}
+                                    </button>
+                                </form>
                             @else
-                                <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="{{ route('user.cart.add', ['id' => $viewData['beer']->getId()]) }}">
-                                    {{ __('cart.add.button') }}
-                                </a>
+                                <form method="POST"
+                                    action="{{ route('user.cart.add', ['id' => $viewData['beer']->getId()]) }}"
+                                    class="btn btn-primary beer-card__btn beer-card__btn--block p-0">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
+                                        {{ __('cart.add.button') }}
+                                    </button>
+                                </form>
                             @endif
                         @endauth
                     </div>
@@ -84,7 +100,7 @@
             <div class="col-12">
                 <p class="card-text col">
                     <strong>{{ __('beers.details') }}</strong>
-                    <br/>
+                    <br />
                     {{ $viewData['beer']->getDetails() }}
                 </p>
 
@@ -101,7 +117,7 @@
                             <div class="col-md-10 review-card__body">
                                 <div class="review-card__header">
                                     <div>
-                                        <p class="review-card__info m-0">Published by username, one year ago</p>
+                                        <p class="review-card__info m-0">{{ __('beers.review.published-by') }} username</p>
                                         <div class="d-flex">
                                             <div class="mr-2 rating">
                                                 <span class="fa fa-star {{ $review->getScore() >= 0.5 ? 'checked' : '' }}"></span>
@@ -114,28 +130,24 @@
                                                 {{ $review->getScore() }} / 5 {{ __('beers.score') }}
                                             </div>
                                         </div>
-                                    </div>
-                                    @auth
+                                        @auth
                                         @if($review->user->getId() == Auth::user()->getId())
-                                        <form class="d-inline-block col-md-1" method="POST" action="{{ route('user.review.delete', ['id' => $review->getId()]) }}">
-                                            @csrf
-                                            <button type="submit" class="btn btn-block btn-danger w-100">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </button>
-                                        </form>
-                                        @endif
-                                    @endauth
+                                            <form class="d-inline-block col-md-1 p-0" method="POST" action="{{ route('user.review.delete', ['id' => $review->getId()]) }}">
+                                                @csrf
+                                                <button type="submit" class="btn btn-block btn-danger w-100">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </button>
+                                            </form>
+                                            @endif
+                                        @endauth
+                                    </div>
                                 </div>
-                                {{ $review->getComment() }}
-                                {{ $review->getComment() }}
-                                {{ $review->getComment() }}
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
                     @endif
                     @auth
                         <div class="row review-card border-3 border-success">
-                            <a href="#" class="text-decoration-none text-success">
+                            <a href="{{ route('user.reviews.create', ['id' =>  $viewData['beer']->getId()]) }}" class="text-decoration-none text-success">
                                 <div class="col d-flex justify-content-center align-items-center">
                                     <div class="btn btn-success rounded-circle">
                                         <i class="fa-solid fa-plus"></i>

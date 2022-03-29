@@ -25,18 +25,27 @@
                             <span class="fa fa-star {{ $beer->getRating() >= 4.5 ? 'checked' : '' }}"></span>
                         </div>
 
-                        <a class="btn btn-success beer-card__btn--block mb-2" href="{{ route('user.beers.show', ['id' => $beer->getId()]) }}">
+                        <a class="btn btn-success beer-card__btn--block mb-2"
+                            href="{{ route('user.beers.show', ['id' => $beer->getId()]) }}">
                             {{ __('beers.details') }}
                         </a>
                         @auth
-                            @if(array_key_exists($beer->getId(), $viewData['beersInCart']))
-                                <a class="btn btn-danger beer-card__btn--block" href="{{ route('user.cart.remove', ['id' => $beer->getId()]) }}">
-                                    {{ __('cart.remove.button') }}
-                                </a>
+                            @if (array_key_exists($beer->getId(), $viewData['beersInCart']))
+                                <form method="POST" action="{{ route('user.cart.remove', ['id' => $beer->getId()]) }}"
+                                    class="btn btn-danger beer-card__btn--block p-0">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger beer-card__btn--block">
+                                        {{ __('cart.remove.button') }}
+                                    </button>
+                                </form>
                             @else
-                                <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="{{ route('user.cart.add', ['id' => $beer->getId()]) }}">
-                                    {{ __('cart.add.button') }}
-                                </a>
+                                <form method="POST" action="{{ route('user.cart.add', ['id' => $beer->getId()]) }}"
+                                    class="btn btn-primary beer-card__btn beer-card__btn--block p-0">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
+                                        {{ __('cart.add.button') }}
+                                    </button>
+                                </form>
                             @endif
                         @endauth
                     </div>
