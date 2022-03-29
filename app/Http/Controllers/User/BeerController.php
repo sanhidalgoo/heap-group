@@ -14,7 +14,7 @@ class BeerController extends Controller
         $viewData = [];
         $beers = Beer::query();
 
-        if ($request->has('minPrice')) {
+        if ($request->has('minPrice') && !empty($request->input('minPrice'))) {
             $beers = $beers->where('price', '>', $request->minPrice);
             $viewData['minPrice'] = $request->minPrice;
         }
