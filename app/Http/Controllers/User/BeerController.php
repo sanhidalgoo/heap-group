@@ -14,6 +14,7 @@ class BeerController extends Controller
         $viewData = [];
         $beers = Beer::filter()->get();
         $viewData["beers"] = $beers;
+        $viewData = array_merge($viewData, $request->all());
         return view('userspace.beers.index')->with("viewData", $viewData);
     }
 
