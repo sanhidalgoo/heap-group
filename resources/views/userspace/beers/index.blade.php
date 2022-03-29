@@ -34,9 +34,12 @@
                                     {{ __('cart.remove.button') }}
                                 </a>
                             @else
-                                <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="{{ route('user.cart.add', ['id' => $beer->getId()]) }}">
-                                    {{ __('cart.add.button') }}
-                                </a>
+                                <form method="POST" action="{{ route('user.cart.add', ['id' => $beer->getId()]) }}" class="btn btn-primary beer-card__btn beer-card__btn--block">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
+                                        {{ __('cart.add.button') }}
+                                    </button>   
+                                </form>
                             @endif
                         @endauth
                     </div>
