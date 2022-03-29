@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('users.create.description') }}</div>
+                <div class="card-header">{{ __('reviews.add.description') }}</div>
                 <div class="card-body">
                     @if(session('success'))
                         <div class="alert alert-success">
@@ -20,22 +20,21 @@
                     </ul>
                     @endif
 
-                    <form method="POST" action="{{ route('admin.users.save') }}">
+                    <form method="POST" action="{{ route('user.reviews.save',  ['id'=> $viewData['beerId']]) }}">
                         @csrf
-                        <input type="text" class="form-control mb-2" placeholder="{{ __('users.name') }}" name="name" value="{{ old('name') }}" />
-                        <input type="text" class="form-control mb-2" placeholder="{{ __('users.email') }}" name="email" value="{{ old('email') }}" />
-                        <input type="text" class="form-control mb-2" placeholder="{{ __('users.address') }}" name="address" value="{{ old('address') }}" />
                         <div class="row">
                             <div class="col">
-                                <select class="form-select mb-2" placeholder="{{ __('users.role') }}" name="role" value="{{ old('role') }}">
-                                    <option value="User">{{ __('users.role.user') }}</option>
-                                    <option value="Admin">{{ __('users.role.admin') }}</option>
+                                <label for="cars">{{ __('reviews.score') }}</label>
+                                <select class="form-select mb-2" name="score" value="{{ old('score') }}">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
                                 </select>
                             </div>
-                            <div class="col">
-                                <input type="number" class="form-control mb-2" placeholder="{{ __('users.cash-available') }}" name="cash_available" value="{{ old('cash_available') }}" />
-                            </div>
                         </div>
+                        <textarea class="form-control mb-2" placeholder="{{ __('reviews.comment') }}" name="comment" value="{{ old('comment') }}"></textarea>
                         <input type="submit" class="btn btn-primary" value="Send" />
                     </form>
                 </div>

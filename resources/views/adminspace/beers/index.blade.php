@@ -1,6 +1,6 @@
 {{-- Authors: Santiago Hidalgo, Juan S. Díaz --}}
 @extends('adminspace.layouts.app')
-@section('subtitle', __('beers.title'))
+@section('subtitle', __('reviews.title'))
 @section('content')
 @if(session('update'))
     <div class="alert alert-info">

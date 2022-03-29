@@ -157,7 +157,7 @@
                     @endif
                     @auth
                         <div class="row review-card border-3 border-success">
-                            <a href="#" class="text-decoration-none text-success">
+                            <a href="{{ route('user.reviews.create', ['id' =>  $viewData['beer']->getId()]) }}" class="text-decoration-none text-success">
                                 <div class="col d-flex justify-content-center align-items-center">
                                     <div class="btn btn-success rounded-circle">
                                         <i class="fa-solid fa-plus"></i>
