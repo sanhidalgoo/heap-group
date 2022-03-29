@@ -7,7 +7,6 @@ use App\Models\Review;
 use App\Models\User;
 use App\Models\Beer;
 
-
 class ReviewSeeder extends Seeder
 {
     /**
