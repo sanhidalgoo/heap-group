@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::middleware(['admin'])->group(function() {
+Route::middleware(['admin'])->group(function () {
     Route::get('/admin', 'App\Http\Controllers\HomeController@admin')->name('admin.home.index');
 
     Route::get('/admin/users', 'App\Http\Controllers\Admin\UserAdminController@index')->name('admin.users.index');

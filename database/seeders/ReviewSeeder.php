@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 use App\Models\Review;
 use App\Models\User;
 
-
 class ReviewSeeder extends Seeder
 {
     /**
