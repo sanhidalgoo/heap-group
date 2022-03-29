@@ -36,7 +36,7 @@ class BeerController extends Controller
     {
         $beers = Beer::all();
         $beers = $beers->sortBy(function ($beer) {
-            return $beer->getAverageRating();
+            return $beer->getRating();
         }, 0, true);
 
         $viewData = [];

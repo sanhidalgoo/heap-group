@@ -193,11 +193,6 @@ class Beer extends Model
         return $this->attributes['image_url'];
     }
 
-    public function getRating()
-    {
-        return 3;
-    }
-
     public function users()
     {
         return $this->belongsToMany(User::class);
@@ -208,8 +203,11 @@ class Beer extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function getAverageRating()
+    public function getRating()
     {
+        if (isset($this->attributes['average_rate'])) {
+            return $this->attributes['average_rate'];
+        }
         $this->attributes['average_rate'] = number_format($this->reviews->avg('score'), 1);
         return $this->attributes['average_rate'];
     }

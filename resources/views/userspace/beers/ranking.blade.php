@@ -20,6 +20,7 @@
                         <p>{{ $beer->getFormat() }}</p>
                         <p><strong class="h5 fw-bold">{{ $beer->getPrice() . ' ' . __('beers.currency') }}</strong>
                         </p>
+                        <p style="text-align: center"> {{ $beer->getRating() }}</p>
                         <div class="beer-card__rating">
                             <span class="fa fa-star {{ $beer->getRating() >= 0.5 ? 'checked' : '' }}"></span>
                             <span class="fa fa-star {{ $beer->getRating() >= 1.5 ? 'checked' : '' }}"></span>
