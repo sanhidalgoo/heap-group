@@ -12,7 +12,6 @@ use App\Models\OrderItem;
 use App\Models\Beer;
 use Illuminate\Support\Facades\Auth;
 
-
 class OrderController extends Controller
 {
     public function index()
