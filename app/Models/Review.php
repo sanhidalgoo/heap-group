@@ -49,6 +49,22 @@ class Review extends Model
         $this->attributes['score'] = $score;
     }
 
+    public function getBeerId(){
+        return $this->attributes['beer_id'];
+    }
+
+    public function setBeerId($beerId){
+        $this->attributes['beer_id'] = $beerId;
+    }
+
+    public function getUserId(){
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId($userId){
+        $this->attributes['user_id'] = $userId;
+    }
+
     public function getCreatedAt()
     {
         return $this->attributes['created_at'];
