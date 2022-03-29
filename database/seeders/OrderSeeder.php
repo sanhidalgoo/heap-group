@@ -17,7 +17,11 @@ class OrderSeeder extends Seeder
     {
         Order::factory(10)->create()->each(function($order) {
             $totalOrderItems = rand(1, 5);
-            $order->orderItems()->saveMany(OrderItem::factory($totalOrderItems)->create());
+            $orderItems = OrderItem::factory($totalOrderItems)->create();
+
+            $order->total = $orderItems->sum('subtotal');
+            $order->orderItems()->saveMany($orderItems);
+            $order->save();
         });
     }
 }

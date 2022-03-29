@@ -6,6 +6,7 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -16,7 +17,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::where('user_id', '=', Auth::id())->get();
         $viewData = [];
         $viewData["orders"] =  $orders;
         return view('userspace.orders.index')->with("viewData", $viewData);
@@ -25,7 +26,10 @@ class OrderController extends Controller
     public function show($id)
     {
         try {
-            $order = Order::findOrFail($id);
+            $order = Order::where('user_id', '=', Auth::id())->where('id', '=', $id)->first();
+            if ($order == null) {
+                throw new ModelNotFoundException();
+            }
             $viewData = [];
             $viewData["subtitle"] =  $order->getId();
             $viewData["order"] = $order;

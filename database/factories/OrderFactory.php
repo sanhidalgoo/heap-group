@@ -21,7 +21,7 @@ class OrderFactory extends Factory
         $faker->addProvider(new  \Faker\Provider\en_US\Address($faker));
 
         return [
-            'total' => $this->faker->numberBetween($min = 100000, $max = 900000),
+            'total' => 0,
             'order_state'  => $faker->randomElement(['pending', 'shipped', 'cancelled', 'delivered']),
             'payment_method'  => $this->faker->randomElement(['CREDIT_CARD', 'CASH', 'PSE']),
             'department'  => $faker->state(),
