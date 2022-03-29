@@ -12,7 +12,7 @@
                 @csrf
 
                 <div class="row mb-3">
-                    <label for="minPrice" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                    <label for="minPrice" class="col-md-4 col-form-label text-md-end">{{ __('Minimum price') }}</label>
 
                     <div class="col-md-6">
                         <input id="minPrice" type="text" class="form-control @error('minPrice') is-invalid @enderror"
@@ -26,10 +26,10 @@
                     </div>
                 </div>
 
-                <div class="row mb-0">
-                    <div class="col-md-12">
+                <div class="row text-center d-flex justify-content-center">
+                    <div class="col-md-4 text-center">
                         <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
-                            {{ __('Register') }}
+                            {{ __('Filter') }}
                         </button>
                     </div>
                 </div>
