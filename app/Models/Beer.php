@@ -223,4 +223,16 @@ class Beer extends Model
     {
         return $this->attributes['updated_at'];
     }
+
+    public function scopeFilter($q)
+    {
+        if (request('minPrice')) {
+            $q->where('price', '>', request('minPrice'));
+        }
+        if (request('color')) {
+            $q->where('color', '>', request('color'));
+        }
+
+        return $q;
+    }
 }
