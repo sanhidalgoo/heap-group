@@ -1,11 +1,12 @@
 @extends('userspace.layouts.app')
-@section('title', __('beers.title'))
+@section('title', __('beers.ranking.title'))
 @section('content')
-    <div class="card-grid  align-items-center">
+    <div class="card-grid row  align-items-center">
         @forelse ($viewData["beers"] as $beer)
-            <div class="col-lg-4 col-md-4 mb-2"> </div>
-            {{ $loop->index + 1 }}
-            <div class="col-lg-6 col-md-6 mb-2">
+            <div class="col-lg-3 col-md-3 mb-2">
+                <p style="font-size: 20em;">{{ $loop->index + 1 }}</p>
+            </div>
+            <div class="col-lg-8 col-md-8 mb-2">
                 <div class="beer-card">
                     <div class="beer-card__img-wrapper">
                         <img src="{{ $beer->getURL() }}" class="beer-card__img">
