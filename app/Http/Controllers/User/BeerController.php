@@ -24,7 +24,7 @@ class BeerController extends Controller
             $viewData = [];
             $viewData["subtitle"] = $beer->getName();
             $viewData["beer"] = $beer;
-            $viewData["reviews"] = $beer->reviews()->get();
+            $viewData["reviews"] = $beer->reviews()->with('user')->get();
             $viewData["beersInCart"] = session()->get("beers") ?? [];
             return view('userspace.beers.show')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {

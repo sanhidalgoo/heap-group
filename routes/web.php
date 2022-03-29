@@ -63,3 +63,4 @@ Route::post('/cart/purchase', 'App\Http\Controllers\User\CartController@purchase
 Route::get('/orders', 'App\Http\Controllers\User\OrderController@index')->name('user.orders.index');
 Route::post('/orders/save', 'App\Http\Controllers\User\OrderController@save')->name('user.orders.save');
 Route::get('/orders/{id}', 'App\Http\Controllers\User\OrderController@show')->name('user.orders.show');
+Route::get('/orders/{id}/download', 'App\Http\Controllers\User\OrderController@download')->name('user.orders.download');
