@@ -1,3 +1,4 @@
+{{-- Authors: Santiago Hidalgo, Juan S. Díaz --}}
 @extends('adminspace.layouts.app')
 @section('subtitle', __('beers.title'))
 @section('content')

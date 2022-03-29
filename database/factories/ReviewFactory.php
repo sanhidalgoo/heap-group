@@ -1,5 +1,7 @@
 <?php
 
+// Authors: Santiago Hidalgo, David Calle
+
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;

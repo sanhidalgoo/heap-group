@@ -2,7 +2,6 @@
 
 // Authors: Juan S. Díaz, Santiago Hidalgo
 
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
