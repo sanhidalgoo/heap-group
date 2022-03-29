@@ -100,6 +100,16 @@ class Order extends Model
         $this->attributes['address'] = $address;
     }
 
+    public function getUserId()
+    {
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId($userId)
+    {
+        $this->attributes['user_id'] = $userId;
+    }
+
     public function getCreatedAt()
     {
         return $this->attributes['created_at'];

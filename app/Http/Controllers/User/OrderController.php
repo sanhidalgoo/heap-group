@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Beer;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrderController extends Controller
 {
@@ -17,6 +19,7 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         $viewData = [];
+
         $viewData["orders"] =  $orders;
         return view('userspace.orders.index')->with("viewData", $viewData);
     }
@@ -43,6 +46,7 @@ class OrderController extends Controller
         $newOrder->setDepartment($request['department']);
         $newOrder->setCity($request['city']);
         $newOrder->setAddress($request['address']);
+        $newOrder->setUserId(Auth::id());
         $newOrder->setTotal(0);
         $newOrder->save();
 
