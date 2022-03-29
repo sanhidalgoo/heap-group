@@ -210,7 +210,8 @@ class Beer extends Model
 
     public function getAverageRating()
     {
-        return $this->reviews->avg('score');
+        $this->attributes['average_rate'] = number_format($this->reviews->avg('score'), 1);
+        return $this->attributes['average_rate'];
     }
 
     public function orderItems()
