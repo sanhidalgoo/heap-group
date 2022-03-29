@@ -1,3 +1,4 @@
+{{-- Authors: Santiago Hidalgo, Juan S. Díaz --}}
 @extends('userspace.layouts.app')
 @section('title', $viewData['subtitle'])
 @section('content')
