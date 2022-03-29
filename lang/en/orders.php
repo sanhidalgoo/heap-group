@@ -14,7 +14,7 @@ return [
     */
 
     'total' => 'Total',
-    'order.state' => 'Order state',
+    'order.state' => 'State',
     'payment.method' => 'Payment method',
     'department' => 'Department',
     'city' => 'City',
@@ -33,9 +33,9 @@ return [
     'index.delete' => 'Delete',
 
     'index.col.id' => 'ID',
-    'index.col.total' => 'total',
-    'index.col.date' => 'date',
-    'index.col.status' => 'status',
+    'index.col.total' => 'Total',
+    'index.col.date' => 'Date',
+    'index.col.status' => 'Status',
     'index.col.actions' => 'Actions',
 
     'create.title' => 'Create beer',

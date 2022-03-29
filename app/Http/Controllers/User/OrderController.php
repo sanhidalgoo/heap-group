@@ -28,6 +28,7 @@ class OrderController extends Controller
             $viewData = [];
             $viewData["subtitle"] =  $order->getId();
             $viewData["order"] = $order;
+            $viewData["orderItems"] = $order->orderItems()->get();
             return view('userspace.orders.show')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('user.orders.index');

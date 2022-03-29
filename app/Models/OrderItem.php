@@ -87,7 +87,7 @@ class OrderItem extends Model
 
     public function beer()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(Beer::class, 'id', 'beer_id');
     }
 
     public function order()

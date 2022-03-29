@@ -89,7 +89,7 @@
                 </p>
 
                 <div class="d-flex flex-column justify-content-center text-center">
-                    @if(!$viewData['reviews']->isEmpty())
+                    @if(count($viewData['reviews']) > 0)
                     <h2 class="h2-title">
                         Reviews
                     </h2>
@@ -116,7 +116,7 @@
                                         </div>
                                     </div>
                                     @auth
-                                        @if($review->user()->get()[0]->getId() == Auth::user()->getId())
+                                        @if($review->user->getId() == Auth::user()->getId())
                                         <form class="d-inline-block col-md-1" method="POST" action="{{ route('user.review.delete', ['id' => $review->getId()]) }}">
                                             @csrf
                                             <button type="submit" class="btn btn-block btn-danger w-100">
