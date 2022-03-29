@@ -208,6 +208,11 @@ class Beer extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function getAverageRating()
+    {
+        return $this->reviews->avg('score');
+    }
+
     public function orderItems()
     {
         return $this->belongsToMany(OrderItem::class);

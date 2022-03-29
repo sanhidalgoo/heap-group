@@ -31,4 +31,15 @@ class BeerController extends Controller
             return redirect()->route('user.beers.index');
         }
     }
+
+    public function ranking()
+    {
+        $beers = Beer::all();
+        $beers->sortBy(function ($beer) {
+            return $beer->getAverageRating();
+        });
+        $viewData = [];
+        $viewData["beers"] = $beers;
+        dd($viewData);
+    }
 }
