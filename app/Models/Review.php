@@ -49,19 +49,23 @@ class Review extends Model
         $this->attributes['score'] = $score;
     }
 
-    public function getBeerId(){
+    public function getBeerId()
+    {
         return $this->attributes['beer_id'];
     }
 
-    public function setBeerId($beerId){
+    public function setBeerId($beerId)
+    {
         $this->attributes['beer_id'] = $beerId;
     }
 
-    public function getUserId(){
+    public function getUserId()
+    {
         return $this->attributes['user_id'];
     }
 
-    public function setUserId($userId){
+    public function setUserId($userId)
+    {
         $this->attributes['user_id'] = $userId;
     }
 
