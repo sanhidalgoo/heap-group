@@ -68,12 +68,12 @@
                             {{ $viewData['beer']->getQuantity() }}
                         </p>
                         @auth
-                            @if(array_key_exists($beer->getId(), $viewData['beersInCart']))
-                                <a class="btn btn-danger beer-card__btn--block" href="{{ route('user.cart.remove', ['id' => $beer->getId()]) }}">
+                            @if(array_key_exists($viewData['beer']->getId(), $viewData['beersInCart']))
+                                <a class="btn btn-danger beer-card__btn--block" href="{{ route('user.cart.remove', ['id' => $viewData['beer']->getId()]) }}">
                                     {{ __('cart.remove.button') }}
                                 </a>
                             @else
-                                <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="{{ route('user.cart.add', ['id' => $beer->getId()]) }}">
+                                <a class="btn btn-primary beer-card__btn beer-card__btn--block" href="{{ route('user.cart.add', ['id' => $viewData['beer']->getId()]) }}">
                                     {{ __('cart.add.button') }}
                                 </a>
                             @endif
@@ -116,7 +116,7 @@
                                         </div>
                                     </div>
                                     @auth
-                                        @if($review->getUserId() == Auth::user()->getId())
+                                        @if($review->user()->get()[0]->getId() == Auth::user()->getId())
                                         <form class="d-inline-block col-md-1" method="POST" action="{{ route('user.review.delete', ['id' => $review->getId()]) }}">
                                             @csrf
                                             <button type="submit" class="btn btn-block btn-danger w-100">
