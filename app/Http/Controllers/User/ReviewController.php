@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\Beer;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Ui\Presets\React;
 
 class ReviewController extends Controller
 {
@@ -27,9 +29,24 @@ class ReviewController extends Controller
         $review->setScore($request['score']);
         $review->setComment($request['comment']);
         $review->setBeerId($beerId);
-        // TODO SET USER ID
-        // $review->setUserId();
-        dd($review);
+        $review->setUserId(Auth::id());
         $review->save();
+
+        return redirect()->route('user.beers.show', ['id' => $beerId])->with('success', __('reviews.create.success'));
+        //return redirect()->back()->with('success', __('reviews.create.success'));
+    }
+
+    public function delete($id)
+    {
+        $viewData = [];
+        $viewData["beersInCart"] = session()->get("beers") ?? [];
+
+        try {
+            $beerId = Review::findOrFail($id)->getBeerId();
+            $review = Review::destroy($id);
+            return redirect()->route('user.beers.show', ['id' => $beerId])->with('delete', __('reviews.delete.success'))->with('viewData', $viewData);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('user.beers.index');
+        }
     }
 }

@@ -7,11 +7,6 @@
             <div class="card">
                 <div class="card-header">{{ __('reviews.add.description') }}</div>
                 <div class="card-body">
-                    @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
                     @if($errors->any())
                     <ul id="errors" class="alert alert-danger list-unstyled">
                         @foreach($errors->all() as $error)

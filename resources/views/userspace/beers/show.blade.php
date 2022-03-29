@@ -139,7 +139,7 @@
                                         @auth
                                             @if ($review->user()->get()[0]->getId() == Auth::user()->getId())
                                                 <form class="d-inline-block col-md-1" method="POST"
-                                                    action="{{ route('user.review.delete', ['id' => $review->getId()]) }}">
+                                                    action="{{ route('user.reviews.delete', ['id' => $review->getId()]) }}">
                                                     @csrf
                                                     <button type="submit" class="btn btn-block btn-danger w-100">
                                                         <i class="fa-solid fa-trash-can"></i>
@@ -148,8 +148,6 @@
                                             @endif
                                         @endauth
                                     </div>
-                                    {{ $review->getComment() }}
-                                    {{ $review->getComment() }}
                                     {{ $review->getComment() }}
                                 </div>
                             </div>

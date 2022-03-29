@@ -18,7 +18,7 @@ return [
     'title' => 'Reviews',
     'score' => 'Score',
     'comment' => 'Comment',
-    'add.description' => 'Add review of a beer'
-    
-
+    'add.description' => 'Add review of a beer',
+    'create.success' => 'Review added!',
+    'delete.success' => 'Review deleted!',
 ];
