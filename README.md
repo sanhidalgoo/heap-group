@@ -28,9 +28,16 @@ Go inside project folder:
 cd heap-group
 
 composer install
+
+npm install
 ```
 
 Change `.env.example` to `.env` and fill it. May be you need to create a database.
+
+For running webpack in dev, use:
+```bash
+npm run watch
+```
 
 Run migrations and server:
 ```bash

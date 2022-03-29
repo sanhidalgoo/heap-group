@@ -13,6 +13,8 @@ class Review extends Model
      * $this->attributes['id'] - int - contains the review primary key (id)
      * $this->comment['comment'] - string - contains the review comment
      * $this->attributes['score'] - int - contains the review score
+     * $this->attributes['created_at'] - Date - Date of creation
+     * $this->attributes['updated_at'] - Date - Date of update
      */
 
     protected $fillable = ['comment', 'score'];
@@ -47,8 +49,23 @@ class Review extends Model
         $this->attributes['score'] = $score;
     }
 
+    public function getCreatedAt()
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->attributes['updated_at'];
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function beer()
+    {
+        return $this->belongsTo(Beer::class);
     }
 }
