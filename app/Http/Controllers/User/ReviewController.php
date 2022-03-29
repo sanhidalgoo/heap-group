@@ -33,7 +33,6 @@ class ReviewController extends Controller
         $review->save();
 
         return redirect()->route('user.beers.show', ['id' => $beerId])->with('success', __('reviews.create.success'));
-        //return redirect()->back()->with('success', __('reviews.create.success'));
     }
 
     public function delete($id)

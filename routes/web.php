@@ -65,4 +65,3 @@ Route::get('/orders', 'App\Http\Controllers\User\OrderController@index')->name('
 
 Route::post('/orders/save', 'App\Http\Controllers\User\OrderController@save')->name('user.orders.save');
 Route::get('/orders/{id}', 'App\Http\Controllers\User\OrderController@show')->name('user.orders.show');
-;
