@@ -38,9 +38,10 @@ class BeerController extends Controller
         $beers = $beers->sortBy(function ($beer) {
             return $beer->getAverageRating();
         }, 0, true);
-        dd($beers);
+
         $viewData = [];
         $viewData["beers"] = $beers;
-        dd($viewData);
+        $viewData["beersInCart"] = session()->get("beers") ?? [];
+        return view('userspace.beers.ranking')->with("viewData", $viewData);
     }
 }
