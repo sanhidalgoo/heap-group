@@ -22,7 +22,7 @@ class OrderFactory extends Factory
 
         return [
             'total' => 0,
-            'order_state'  => $faker->randomElement(['pending', 'shipped', 'cancelled', 'delivered']),
+            'order_state'  => $faker->randomElement(['Pending', 'Cancelled', 'Shipped', 'Delivered', 'Missing']),
             'payment_method'  => $this->faker->randomElement(['CREDIT_CARD', 'CASH', 'PSE']),
             'department'  => $faker->state(),
             'city'  => $faker->city(),
