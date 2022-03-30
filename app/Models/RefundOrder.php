@@ -18,7 +18,9 @@ class RefundOrder extends Model
      * $this->attributes['state'] - string - contains the current state of the orrder
      */
 
-    protected $fillable = ['motive', 'requestDate', 'approvalDate', 'deliveryDate', 'state'];
+    protected $fillable = ['motive', 'request_date', 'approval_date', 'delivery_date', 'state'];
+
+    public static $STATES = ['PENDING' => 'Pending', 'CANCELLED' => 'Cancelled', 'SHIPPED' => 'Shipped', 'DELIVERED' => 'Delivered', 'MISSING' => 'Missing'];
 
     public function getMotive()
     {
@@ -32,32 +34,32 @@ class RefundOrder extends Model
 
     public function getRequestDate()
     {
-        return $this->attributes['requestDate'];
+        return $this->attributes['request_date'];
     }
 
     public function setRequestDate($requestDate)
     {
-        $this->attributes['requestDate'] = $requestDate;
+        $this->attributes['request_date'] = $requestDate;
     }
 
     public function getApprovalDate()
     {
-        return $this->attributes['approvalDate'];
+        return $this->attributes['approval_date'];
     }
 
     public function setApprovalDate($approvalDate)
     {
-        $this->attributes['approvalDate'] = $approvalDate;
+        $this->attributes['approval_date'] = $approvalDate;
     }
 
     public function getDeliveryDate()
     {
-        return $this->attributes['deliveryDate'];
+        return $this->attributes['delivery_date'];
     }
 
     public function setDeliveryDate($deliveryDate)
     {
-        $this->attributes['deliveryDate'] = $deliveryDate;
+        $this->attributes['delivery_date'] = $deliveryDate;
     }
 
     public function getState()
@@ -68,6 +70,16 @@ class RefundOrder extends Model
     public function setState($state)
     {
         $this->attributes['state'] = $state;
+    }
+
+    public function setOrderId($orderId)
+    {
+        $this->attributes['order_id'] = $orderId;
+    }
+
+    public function getOrderId()
+    {
+        return $this->attributes['order_id'];
     }
 
     public function order()

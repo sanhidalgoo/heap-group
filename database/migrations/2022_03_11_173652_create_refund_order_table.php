@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('motive');
             $table->dateTime('request_date');
-            $table->dateTime('approval_date');
-            $table->dateTime('delivery_date');
+            $table->dateTime('approval_date')->nullable();
+            $table->dateTime('delivery_date')->nullable();
             $table->string('state');
             $table->timestamps();
         });
