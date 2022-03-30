@@ -77,7 +77,7 @@
                             @if (array_key_exists($viewData['beer']->getId(), $viewData['beersInCart']))
                                 <form method="POST"
                                     action="{{ route('user.cart.remove', ['id' => $viewData['beer']->getId()]) }}"
-                                    class="btn btn-danger beer-card__btn--block p-0">
+                                    class="d-inline-block p-0">
                                     @csrf
                                     <button type="submit" class="btn btn-danger beer-card__btn--block">
                                         {{ __('cart.remove.button') }}
@@ -86,7 +86,7 @@
                             @else
                                 <form method="POST"
                                     action="{{ route('user.cart.add', ['id' => $viewData['beer']->getId()]) }}"
-                                    class="btn btn-primary beer-card__btn beer-card__btn--block p-0">
+                                    class="d-inline-block p-0">
                                     @csrf
                                     <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
                                         {{ __('cart.add.button') }}
@@ -130,19 +130,23 @@
                                                 {{ $review->getScore() }} / 5 {{ __('beers.score') }}
                                             </div>
                                         </div>
-                                        @auth
-                                        @if($review->user->getId() == Auth::user()->getId())
-                                            <form class="d-inline-block col-md-1 p-0" method="POST" action="{{ route('user.review.delete', ['id' => $review->getId()]) }}">
-                                                @csrf
-                                                <button type="submit" class="btn btn-block btn-danger w-100">
-                                                    <i class="fa-solid fa-trash-can"></i>
-                                                </button>
-                                            </form>
-                                            @endif
-                                        @endauth
                                     </div>
+                                    @auth
+                                    @if($review->user->getId() == Auth::user()->getId())
+                                        <form class="d-inline-block col-md-1 p-0" method="POST" action="{{ route('user.reviews.delete', ['id' => $review->getId()]) }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-block btn-danger w-100">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </form>
+                                        @endif
+                                    @endauth
+                                </div>
+                                <div>
+                                    {{ $review->getComment() }}
                                 </div>
                             </div>
+                        </div>
                         @endforeach
                     @endif
                     @auth

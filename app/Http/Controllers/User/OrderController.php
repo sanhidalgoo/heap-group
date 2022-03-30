@@ -72,6 +72,8 @@ class OrderController extends Controller
         $newOrder->setTotal($total);
         $newOrder->save();
 
+        session()->forget("beers");
+
         return redirect()->back()->with('success', __('orders.create.success'));
     }
 

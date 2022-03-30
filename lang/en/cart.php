@@ -28,4 +28,5 @@ return [
     'in.stock' => 'in Stock',
     'total' => 'Total',
 
+    'confirm' => 'Confirm purchase',
 ];
