@@ -205,9 +205,6 @@ class Beer extends Model
 
     public function getRating()
     {
-        if (isset($this->attributes['average_rate'])) {
-            return $this->attributes['average_rate'];
-        }
         $this->attributes['average_rate'] = number_format($this->reviews->avg('score'), 1);
         return $this->attributes['average_rate'];
     }

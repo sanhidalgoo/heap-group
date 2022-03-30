@@ -17,7 +17,6 @@ class ReviewController extends Controller
     public function create($beerId)
     {
         $viewData = [];
-        $viewData["beersInCart"] = session()->get("beers") ?? [];
         $viewData['beerId'] = $beerId;
         return view('userspace.reviews.create')->with('viewData', $viewData);
     }
@@ -37,9 +36,6 @@ class ReviewController extends Controller
 
     public function delete($id)
     {
-        $viewData = [];
-        $viewData["beersInCart"] = session()->get("beers") ?? [];
-
         try {
             $beerId = Review::findOrFail($id)->getBeerId();
             $review = Review::destroy($id);
