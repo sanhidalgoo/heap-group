@@ -5,15 +5,24 @@
         <div>
             <form method="GET" action="{{ route('user.beers.index') }}">
                 @csrf
-
                 <div class="row mb-3">
-                    <label for="minPrice" class="col-md-4 col-form-label text-md-end">{{ __('Minimum price') }}</label>
-
                     <div class="col-md-6">
-                        <input id="minPrice" type="text" class="form-control @error('minPrice') is-invalid @enderror"
-                            name="minPrice" value="{{ $viewData['minPrice'] ?? '' }}" autofocus>
+                        <label for="price_min" class="col-md-2 col-form-label text-md-end">{{ __('beers.filter.min') }}</label>
+                        <input id="price_min" type="text" class="form-control @error('price_min') is-invalid @enderror"
+                            name="price_min" value="{{ $viewData['price_min'] ?? '' }}" autofocus>
 
-                        @error('minPrice')
+                        @error('price_min')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label for="price_max" class="col-md-2 col-form-label text-md-end">{{ __('beers.filter.max') }}</label>
+                        <input id="price_max" type="text" class="form-control @error('price_max') is-invalid @enderror"
+                            name="price_max" value="{{ $viewData['price_max'] ?? '' }}" autofocus>
+
+                        @error('price_max')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -21,10 +30,10 @@
                     </div>
                 </div>
 
-                <div class="row text-center d-flex justify-content-center">
+                <div class="row text-center d-flex justify-content-center mb-5">
                     <div class="col-md-4 text-center">
                         <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
-                            {{ __('Filter') }}
+                            {{ __('beers.filter.button') }}
                         </button>
                     </div>
                 </div>

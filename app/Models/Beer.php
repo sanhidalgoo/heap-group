@@ -226,11 +226,11 @@ class Beer extends Model
 
     public function scopeFilter($query)
     {
-        if (request('minPrice')) {
-            $query->where('price', '>', request('minPrice'));
+        if (request('price_min')) {
+            $query->where('price', '>=', request('price_min'));
         }
-        if (request('color')) {
-            $query->where('color', '>', request('color'));
+        if (request('price_max')) {
+            $query->where('price', '<=', request('price_max'));
         }
         return $query;
     }

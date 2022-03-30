@@ -56,8 +56,11 @@ return [
     'delete.success' => 'Beer deleted!',
 
     'reviews.add' => 'Add a review',
+    'review.published-by' => 'Published by ',
 
     'details.button' => 'Details',
 
-    'review.published-by' => 'Published by '
+    'filter.button' => 'Filter',
+    'filter.min' => 'Min price',
+    'filter.max' => 'Max price',
 ];
