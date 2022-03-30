@@ -26,14 +26,14 @@ class RefundOrderController extends Controller
     public function save($orderId, Request $request)
     {
         $order = Order::find($orderId);
+        $order->setOrderState(Order::$STATES['CANCELLED']);
+        $order->save();
         $refundOrder = new RefundOrder();
         $refundOrder->setOrderId($orderId);
         $refundOrder->setMotive($request['motive']);
         $refundOrder->setRequestDate(date("Y-m-d H:i:s"));
         $refundOrder->setState(RefundOrder::$STATES['PENDING']);
         $refundOrder->save();
-        $order->setOrderState(Order::$STATES['CANCELLED']);
-        $order->save();
 
         return redirect()->route('user.orders.index');
     }

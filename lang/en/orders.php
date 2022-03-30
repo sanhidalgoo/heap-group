@@ -48,4 +48,7 @@ return [
     'update.success' => 'Beer updated!',
     'delete.button' => 'Delete this beer',
     'delete.success' => 'Beer deleted!',
+
+    'refund.motive' => 'Motive',
+    'refund.button' => 'Refund',
 ];

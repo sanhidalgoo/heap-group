@@ -7,12 +7,12 @@
                 <h3 class="col-8 fw-bold">
                     # {{ $viewData['order']->getId() }}
                 </h3>
-                <a class="col-4 btn btn-danger"
+                <a class="col-2 btn btn-primary"
                     href="{{ route('user.orders.download', ['id' => $viewData['order']->getId()]) }}">
                     <i class="fa-solid fa-file-pdf"></i>
                     Download PDF
                 </a>
-                <a class="col-4 btn btn-danger"
+                <a class="col-2 btn btn-danger"
                     href="{{ route('user.orders.refund', ['id' => $viewData['order']->getId()]) }}">
                     <i class="fa-solid fa-file-pdf"></i>
                     Refund Order
