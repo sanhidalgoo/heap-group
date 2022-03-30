@@ -29,8 +29,9 @@ class CartController extends Controller
         $viewData = [];
         $viewData["beers"] = $beers;
         $viewData["beersInCart"] = $beersItems;
+        $viewData["total"] = $this->getTotal($beersItems);
 
-        return view('cart.index')->with("viewData", $viewData);
+        return view('userspace.cart.index')->with("viewData", $viewData);
     }
 
     public function add($id, Request $request)
@@ -38,7 +39,7 @@ class CartController extends Controller
         $beers = $request->session()->get("beers");
         $beers[$id] = 1;
         $request->session()->put('beers', $beers);
-        return back();
+        return back()->with('success', __('cart.add.success'));
     }
 
     public function increment($id, Request $request)
@@ -71,9 +72,26 @@ class CartController extends Controller
         }
     }
 
+    public function remove($id, Request $request)
+    {
+        $beers = $request->session()->get('beers');
+        unset($beers[$id]);
+        $request->session()->put('beers', $beers);
+        return back()->with('delete', __('cart.remove.success'));
+    }
+
     public function removeAll(Request $request)
     {
         $request->session()->forget('beers');
-        return back();
+        return back()->with('delete', __('cart.remove-all.success'));
+    }
+
+    private function getTotal($beers)
+    {
+        $total = 0;
+        foreach ($beers as $beer) {
+            $total += $beer['beer']->getPrice() * $beer['quantity'];
+        }
+        return $total;
     }
 }

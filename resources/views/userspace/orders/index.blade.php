@@ -1,5 +1,5 @@
 @extends('userspace.layouts.app')
-@section('subtitle', __('orders.title'))
+@section('title', __('orders.title'))
 @section('content')
     <table class="table">
         <thead>
@@ -16,7 +16,7 @@
                 <tr>
                     <th scope="row">{{ $order->getId() }}</th>
                     <td>{{ $order->getTotal() }}</td>
-                    <td>{{ $order->getCreatedDate() }}</td>
+                    <td>{{ $order->getCreatedAt() }}</td>
                     <td>{{ $order->getOrderState() }}</td>
                     <td class="text-center">
                         <a href="{{ route('user.orders.show', ['id' => $order->getId()]) }}" class="btn btn-success">
@@ -31,7 +31,7 @@
                     <td colspan="6">
                         <p class="fw-bold text-center">{{ __('messages.no-data') }}</p>
                     </td>
-                    </>
+                </tr>
             @endforelse
         </tbody>
     </table>

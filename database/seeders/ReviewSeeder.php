@@ -1,11 +1,13 @@
 <?php
 
+// Authors:  David Calle
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Review;
 use App\Models\User;
-
+use App\Models\Beer;
 
 class ReviewSeeder extends Seeder
 {
@@ -16,6 +18,6 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
-        Review::factory(10)->create();
+        Review::factory(35)->create();
     }
 }

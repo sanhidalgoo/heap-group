@@ -15,7 +15,7 @@ return [
 
     'title' => 'Heap Group',
     'welcome' => 'Welcome!',
-    'description' => 'Check the links in the navbar for testing this application.',
+    'description' => 'A colombian craft beer experience has ever seen before in the world.',
     'no-data' => 'No data to show',
 
 ];

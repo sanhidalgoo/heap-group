@@ -2,7 +2,6 @@
 
 // Authors: Juan S. Díaz, Santiago Hidalgo
 
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -194,11 +193,6 @@ class Beer extends Model
         return $this->attributes['image_url'];
     }
 
-    public function getRating()
-    {
-        return 3;
-    }
-
     public function users()
     {
         return $this->belongsToMany(User::class);
@@ -207,6 +201,12 @@ class Beer extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function getRating()
+    {
+        $this->attributes['average_rate'] = number_format($this->reviews->avg('score'), 1);
+        return $this->attributes['average_rate'];
     }
 
     public function orderItems()

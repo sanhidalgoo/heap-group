@@ -29,8 +29,8 @@
                         <div class="row">
                             <div class="col">
                                 <select class="form-select mb-2" placeholder="{{ __('users.role') }}" name="role" value="{{ $viewData['user']->getRole() }}">
-                                    <option>User</option>
-                                    <option>Admin</option>
+                                    <option value="User">{{ __('users.role.user') }}</option>
+                                    <option value="Admin">{{ __('users.role.admin') }}</option>
                                 </select>
                             </div>
                             <div class="col">

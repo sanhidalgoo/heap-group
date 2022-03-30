@@ -1,37 +1,12 @@
 @extends('userspace.layouts.app')
-@section('title', __('beers.title'))
+@section('title', __('beers.ranking.title'))
 @section('content')
-    <div class="row card-grid">
-        <div>
-            <form method="GET" action="{{ route('user.beers.index') }}">
-                @csrf
-
-                <div class="row mb-3">
-                    <label for="minPrice" class="col-md-4 col-form-label text-md-end">{{ __('Minimum price') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="minPrice" type="text" class="form-control @error('minPrice') is-invalid @enderror"
-                            name="minPrice" value="{{ $viewData['minPrice'] ?? '' }}" autofocus>
-
-                        @error('minPrice')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="row text-center d-flex justify-content-center">
-                    <div class="col-md-4 text-center">
-                        <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
-                            {{ __('Filter') }}
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
+    <div class="card-grid row  align-items-center">
         @forelse ($viewData["beers"] as $beer)
-            <div class="col-lg-4 col-md-6 mb-2">
+            <div class="col-lg-3 col-md-3 mb-2">
+                <p style="font-size: 20em;">{{ $loop->index + 1 }}</p>
+            </div>
+            <div class="col-lg-8 col-md-8 mb-2">
                 <div class="beer-card">
                     <div class="beer-card__img-wrapper">
                         <img src="{{ $beer->getURL() }}" class="beer-card__img">
@@ -45,6 +20,7 @@
                         <p>{{ $beer->getFormat() }}</p>
                         <p><strong class="h5 fw-bold">{{ $beer->getPrice() . ' ' . __('beers.currency') }}</strong>
                         </p>
+                        <p style="text-align: center"> {{ $beer->getRating() }}</p>
                         <div class="beer-card__rating">
                             <span class="fa fa-star {{ $beer->getRating() >= 0.5 ? 'checked' : '' }}"></span>
                             <span class="fa fa-star {{ $beer->getRating() >= 1.5 ? 'checked' : '' }}"></span>
@@ -60,7 +36,7 @@
                         @auth
                             @if (array_key_exists($beer->getId(), $viewData['beersInCart']))
                                 <form method="POST" action="{{ route('user.cart.remove', ['id' => $beer->getId()]) }}"
-                                    class="btn btn-danger beer-card__btn--block p-0">
+                                    class="d-inline-blox p-0">
                                     @csrf
                                     <button type="submit" class="btn btn-danger beer-card__btn--block">
                                         {{ __('cart.remove.button') }}
@@ -68,7 +44,7 @@
                                 </form>
                             @else
                                 <form method="POST" action="{{ route('user.cart.add', ['id' => $beer->getId()]) }}"
-                                    class="btn btn-primary beer-card__btn beer-card__btn--block p-0">
+                                    class="d-inline-blox p-0">
                                     @csrf
                                     <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
                                         {{ __('cart.add.button') }}

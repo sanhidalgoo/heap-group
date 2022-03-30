@@ -17,7 +17,11 @@ return [
     'create' => 'Create beer',
     'users' => 'Users',
     'beers' => 'Beers',
+    'orders' => 'Orders',
+    'cart' => 'Shopping Cart',
     'back' => 'Go back',
     'login' => 'Login',
-    'cart' => 'Cart',
+    'signup' => 'Signup',
+    'logout' => 'Logout',
+    'ranking' => 'Ranking',
 ];

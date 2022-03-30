@@ -1,5 +1,7 @@
 <?php
 
+// Authors: Santiago Hidalgo, David Calle
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -49,6 +51,26 @@ class Review extends Model
         $this->attributes['score'] = $score;
     }
 
+    public function getBeerId()
+    {
+        return $this->attributes['beer_id'];
+    }
+
+    public function setBeerId($beerId)
+    {
+        $this->attributes['beer_id'] = $beerId;
+    }
+
+    public function getUserId()
+    {
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId($userId)
+    {
+        $this->attributes['user_id'] = $userId;
+    }
+
     public function getCreatedAt()
     {
         return $this->attributes['created_at'];
@@ -67,5 +89,13 @@ class Review extends Model
     public function beer()
     {
         return $this->belongsTo(Beer::class);
+    }
+
+    public static function validate($request)
+    {
+        $request->validate([
+            'score' => 'required|numeric',
+            'comment' => 'required'
+        ]);
     }
 }

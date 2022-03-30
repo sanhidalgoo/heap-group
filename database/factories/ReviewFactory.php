@@ -1,5 +1,7 @@
 <?php
 
+// Authors: Santiago Hidalgo, David Calle
+
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -22,7 +24,7 @@ class ReviewFactory extends Factory
             'comment' => $this->faker->sentence(15),
             'score' => $this->faker->numberBetween(0, 5),
             'user_id' => User::all()->random(1)->pluck('id')->first(),
-            'beer_id' => Beer::all()->random(1)->pluck('id')->first()
+            'beer_id' => Beer::all()->random(1)->pluck('id')->first(),
         ];
     }
 }

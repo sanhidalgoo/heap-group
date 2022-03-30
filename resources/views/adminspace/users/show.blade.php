@@ -16,14 +16,14 @@
                         <div class="col-md-6">
                             <a class="btn btn-primary w-100" href="{{ route('admin.users.edit', ['id'=> $viewData['user']->getId()]) }}">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                                Edit
+                                {{ __('users.index.edit') }}
                             </a>
                         </div>
                         <form class="d-inline-block col-md-6" method="POST" action="{{ route('admin.users.delete', ['id' => $viewData['user']->getId()]) }}">
                             @csrf
                             <button type="submit" class="btn btn-block btn-danger w-100">
                                 <i class="fa-solid fa-trash-can"></i>
-                                Delete
+                                {{ __('users.index.delete') }}
                             </button>
                         </form>
                     </div>
