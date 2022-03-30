@@ -66,6 +66,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart/removeAll', 'App\Http\Controllers\User\CartController@removeAll')->name("user.cart.removeAll");
     Route::post('/cart/purchase', 'App\Http\Controllers\User\CartController@purchase')->name("user.cart.purchase");
     Route::get('/orders', 'App\Http\Controllers\User\OrderController@index')->name('user.orders.index');
+    Route::get('/orders/refund/{id}', 'App\Http\Controllers\User\RefundOrderController@index')->name('user.orders.refund');
+    Route::get('/orders/refund/{id}/save', 'App\Http\Controllers\User\RefundOrderController@save')->name('user.orders.refund.save');
 
     Route::post('/orders/save', 'App\Http\Controllers\User\OrderController@save')->name('user.orders.save');
     Route::get('/orders/{id}', 'App\Http\Controllers\User\OrderController@show')->name('user.orders.show');
