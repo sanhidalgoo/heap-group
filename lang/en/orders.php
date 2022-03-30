@@ -41,6 +41,7 @@ return [
     'create.title' => 'Create beer',
     'create.description' => 'Add information of a beer',
     'create.success' => 'Order Created!',
+    'create.not.funds' => 'You don\'t have enough funds to create this order',
 
     'edit.title' => 'Edit user',
     'edit.description' => 'Add information to edit',

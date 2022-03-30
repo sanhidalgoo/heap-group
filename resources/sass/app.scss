@@ -79,6 +79,12 @@ $sidebar-size: 270px;
         }
     }
 
+    &__nav-description {
+        line-height: 1.1;
+        padding: 0.4rem;
+        text-align: center;
+    }
+
     &__hr {
         padding: 1px;
         background: white;
