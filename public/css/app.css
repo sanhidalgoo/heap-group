@@ -11348,6 +11348,11 @@ textarea.form-control-lg {
 .sidebar__nav-button.active:hover {
   background-color: #231b15;
 }
+.sidebar__nav-description {
+  line-height: 1.1;
+  padding: 0.4rem;
+  text-align: center;
+}
 .sidebar__hr {
   padding: 1px;
   background: white;

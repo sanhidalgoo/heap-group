@@ -90,12 +90,4 @@ class Review extends Model
     {
         return $this->belongsTo(Beer::class);
     }
-
-    public static function validate($request)
-    {
-        $request->validate([
-            'score' => 'required|numeric',
-            'comment' => 'required'
-        ]);
-    }
 }

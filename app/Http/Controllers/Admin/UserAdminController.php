@@ -1,11 +1,14 @@
 <?php
 
+// Authors: Juan Sebastián Díaz
+
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 
 class UserAdminController extends Controller
@@ -22,18 +25,9 @@ class UserAdminController extends Controller
         return view('adminspace.users.create');
     }
 
-    public function save(Request $request)
+    public function save(CreateUserRequest $request)
     {
-        User::validate($request);
-        User::create($request->only([
-            'name',
-            'email',
-            'password',
-            'role',
-            'birthdate',
-            'address',
-            'cash_available',
-        ]));
+        User::create($request->validated());
         return redirect()->back()->with('success', __('users.create.success'));
     }
 

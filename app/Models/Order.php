@@ -2,7 +2,6 @@
 
 // Authors: Santiago Hidalgo, David Calle
 
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -118,16 +117,6 @@ class Order extends Model
     public function getUpdatedAt()
     {
         return $this->attributes['updated_at'];
-    }
-
-    public static function validate(Request $request)
-    {
-        $request->validate([
-            "paymentMethod" => "required|in:CREDIT_CARD,CASH,PSE",
-            "department" => "required",
-            "city" => "required",
-            "address" => "required"
-        ]);
     }
 
     public function user()

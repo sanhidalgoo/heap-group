@@ -1,11 +1,14 @@
 <?php
 
+// Authors: Juan Sebastián Díaz
+
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\Beer;
+use App\Http\Requests\CreateBeerRequest;
 use App\Http\Requests\UpdateBeerRequest;
 
 class BeerAdminController extends Controller
@@ -22,23 +25,9 @@ class BeerAdminController extends Controller
         return view('adminspace.beers.create');
     }
 
-    public function save(Request $request)
+    public function save(CreateBeerRequest $request)
     {
-        Beer::validate($request);
-        Beer::create($request->only([
-            'name',
-            'price',
-            'brand',
-            'origin',
-            'abv',
-            'ingredient',
-            'flavor',
-            'format',
-            'price',
-            'details',
-            'quantity_available',
-            'image_url',
-        ]));
+        Beer::create($request->validated());
         return redirect()->back()->with('success', __('beers.create.success'));
     }
 
