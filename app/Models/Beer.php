@@ -1,6 +1,6 @@
 <?php
 
-// Authors: Juan S. Díaz, Santiago Hidalgo
+// Authors: Juan Sebastián Díaz, Santiago Hidalgo
 
 namespace App\Models;
 

@@ -1,5 +1,7 @@
 <?php
 
+// Authors: Juan Sebastián Díaz
+
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;

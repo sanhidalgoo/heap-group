@@ -1,5 +1,7 @@
 <?php
 
+// Authors: Juan Sebastián Díaz
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;

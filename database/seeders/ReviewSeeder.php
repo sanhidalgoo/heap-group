@@ -1,6 +1,6 @@
 <?php
 
-// Authors:  David Calle
+// Authors: David Calle
 
 namespace Database\Seeders;
 

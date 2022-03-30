@@ -1,5 +1,7 @@
 <?php
 
+// Authors: Juan Sebastián Díaz
+
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;

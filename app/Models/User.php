@@ -1,5 +1,7 @@
 <?php
 
+// Authors: Juan Sebastián Díaz
+
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;

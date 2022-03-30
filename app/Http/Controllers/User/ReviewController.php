@@ -1,6 +1,6 @@
 <?php
 
-// Author: Santiago Hidalgo
+// Authors: Santiago Hidalgo
 
 namespace App\Http\Controllers\User;
 

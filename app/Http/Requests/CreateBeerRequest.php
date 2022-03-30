@@ -1,5 +1,7 @@
 <?php
 
+// Authors: Juan Sebastián Díaz
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;

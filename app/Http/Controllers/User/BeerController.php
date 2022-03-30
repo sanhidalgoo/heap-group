@@ -1,6 +1,6 @@
 <?php
 
-// Author: Juan S. Díaz
+// Authors: Juan Sebastián Díaz
 
 namespace App\Http\Controllers\User;
 
