@@ -50,23 +50,6 @@ class Beer extends Model
         'image_url',
     ];
 
-    public static function validate($request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'brand' => 'required|max:255',
-            'origin' => 'required|max:255',
-            'abv' => 'required|numeric|gte:0|lte:1',
-            'ingredient' => 'required|max:255',
-            'flavor' => 'required|max:255',
-            'format' => 'required|max:255',
-            'price' => 'required|numeric|gte:0',
-            'details' => '',
-            'quantity_available' => 'required|numeric',
-            'image_url' => 'required|max:2048',
-        ]);
-    }
-
     public function setId($id)
     {
         $this->attributes['id'] = $id;

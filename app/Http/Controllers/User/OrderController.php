@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateOrderRequest;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -42,10 +43,8 @@ class OrderController extends Controller
         }
     }
 
-    public function save(Request $request)
+    public function save(CreateOrderRequest $request)
     {
-        Order::validate($request);
-
         $newOrder = new Order();
         $newOrder->setOrderState(Order::$STATES['PENDING']);
         $newOrder->setPaymentMethod($request['paymentMethod']);
@@ -71,8 +70,6 @@ class OrderController extends Controller
             $total += $newOrderItem->getSubtotal();
         }
 
-        $newOrder->setTotal($total);
-
         $user = User::find(Auth::id());
 
         if ($total > $user->getCashAvailable()) {
@@ -82,6 +79,8 @@ class OrderController extends Controller
 
         $user->setCashAvailable($user->getCashAvailable() - $total);
         $user->save();
+
+        $newOrder->setTotal($total);
         $newOrder->save();
 
         session()->forget("beers");

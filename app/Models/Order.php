@@ -120,16 +120,6 @@ class Order extends Model
         return $this->attributes['updated_at'];
     }
 
-    public static function validate(Request $request)
-    {
-        $request->validate([
-            "paymentMethod" => "required|in:CREDIT_CARD,CASH,PSE",
-            "department" => "required",
-            "city" => "required",
-            "address" => "required"
-        ]);
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);

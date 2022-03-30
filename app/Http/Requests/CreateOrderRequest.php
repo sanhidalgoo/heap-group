@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class UpdateUserRequest extends FormRequest
+class CreateOrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +24,10 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required',
-            'role' => 'required',
-            'birthdate' => 'required',
-            'address' => 'required',
-            'cash_available' => 'required',
+            "paymentMethod" => "required|in:CREDIT_CARD,CASH,PSE",
+            "department" => "required",
+            "city" => "required",
+            "address" => "required",
         ];
     }
 }

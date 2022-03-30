@@ -7,6 +7,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateReviewRequest;
 use App\Models\Beer;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +22,8 @@ class ReviewController extends Controller
         return view('userspace.reviews.create')->with('viewData', $viewData);
     }
 
-    public function save($beerId, Request $request)
+    public function save($beerId, CreateReviewRequest $request)
     {
-        Review::validate($request);
         $review = new Review();
         $review->setScore($request['score']);
         $review->setComment($request['comment']);
