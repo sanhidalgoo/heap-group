@@ -56,7 +56,7 @@
                     </div>
                 @endforeach
             </div>
-            @if ($viewData['beersInCart']->count() > 0)
+            @if (count($viewData['beersInCart']) > 0)
                 <h2 class="fw-bold text-center mb-5">
                     {{ __('cart.total') }}: {{ $viewData['total'] . ' ' . __('beers.currency') }}
                 </h2>
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    @if ($viewData['beersInCart']->count() > 0)
+    @if (count($viewData['beersInCart']) > 0)
         <form method="POST" action="{{ route('user.orders.save') }}">
             @csrf
             <h2 class="text-center">
