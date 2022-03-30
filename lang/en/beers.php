@@ -58,5 +58,5 @@ return [
 
     'details.button' => 'Details',
 
-    'review.publishedBy' => 'Published by: '
+    'review.published-by' => 'Published by '
 ];

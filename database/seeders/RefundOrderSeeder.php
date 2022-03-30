@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\RefundOrder;
+use App\Models\Order;
 
 class RefundOrderSeeder extends Seeder
 {
@@ -14,11 +15,10 @@ class RefundOrderSeeder extends Seeder
      */
     public function run()
     {
-        for ($var = 0; $var < 3; $var++) {
-            $refundOrder = RefundOrder::factory()->create();
-            $order = $refundOrder->order;
-            $order->refund_order_id = $refundOrder->id;
-            $order->save();
-        }
+        $orders = Order::inRandomOrder()->take(3)->get();
+
+        $orders->each(function ($order) {
+            RefundOrder::factory()->create(['order_id' => $order->id]);
+        });
     }
 }

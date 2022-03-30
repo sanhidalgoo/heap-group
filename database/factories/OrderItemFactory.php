@@ -18,11 +18,14 @@ class OrderItemFactory extends Factory
      */
     public function definition()
     {
+        $beer = Beer::all()->random(1)->first();
+        $quantity = $this->faker->numberBetween($min = 1, $max = 10);
+        $total = $beer->getPrice() * $quantity;
+
         return [
-            'subtotal' => $this->faker->numberBetween($min = 1500, $max = 600000),
-            'quantity' => $this->faker->numberBetween(0, 10),
-            'beer_id' => Beer::all()->random(1)->pluck('id')->first(),
-            'order_id' => Order::all()->random(1)->pluck('id')->first(),
+            'subtotal' => $total,
+            'quantity' => $quantity,
+            'beer_id' => $beer->getId(),
         ];
     }
 }

@@ -22,7 +22,7 @@
                         <div class="col-sm-6 col-lg-3 m-auto d-flex justify-content-between align-items-center">
                             <form method="POST"
                                 action="{{ route('user.cart.decrement', ['id' => $beerItem['beer']->getId()]) }}"
-                                class="btn btn-primary">
+                                class="d-inline-block p-0">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa-solid fa-minus"></i>
@@ -34,7 +34,7 @@
 
                             <form method="POST"
                                 action="{{ route('user.cart.increment', ['id' => $beerItem['beer']->getId()]) }}"
-                                class="btn btn-primary">
+                                class="d-inline-block p-0">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa-solid fa-plus"></i>
@@ -45,7 +45,7 @@
                         <div class="col-sm-6 col-lg-3">
                             <form method="POST"
                                 action="{{ route('user.cart.remove', ['id' => $beerItem['beer']->getId()]) }}"
-                                class="btn btn-danger beer-card__btn--block">
+                                class="d-inline-block p-0">
                                 @csrf
                                 <button type="submit" class="btn btn-danger beer-card__btn--block">
                                     {{ __('cart.remove.button') }}
@@ -90,7 +90,7 @@
                     value="{{ old('address') }}" />
             </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Send" />
+        <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">{{ __('cart.confirm') }}</button>
     </form>
     <br />
     <br />

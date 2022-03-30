@@ -1,6 +1,6 @@
 {{-- Authors: Santiago Hidalgo, Juan S. Díaz --}}
 @extends('adminspace.layouts.app')
-@section('subtitle', __('reviews.title'))
+@section('subtitle', __('beers.title'))
 @section('content')
 @if(session('update'))
     <div class="alert alert-info">
@@ -46,7 +46,7 @@
                     <i class="fa-solid fa-pen-to-square"></i>
                     {{ __('beers.index.edit') }}
                 </a>
-                <form method="POST" action="{{ route('admin.beers.delete', ['id' => $beer->getId()]) }}" class="d-inline-block">
+                <form method="POST" action="{{ route('admin.beers.delete', ['id' => $beer->getId()]) }}" class="d-inline-block p-0">
                     @csrf
                     <button type="submit" class="btn btn-danger">
                         <i class="fa-solid fa-trash-can"></i>

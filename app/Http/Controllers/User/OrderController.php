@@ -6,17 +6,18 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Beer;
-use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::where('user_id', '=', Auth::id())->get();
         $viewData = [];
 
         $viewData["orders"] =  $orders;
@@ -26,10 +27,14 @@ class OrderController extends Controller
     public function show($id)
     {
         try {
-            $order = Order::findOrFail($id);
+            $order = Order::where('user_id', '=', Auth::id())->where('id', '=', $id)->first();
+            if ($order == null) {
+                throw new ModelNotFoundException();
+            }
             $viewData = [];
             $viewData["subtitle"] =  $order->getId();
             $viewData["order"] = $order;
+            $viewData["orderItems"] = $order->orderItems()->get();
             return view('userspace.orders.show')->with("viewData", $viewData);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('user.orders.index');
@@ -67,6 +72,20 @@ class OrderController extends Controller
         $newOrder->setTotal($total);
         $newOrder->save();
 
+        session()->forget("beers");
+
         return redirect()->back()->with('success', __('orders.create.success'));
+    }
+
+    public function download($id)
+    {
+        $order = Order::findOrFail($id);
+        $viewData = [];
+        $viewData["subtitle"] =  $order->getId();
+        $viewData["order"] = $order;
+        $viewData["orderItems"] = $order->orderItems()->get();
+        $pdf = PDF::loadView('userspace.orders.pdf', $viewData);
+
+        return $pdf->download($id . '-order.pdf');
     }
 }
