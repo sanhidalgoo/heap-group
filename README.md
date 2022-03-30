@@ -1,14 +1,10 @@
-<p align="center">
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
-</p>
+# Heap Group
 
-<p align="center">
-<img src="https://img.shields.io/github/issues/sanhidalgoo/heap-group" alt="Total issues">
-</p>
+![image](https://user-images.githubusercontent.com/53051441/160762629-f415a201-1893-4c36-a57d-b63ed2474a86.png)
+
 
 ## About [The Craft Beer Store]
 
-*Official and creative name in progress 🛠️*
 
 A web eCommerce of craft beers made in [Laravel](https://laravel.com) for the *Software architectures* course at **Universidad EAFIT**.
 
@@ -28,21 +24,17 @@ Go inside project folder:
 cd heap-group
 
 composer install
-
-npm install
 ```
 
 Change `.env.example` to `.env` and fill it. May be you need to create a database.
 
-For running webpack in dev, use:
-```bash
-npm run watch
-```
-
-Run migrations and server:
+Run migrations, seeder and server:
 ```bash
 # Run the migrations
 php artisan migrate
+
+# Run seeder
+php artisan db:seed
 
 # Run the application
 php artisan serve
