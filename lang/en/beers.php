@@ -26,7 +26,6 @@ return [
     'image-url' => 'Image URL',
 
     'title' => 'Beers',
-    'ranking.title' => 'Beers ranking',
     'cost' => 'Cost',
     'reviews' => 'Reviews',
     'score' => 'Score',
@@ -63,4 +62,9 @@ return [
     'filter.button' => 'Filter',
     'filter.min' => 'Min price',
     'filter.max' => 'Max price',
+
+    'ranking.title' => 'Beers ranking',
+    'ranking.score' => 'Score',
+    'ranking.sold' => 'Sold',
+    'ranking.button' => 'Rank',
 ];
