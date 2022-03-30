@@ -56,42 +56,52 @@
                     </div>
                 @endforeach
             </div>
-            <h2 class="fw-bold text-center mb-5">
-                {{ __('cart.total') }}: {{ $viewData['total'] . ' ' . __('beers.currency') }}
-            </h2>
+            @if ($viewData['beersInCart']->count() > 0)
+                <h2 class="fw-bold text-center mb-5">
+                    {{ __('cart.total') }}: {{ $viewData['total'] . ' ' . __('beers.currency') }}
+                </h2>
+            @endif
         </div>
     </div>
 
-    <form method="POST" action="{{ route('user.orders.save') }}">
-        @csrf
-        <h2 class="text-center">
-            {{ __('cart.order.title') }}
-        </h2>
-        <div class="row">
-            <div class="col-12 mb-2">
-                <select class="form-select" name="paymentMethod">
-                    <option value="CREDIT_CARD">{{ __('billing.payment-method.credit-card') }}</option>
-                    <option value="CASH">{{ __('billing.payment-method.cash') }}</option>
-                    <option value="PSE">{{ __('billing.payment-method.pse') }}</option>
-                </select>
+    @if ($viewData['beersInCart']->count() > 0)
+        <form method="POST" action="{{ route('user.orders.save') }}">
+            @csrf
+            <h2 class="text-center">
+                {{ __('cart.order.title') }}
+            </h2>
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <select class="form-select" name="paymentMethod">
+                        <option value="CREDIT_CARD">{{ __('billing.payment-method.credit-card') }}</option>
+                        <option value="CASH">{{ __('billing.payment-method.cash') }}</option>
+                        <option value="PSE">{{ __('billing.payment-method.pse') }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <input type="text" class="form-control mb-2" placeholder={{ __('billing.department') }} name="department"
+                        value="{{ old('department') }}" />
+                </div>
+                <div class="col-4">
+                    <input type="text" class="form-control mb-2" placeholder={{ __('billing.city') }} name="city"
+                        value="{{ old('city') }}" />
+                </div>
+                <div class="col-4">
+                    <input type="text" class="form-control mb-2" placeholder={{ __('billing.address') }} name="address"
+                        value="{{ old('address') }}" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">{{ __('cart.confirm') }}</button>
+        </form>
+    @else
+        <div class="row justify-content-center align-items-center">
+            <div class="col py-5">
+                <p class="fw-bold text-center">{{ __('messages.no-data') }}</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4">
-                <input type="text" class="form-control mb-2" placeholder={{ __('billing.department') }} name="department"
-                    value="{{ old('department') }}" />
-            </div>
-            <div class="col-4">
-                <input type="text" class="form-control mb-2" placeholder={{ __('billing.city') }} name="city"
-                    value="{{ old('city') }}" />
-            </div>
-            <div class="col-4">
-                <input type="text" class="form-control mb-2" placeholder={{ __('billing.address') }} name="address"
-                    value="{{ old('address') }}" />
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">{{ __('cart.confirm') }}</button>
-    </form>
+    @endif
     <br />
     <br />
     <br />

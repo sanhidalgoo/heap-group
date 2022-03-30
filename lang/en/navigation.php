@@ -24,4 +24,5 @@ return [
     'signup' => 'Signup',
     'logout' => 'Logout',
     'ranking' => 'Ranking',
+    'go.home' => 'Return to home',
 ];

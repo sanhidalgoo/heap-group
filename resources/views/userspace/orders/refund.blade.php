@@ -4,7 +4,7 @@
     <form method="GET" action="{{ route('user.orders.refund.save', ['id' => $viewData['orderId']]) }}">
         @csrf
         <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-md-12 mb-3">
                 <label for="motive" class="col-md-2 col-form-label text-md-end">{{ __('orders.refund.motive') }}</label>
                 <input id="motive" type="text" class="form-control @error('motive') is-invalid @enderror" name="motive"
                     value="{{ $viewData['motive'] ?? '' }}" autofocus>

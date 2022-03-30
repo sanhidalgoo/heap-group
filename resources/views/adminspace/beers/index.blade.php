@@ -60,7 +60,7 @@
             <td colspan="6">
                 <p class="fw-bold text-center">{{ __('messages.no-data') }}</p>
             </td>
-        </>
+        </tr>
         @endforelse
     </tbody>
 </table>
