@@ -36,7 +36,7 @@
                         @auth
                             @if (array_key_exists($beer->getId(), $viewData['beersInCart']))
                                 <form method="POST" action="{{ route('user.cart.remove', ['id' => $beer->getId()]) }}"
-                                    class="btn btn-danger beer-card__btn--block">
+                                    class="d-inline-blox p-0">
                                     @csrf
                                     <button type="submit" class="btn btn-danger beer-card__btn--block">
                                         {{ __('cart.remove.button') }}
@@ -44,7 +44,7 @@
                                 </form>
                             @else
                                 <form method="POST" action="{{ route('user.cart.add', ['id' => $beer->getId()]) }}"
-                                    class="btn btn-primary beer-card__btn beer-card__btn--block">
+                                    class="d-inline-blox p-0">
                                     @csrf
                                     <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
                                         {{ __('cart.add.button') }}
