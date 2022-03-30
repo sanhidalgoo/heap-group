@@ -36,13 +36,9 @@ class BeerController extends Controller
         }
     }
 
-    public function ranking()
+    public function ranking(Request $request)
     {
-        $beers = Beer::all();
-        $beers = $beers->sortBy(function ($beer) {
-            return $beer->getRating();
-        }, 0, true);
-
+        $beers = Beer::Order()->get();
         $viewData = [];
         $viewData["beers"] = $beers;
         $viewData["beersInCart"] = session()->get("beers") ?? [];

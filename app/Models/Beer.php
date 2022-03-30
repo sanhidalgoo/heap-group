@@ -234,4 +234,19 @@ class Beer extends Model
         }
         return $query;
     }
+
+    public function scopeOrder($query)
+    {
+        if (request('ranking_param')) {
+            switch (request('ranking_param')) {
+                case 'sold':
+                    $query->withCount('orderItems')->orderBy('order_items_count', 'desc');
+                    break;
+                default:
+                    $query->withAvg('reviews', 'score')->orderBy('reviews_avg_score', 'desc');
+                    break;
+            }
+        }
+        return $query;
+    }
 }

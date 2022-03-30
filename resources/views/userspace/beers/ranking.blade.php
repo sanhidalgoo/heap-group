@@ -2,6 +2,32 @@
 @section('title', __('beers.ranking.title'))
 @section('content')
     <div class="card-grid row  align-items-center">
+        <form method="GET" action="{{ route('user.beers.ranking') }}">
+            @csrf
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <select name="ranking_param" class="form-control">
+                        <option value="score" {{ $viewData['ranking_param'] ?? '' == 'price' ? 'selected' : '' }}>
+                            {{ __('beers.ranking.score') }}</option>
+                        <option value="sold" {{ $viewData['ranking_param'] ?? '' == 'sold' ? 'selected' : '' }}>
+                            {{ __('beers.ranking.sold') }}</option>
+                    </select>
+                    @error('ranking_param')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="row text-center d-flex justify-content-center mb-5">
+                <div class="col-md-4 text-center">
+                    <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
+                        {{ __('beers.ranking.button') }}
+                    </button>
+                </div>
+            </div>
+        </form>
+
         @forelse ($viewData["beers"] as $beer)
             <div class="col-lg-3 col-md-3 mb-2">
                 <p style="font-size: 20em;">{{ $loop->index + 1 }}</p>
