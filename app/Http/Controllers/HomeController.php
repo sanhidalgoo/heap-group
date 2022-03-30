@@ -8,8 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $viewData["beersInCart"] = session()->get("beers") ?? [];
-        return view('userspace.home.index')->with("viewData", $viewData);
+        return view('userspace.home.index');
     }
 
     public function admin()

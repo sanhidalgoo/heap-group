@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 | Admin Routes
 |--------------------------------------------------------------------------
 */
+
 Auth::routes();
 
 Route::middleware(['admin'])->group(function () {
@@ -49,6 +50,7 @@ Route::middleware(['admin'])->group(function () {
 */
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('user.home.index');
 Route::get('/beers', 'App\Http\Controllers\User\BeerController@index')->name('user.beers.index');
+Route::get('/beers/ranking', 'App\Http\Controllers\User\BeerController@ranking')->name('user.beers.ranking');
 Route::get('/beers/{id}', 'App\Http\Controllers\User\BeerController@show')->name('user.beers.show');
 
 Route::middleware(['auth'])->group(function () {
