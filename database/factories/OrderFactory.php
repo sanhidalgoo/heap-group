@@ -17,14 +17,17 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
+        $faker = \Faker\Factory::create();
+        $faker->addProvider(new  \Faker\Provider\en_US\Address($faker));
+
         return [
-            'total' => $this->faker->numberBetween($min = 100000, $max = 900000),
-            'order_state'  => $this->faker->word(),
-            'payment_method'  => $this->faker->word(),
-            'department'  => $this->faker->word(),
-            'city'  => $this->faker->word(),
-            'address'  => $this->faker->word(),
-            'user_id' => User::all()->random(1)->pluck('id')->first()
+            'total' => 0,
+            'order_state'  => $faker->randomElement(['pending', 'shipped', 'cancelled', 'delivered']),
+            'payment_method'  => $this->faker->randomElement(['CREDIT_CARD', 'CASH', 'PSE']),
+            'department'  => $faker->state(),
+            'city'  => $faker->city(),
+            'address'  => $faker->streetAddress(),
+            'user_id' => User::all()->random(1)->pluck('id')->first(),
         ];
     }
 }

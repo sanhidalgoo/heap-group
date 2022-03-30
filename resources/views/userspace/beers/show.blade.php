@@ -77,7 +77,7 @@
                             @if (array_key_exists($viewData['beer']->getId(), $viewData['beersInCart']))
                                 <form method="POST"
                                     action="{{ route('user.cart.remove', ['id' => $viewData['beer']->getId()]) }}"
-                                    class="btn btn-danger beer-card__btn--block">
+                                    class="d-inline-block p-0">
                                     @csrf
                                     <button type="submit" class="btn btn-danger beer-card__btn--block">
                                         {{ __('cart.remove.button') }}
@@ -86,7 +86,7 @@
                             @else
                                 <form method="POST"
                                     action="{{ route('user.cart.add', ['id' => $viewData['beer']->getId()]) }}"
-                                    class="btn btn-primary beer-card__btn beer-card__btn--block">
+                                    class="d-inline-block p-0">
                                     @csrf
                                     <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
                                         {{ __('cart.add.button') }}
@@ -105,59 +105,53 @@
                 </p>
 
                 <div class="d-flex flex-column justify-content-center text-center">
-                    @if (!$viewData['reviews']->isEmpty())
-                        <h2 class="h2-title">
-                            Reviews
-                        </h2>
-                        @foreach ($viewData['reviews'] as $review)
-                            <div class="row review-card">
-                                <div class="col-md-2 review-card__aside">
-                                    <div class="review-card__img-wrapper"></div>
-                                </div>
-                                <div class="col-md-10 review-card__body">
-                                    <div class="review-card__header">
-                                        <div>
-                                            <p class="review-card__info m-0">Published by username, one year ago</p>
-                                            <div class="d-flex">
-                                                <div class="mr-2 rating">
-                                                    <span
-                                                        class="fa fa-star {{ $review->getScore() >= 0.5 ? 'checked' : '' }}"></span>
-                                                    <span
-                                                        class="fa fa-star {{ $review->getScore() >= 1.5 ? 'checked' : '' }}"></span>
-                                                    <span
-                                                        class="fa fa-star {{ $review->getScore() >= 2.5 ? 'checked' : '' }}"></span>
-                                                    <span
-                                                        class="fa fa-star {{ $review->getScore() >= 3.5 ? 'checked' : '' }}"></span>
-                                                    <span
-                                                        class="fa fa-star {{ $review->getScore() >= 4.5 ? 'checked' : '' }}"></span>
-                                                </div>
-                                                <div class="total-reviews">
-                                                    {{ $review->getScore() }} / 5 {{ __('beers.score') }}
-                                                </div>
+                    @if(count($viewData['reviews']) > 0)
+                    <h2 class="h2-title">
+                        Reviews
+                    </h2>
+                    @foreach($viewData['reviews'] as $review)
+                        <div class="row review-card">
+                            <div class="col-md-2 review-card__aside">
+                                <div class="review-card__img-wrapper"></div>
+                            </div>
+                            <div class="col-md-10 review-card__body">
+                                <div class="review-card__header">
+                                    <div>
+                                        <p class="review-card__info m-0">{{ __('beers.review.published-by') }} username</p>
+                                        <div class="d-flex">
+                                            <div class="mr-2 rating">
+                                                <span class="fa fa-star {{ $review->getScore() >= 0.5 ? 'checked' : '' }}"></span>
+                                                <span class="fa fa-star {{ $review->getScore() >= 1.5 ? 'checked' : '' }}"></span>
+                                                <span class="fa fa-star {{ $review->getScore() >= 2.5 ? 'checked' : '' }}"></span>
+                                                <span class="fa fa-star {{ $review->getScore() >= 3.5 ? 'checked' : '' }}"></span>
+                                                <span class="fa fa-star {{ $review->getScore() >= 4.5 ? 'checked' : '' }}"></span>
+                                            </div>
+                                            <div class="total-reviews">
+                                                {{ $review->getScore() }} / 5 {{ __('beers.score') }}
                                             </div>
                                         </div>
-                                        @auth
-                                            @if ($review->user()->get()[0]->getId() == Auth::user()->getId())
-                                                <form class="d-inline-block col-md-1" method="POST"
-                                                    action="{{ route('user.review.delete', ['id' => $review->getId()]) }}">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-block btn-danger w-100">
-                                                        <i class="fa-solid fa-trash-can"></i>
-                                                    </button>
-                                                </form>
-                                            @endif
-                                        @endauth
                                     </div>
-                                    {{ $review->getComment() }}
-                                    {{ $review->getComment() }}
+                                    @auth
+                                    @if($review->user->getId() == Auth::user()->getId())
+                                        <form class="d-inline-block col-md-1 p-0" method="POST" action="{{ route('user.reviews.delete', ['id' => $review->getId()]) }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-block btn-danger w-100">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </form>
+                                        @endif
+                                    @endauth
+                                </div>
+                                <div>
                                     {{ $review->getComment() }}
                                 </div>
                             </div>
+                        </div>
                         @endforeach
                     @endif
                     @auth
                         <div class="row review-card border-3 border-success">
-                            <a href="#" class="text-decoration-none text-success">
+                            <a href="{{ route('user.reviews.create', ['id' =>  $viewData['beer']->getId()]) }}" class="text-decoration-none text-success">
                                 <div class="col d-flex justify-content-center align-items-center">
                                     <div class="btn btn-success rounded-circle">
                                         <i class="fa-solid fa-plus"></i>
