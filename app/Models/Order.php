@@ -28,7 +28,7 @@ class Order extends Model
 
     protected $fillable = ['total', 'order_state', 'payment_method', 'department', 'city', 'address'];
 
-    public static $STATES = ['PENDING' => 'PENDING', 'CANCELLED' => 'CANCELLED', 'SHIPPED' => 'SHIPPED', 'DELIVERED' => 'DELIVERED', 'MISSING' => 'MISSING'];
+    public static $STATES = ['PENDING' => 'Pending', 'CANCELLED' => 'Cancelled', 'SHIPPED' => 'Shipped', 'DELIVERED' => 'Delivered', 'MISSING' => 'Missing'];
 
     public function getId()
     {

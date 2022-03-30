@@ -11,11 +11,13 @@ use App\Models\Beer;
 
 class BeerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $viewData = [];
-        $viewData["beers"] = Beer::all();
+        $beers = Beer::filter()->get();
+        $viewData["beers"] = $beers;
         $viewData["beersInCart"] = session()->get("beers") ?? [];
+        $viewData = array_merge($viewData, $request->all());
         return view('userspace.beers.index')->with("viewData", $viewData);
     }
 

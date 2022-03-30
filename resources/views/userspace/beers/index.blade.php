@@ -2,6 +2,43 @@
 @section('title', __('beers.title'))
 @section('content')
     <div class="row card-grid">
+        <div>
+            <form method="GET" action="{{ route('user.beers.index') }}">
+                @csrf
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="price_min" class="col-md-2 col-form-label text-md-end">{{ __('beers.filter.min') }}</label>
+                        <input id="price_min" type="text" class="form-control @error('price_min') is-invalid @enderror"
+                            name="price_min" value="{{ $viewData['price_min'] ?? '' }}" autofocus>
+
+                        @error('price_min')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label for="price_max" class="col-md-2 col-form-label text-md-end">{{ __('beers.filter.max') }}</label>
+                        <input id="price_max" type="text" class="form-control @error('price_max') is-invalid @enderror"
+                            name="price_max" value="{{ $viewData['price_max'] ?? '' }}" autofocus>
+
+                        @error('price_max')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row text-center d-flex justify-content-center mb-5">
+                    <div class="col-md-4 text-center">
+                        <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">
+                            {{ __('beers.filter.button') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
         @forelse ($viewData["beers"] as $beer)
             <div class="col-lg-4 col-md-6 mb-2">
                 <div class="beer-card">
