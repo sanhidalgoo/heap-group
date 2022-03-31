@@ -12,16 +12,15 @@ body:
     label: Environment
     description: 
     value: |
-        Node version: 
-        npm version: 
-        Local ESLint version: 
-        Global ESLint version: 
-        Operating System: 
+        php version: 8.1.2 (Project scope)
+        npm version: 7.21.0 (Project scope)
+        Laravel version: 9.2
+        Operating System: Windows
   validations:
     required: true
 - type: dropdown
   attributes:
-    label: Is it affecting [thecraftbeer.tk](thecraftbeer.tk)?
+    label: Is it affecting [thecraftbeer.tk](http://thecraftbeer.tk)?
     description: This bug affects the main page.
     options:
       - "Yes"
@@ -32,7 +31,7 @@ body:
   attributes:
     label: What did you do or what did you see?
     description: |
-      Please include a *minimal* reproduction case. You can use Markdown in this field.
+      Please include a *minimal* reproduction case. You can include links. You can use Markdown in this field.
   validations:
     required: true
 - type: textarea
@@ -46,7 +45,7 @@ body:
   attributes:
     label: What actually happened?
     description: |
-      Please copy-paste the actual ESLint output. You can use Markdown in this field.
+      You can use Markdown in this field.
   validations:
     required: true
 - type: textarea
