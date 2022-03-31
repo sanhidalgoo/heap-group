@@ -20,7 +20,7 @@ body:
     required: true
 - type: dropdown
   attributes:
-    label: Is it affecting [thecraftbeer.tk](http://thecraftbeer.tk)?
+    label: Is it affecting thecraftbeer.tk?
     description: This bug affects the main page.
     options:
       - "Yes"
