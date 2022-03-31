@@ -6,7 +6,7 @@ labels:
 body:
 - type: markdown
   attributes:
-    value: From Heap Group Team: Thanks for leave us your proposal!
+    value: Thanks for leave us your proposal!
 - type: input
   attributes:
     label: Section
