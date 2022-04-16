@@ -14,12 +14,15 @@
 <body>
     <div class="flex flex-row min-h-screen bg-gray-100 font-sans">
         <x-userspace.sidebar />
-        <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
+        <main class="flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
             <x-userspace.header />
-            <x-typography.subtitle>
-                @yield('title')
-            </x-typography.subtitle>
-            <x-alert-menu />
+            <div class="flex flex-col flex-grow px-5">
+                <x-typography.subtitle>
+                    @yield('title')
+                </x-typography.subtitle>
+                <x-alert-menu />
+                @yield('content')
+            </div>
         </main>
     </div>
     <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>

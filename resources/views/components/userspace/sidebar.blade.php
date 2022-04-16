@@ -5,10 +5,10 @@
         <div class="py-4 px-7">
             <img src="{{ asset('../assets/logo-solid-black.svg') }}" />
         </div>
-        <ul class="my-4 flex flex-col w-full">
+        <ul class="my-3 flex flex-col w-full">
             @auth
-                <li class="sidebar__nav-description">
-                    {{ Auth::user()->getName() }} <br/>
+                <li class="leading-none p-0.5 text-sm text-white text-center">
+                    <span class="text-lg font-bold">{{ Auth::user()->getName() }}</span> <br/>
                     {{ __('users.cash-available') . ': ' . Auth::user()->getCashAvailable() . ' ' . __('beers.currency') }}
                 </li>
             @endauth
@@ -22,38 +22,30 @@
                 {{ __('navigation.ranking') }}
             </x-userspace.sidebar-item>
             @auth
-                <x-userspace.sidebar-item route="user.beers.ranking">
-                    {{ __('navigation.ranking') }}
+                <x-userspace.sidebar-item route="user.orders.index">
+                    {{ __('navigation.orders') }}
                 </x-userspace.sidebar-item>
-                <li class="sidebar__nav-button {{ request()->routeIs('user.orders.index') ? 'active' : '' }}">
-                    <a class="sidebar__link" href="{{ route('user.orders.index') }}">{{ __('navigation.orders') }}</a>
-                </li>
-                <li class="sidebar__nav-button {{ request()->routeIs('user.cart.index') ? 'active' : '' }}">
-                    <a class="sidebar__link" href="{{ route('user.cart.index') }}">
-                        {{ __('navigation.cart') }}
-                        @if (count(session()->get("beers") ?? []) > 0)
-                            <span class="sidebar__notification">{{ count(session()->get("beers")) }}</span>
-                        @endif
-                    </a>
-                </li>
+                <x-userspace.sidebar-item route="user.cart.index">
+                    {{ __('navigation.cart') }}
+                    @if (count(session()->get("beers") ?? []) > 0)
+                        <span class="absolute px-1 ml-2 bg-white text-xs text-[#8B673B] font-bold rounded-full">
+                            {{ count(session()->get("beers")) }}
+                        </span>
+                    @endif
+                </x-userspace.sidebar-item>
             @endauth
-            <hr class="sidebar__hr" />
+            <hr class="mx-2.5 my-2 border text-center" />
             @guest
-                <li class="button button--solid button--flex-end" id="login">
-                    <a class="sidebar__link" href="{{ route('login') }}">{{ __('navigation.login') }}</a>
-                </li>
-                <li class="button button--outlined button--flex-end" id="signup">
-                    <a class="sidebar__link" href="{{ route('register') }}">{{ __('navigation.signup') }}</a>
-                </li>
+                <x-userspace.button type="solid" route="login">
+                    {{ __('navigation.login') }}
+                </x-userspace.button>
+                <x-userspace.button type="outlined" route="register">
+                    {{ __('navigation.signup') }}
+                </x-userspace.button>
             @else
-                <li class="button button--outlined button--flex-end" id="logout">
-                    <form method="POST" action="{{ route('logout') }}" class="d-inline-block">
-                        @csrf
-                        <button type="submit" class="sidebar__link">
-                            {{ __('navigation.logout') }}
-                        </button>
-                    </form>
-                </li>
+                <x-userspace.form-button type="outlined" route="logout">
+                    {{ __('navigation.logout') }}
+                </x-userspace.form-button>
             @endguest
         </ul>
     </div>
