@@ -60,7 +60,9 @@ return [
 
     'details.button' => 'Details',
 
+    'filter.title' => 'Filter',
     'filter.button' => 'Filter',
     'filter.min' => 'Min price',
     'filter.max' => 'Max price',
+    'filter.apply' => 'Apply',
 ];
