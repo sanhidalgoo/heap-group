@@ -4,7 +4,7 @@
     <div id="filterbox-open" class="text-center px-3 py-1 bg-[#604028] hover:bg-[#2b1e14] text-white transition">
         <i class="fa-solid fa-filter"></i>
     </div>
-    <div class="relative grid grid-cols-3 gap-4">
+    <div class="relative grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         <div id="filterbox" class="hidden fixed left-0 right-0 ml-auto mr-auto w-[500px]">
             <a id="filterbox-close" class="fixed bg-[#5e472bf0] top-0 left-0 w-full h-full z-[-1] transition duration-150 ease-in">
             </a>

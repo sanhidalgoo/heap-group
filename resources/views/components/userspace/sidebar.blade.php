@@ -36,16 +36,22 @@
             @endauth
             <hr class="mx-2.5 my-2 border text-center" />
             @guest
-                <x-userspace.button type="solid" route="login">
-                    {{ __('navigation.login') }}
-                </x-userspace.button>
-                <x-userspace.button type="outlined" route="register">
-                    {{ __('navigation.signup') }}
-                </x-userspace.button>
+                <li>
+                    <x-userspace.button color="primary solid" route="login">
+                        {{ __('navigation.login') }}
+                    </x-userspace.button>
+                </li>
+                <li>
+                    <x-userspace.button color="primary outlined" route="register">
+                        {{ __('navigation.signup') }}
+                    </x-userspace.button>
+                </li>
             @else
-                <x-userspace.form-button type="outlined" route="logout">
-                    {{ __('navigation.logout') }}
-                </x-userspace.form-button>
+                <li>
+                    <x-userspace.form-button color="danger solid" route="logout">
+                        {{ __('navigation.logout') }}
+                    </x-userspace.form-button>
+                </li>
             @endguest
         </ul>
     </div>

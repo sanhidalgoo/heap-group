@@ -1,31 +1,27 @@
-@props(['listed' => 'TRUE', 'type' => 'solid', 'route', 'params' => []])
+@props(['color' => 'primary solid', 'route', 'params' => []])
 
-@if($listed == 'TRUE')
-    @if($type == 'solid')
-        <li class="transition hover:transition mx-3.5 my-1 rounded-md bg-[#604028] hover:bg-[#2b1e14] text-center font-bold text-white">
-            <a class="block py-3 rounded-md w-full h-full" href="{{ count($params) == 0 ? route($route) : route($route, $params) }}">
-                {{ $slot }}
-            </a>
-        </li>
-    @elseif($type == 'outlined')
-        <li class="transition hover:transition mx-3.5 my-1 rounded-md bg-white text-center font-bold border-4 border-[#604028] hover:border-[#2b1e14] text-[#604028] hover:text-[#2b1e14]">
-            <a class="block py-3 rounded-md w-full h-full" href="{{ count($params) == 0 ? route($route) : route($route, $params) }}">
-                {{ $slot }}
-            </a>
-        </li>
+@if(str_contains($color, "primary"))
+    @if(str_contains($color, "solid"))
+        @php($color = "bg-[#604028] border-[#604028] text-white hover:bg-[#2b1e14] hover:border-[#2b1e14]")
+    @elseif(str_contains($color, "outlined"))
+        @php($color = "bg-white border-[#604028] hover:border-[#2b1e14] text-[#604028] hover:text-[#2b1e14]")
     @endif
-@else
-    @if($type == 'solid')
-        <div class="transition hover:transition mx-3.5 my-1 rounded-md bg-[#604028] hover:bg-[#2b1e14] text-center font-bold text-white">
-            <a class="block py-3 rounded-md w-full h-full" href="{{ count($params) == 0 ? route($route) : route($route, $params) }}">
-                {{ $slot }}
-            </a>
-        </div>
-    @elseif($type == 'outlined')
-        <div class="transition hover:transition mx-3.5 my-1 rounded-md bg-white text-center font-bold border-4 border-[#604028] hover:border-[#2b1e14] text-[#604028] hover:text-[#2b1e14]">
-            <a class="block py-3 rounded-md w-full h-full" href="{{ count($params) == 0 ? route($route) : route($route, $params) }}">
-                {{ $slot }}
-            </a>
-        </div>
+@elseif(str_contains($color, "success"))
+    @if(str_contains($color, "solid"))
+        @php($color = "bg-lime-700 border-lime-700 text-white hover:bg-lime-800 hover:border-lime-800")
+    @elseif(str_contains($color, "outlined"))
+        @php($color = "bg-white border-lime-700 text-lime-700 hover:border-lime-800 hover:text-lime-800")
+    @endif
+@elseif(str_contains($color, "danger"))
+    @if(str_contains($color, "solid"))
+        @php($color = "bg-red-600 border-red-600 text-white hover:bg-red-700 hover:border-red-700")
+    @elseif(str_contains($color, "outlined"))
+        @php($color = "bg-white border-red-600 text-red-600 hover:border-red-700 hover:text-red-700")
     @endif
 @endif
+
+<div class="transition hover:transition mx-4 my-1 border-4 rounded-md text-center font-bold {{ $color }}">
+    <a class="block py-2 rounded-md w-full h-full" href="{{ count($params) == 0 ? route($route) : route($route, $params) }}">
+        {{ $slot }}
+    </a>
+</div>
