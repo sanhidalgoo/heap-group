@@ -1,6 +1,6 @@
-@props(['beer', 'beersInCart'])
+@props(['beer', 'beersInCart', 'cardProps' => ''])
 
-<div class="bg-white flex px-2 py-4 shadow-md rounded h-full">
+<div class="bg-white flex px-2 py-4 shadow-md rounded h-full {{ $cardProps }}">
     <div class="w-2/4 overflow-hidden">
         <img src="{{ $beer->getURL() }}" class="w-full h-72 max-w-max object-cover object-right">
     </div>
