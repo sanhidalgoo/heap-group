@@ -16,6 +16,7 @@ return [
     'title' => 'Heap Group',
     'welcome' => 'Welcome!',
     'description' => 'A colombian craft beer experience has ever seen before in the world.',
+    'store.name' => 'The Craft Beer Store',
     'no-data' => 'No data to show',
 
 ];
