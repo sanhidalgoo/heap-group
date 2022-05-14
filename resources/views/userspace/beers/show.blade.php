@@ -15,15 +15,15 @@
                         <div class="d-flex justify-content-center mb-2">
                             <div class="mr-2 rating">
                                 <span
-                                    class="fa fa-star {{ $viewData['beer']->getRating() >= 0.5 ? 'checked' : '' }}"></span>
+                                    class="ratingStar fa fa-star {{ $viewData['beer']->getRating() >= 0.5 ? 'checked' : '' }}"></span>
                                 <span
-                                    class="fa fa-star {{ $viewData['beer']->getRating() >= 1.5 ? 'checked' : '' }}"></span>
+                                    class="ratingStar fa fa-star {{ $viewData['beer']->getRating() >= 1.5 ? 'checked' : '' }}"></span>
                                 <span
-                                    class="fa fa-star {{ $viewData['beer']->getRating() >= 2.5 ? 'checked' : '' }}"></span>
+                                    class="ratingStar fa fa-star {{ $viewData['beer']->getRating() >= 2.5 ? 'checked' : '' }}"></span>
                                 <span
-                                    class="fa fa-star {{ $viewData['beer']->getRating() >= 3.5 ? 'checked' : '' }}"></span>
+                                    class="ratingStar fa fa-star {{ $viewData['beer']->getRating() >= 3.5 ? 'checked' : '' }}"></span>
                                 <span
-                                    class="fa fa-star {{ $viewData['beer']->getRating() >= 4.5 ? 'checked' : '' }}"></span>
+                                    class="ratingStar fa fa-star {{ $viewData['beer']->getRating() >= 4.5 ? 'checked' : '' }}"></span>
                             </div>
                             <div class="total-reviews">
                                 {{ $viewData['reviews']->count() . ' ' . __('beers.reviews') }}
