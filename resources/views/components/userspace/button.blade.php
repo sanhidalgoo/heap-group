@@ -1,4 +1,4 @@
-@props(['color' => 'primary solid', 'route', 'params' => []])
+@props(['color' => 'primary solid', 'route', 'params' => [], 'render' => 'a'])
 
 @if(str_contains($color, "primary"))
     @if(str_contains($color, "solid"))
@@ -21,7 +21,7 @@
 @endif
 
 <div class="transition hover:transition mx-4 my-1 border-4 rounded-md text-center font-bold {{ $color }}">
-    <a class="block py-2 rounded-md w-full h-full" href="{{ count($params) == 0 ? route($route) : route($route, $params) }}">
+    <{{$render}} class="block py-2 rounded-md w-full h-full" href="{{ $render == 'a' ? (count($params) == 0 ? route($route) : route($route, $params)) : '' }}">
         {{ $slot }}
-    </a>
+    </{{$render}}>
 </div>

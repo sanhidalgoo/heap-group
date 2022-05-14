@@ -1,6 +1,6 @@
-<a id="sidebar-toggle-close" class="hidden absolute top-0 left-0 h-full w-full z-0 bg-[rgb(0,0,0,0.8)] transition duration-150 ease-in">
+<a id="sidebar-toggle-close" class="hidden absolute top-0 left-0 h-full w-full z-10 bg-[rgb(0,0,0,0.8)] transition duration-150 ease-in">
 </a>
-<aside id="sidebar" class="flex transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in">
+<aside id="sidebar" class="flex transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in z-10">
     <div class="sidebar w-64 bg-[#8B673B]">
         <div class="py-4 px-7">
             <img src="{{ asset('../assets/logo-solid-black.svg') }}" />
