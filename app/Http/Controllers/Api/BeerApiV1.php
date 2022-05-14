@@ -1,5 +1,7 @@
 <?php
 
+// Author: Santiago Hidalgo
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\BeerCollection;

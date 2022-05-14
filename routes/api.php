@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/v1/beers/available', 'App\Http\Controllers\Api\BeerApiV1@index')->name("api.beer.index");
+Route::get('/v1/beers', 'App\Http\Controllers\Api\BeerApiV1@index')->name("api.v1.beer.index");

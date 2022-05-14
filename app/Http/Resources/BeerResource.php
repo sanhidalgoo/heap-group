@@ -1,5 +1,7 @@
 <?php
 
+// Author: Santiago Hidalgo
+
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -22,7 +24,7 @@ class BeerResource extends JsonResource
             'details' => $this->getDetails(),
             'quantity_available' => $this->getQuantity(),
             'image' => $this->getURL(),
-            'average_rate' => $this->getRating()
+            'average_rate' => $this->getRating(),
         ];
     }
 }
