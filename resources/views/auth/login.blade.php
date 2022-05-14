@@ -25,7 +25,7 @@
                             autocomplete="password"
                             autofocus
                             required
-                            errorClass="{{ $errors->has('email') ? 'ring-red-700 border-red-700' : '' }}"
+                            errorClass="{{ $errors->has('password') ? 'ring-red-700 border-red-700' : '' }}"
                         />
 
                         <x-userspace.button color="primary solid" render="button type=submit">
