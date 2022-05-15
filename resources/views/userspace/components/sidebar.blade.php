@@ -6,7 +6,7 @@
     <ul class="sidebar__nav list-unstyled components">
         @auth
             <li class="sidebar__nav-description">
-                {{ Auth::user()->getName() }} <br/>
+                {{ Auth::user()->getName() }} <br />
                 {{ __('users.cash-available') . ': ' . Auth::user()->getCashAvailable() . ' ' . __('beers.currency') }}
             </li>
         @endauth
@@ -26,8 +26,8 @@
             <li class="sidebar__nav-button {{ request()->routeIs('user.cart.index') ? 'active' : '' }}">
                 <a class="sidebar__link" href="{{ route('user.cart.index') }}">
                     {{ __('navigation.cart') }}
-                    @if (count(session()->get("beers") ?? []) > 0)
-                        <span class="sidebar__notification">{{ count(session()->get("beers")) }}</span>
+                    @if (count(session()->get('beers') ?? []) > 0)
+                        <span class="sidebar__notification">{{ count(session()->get('beers')) }}</span>
                     @endif
                 </a>
             </li>
