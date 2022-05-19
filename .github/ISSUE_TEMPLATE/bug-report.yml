@@ -1,0 +1,54 @@
+name: "\U0001F41E Report a problem"
+description: "Report an issue"
+title: "Bug: (fill in)"
+labels:
+  - bug
+body:
+- type: markdown
+  attributes:
+    value: Thanks for leaving us your bug report!
+- type: textarea
+  attributes:
+    label: Environment
+    description: 
+    value: |
+        php version: 8.1.2 (Project scope)
+        npm version: 7.21.0 (Project scope)
+        Laravel version: 9.2
+        Operating System: Windows
+  validations:
+    required: true
+- type: dropdown
+  attributes:
+    label: Is it affecting thecraftbeer.tk?
+    description: This bug affects the main page.
+    options:
+      - "Yes"
+      - "No"
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: What did you do or what did you see?
+    description: |
+      Please include a *minimal* reproduction case. You can include links. You can use Markdown in this field.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: What did you expect to happen?
+    description: |
+      You can use Markdown in this field.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: What actually happened?
+    description: |
+      You can use Markdown in this field.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Additional comments
+    description: Is there anything else that's important for the team to know?

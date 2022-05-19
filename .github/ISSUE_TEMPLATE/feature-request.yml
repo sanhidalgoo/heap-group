@@ -1,0 +1,32 @@
+name: "\U0001F680 Propose a new feature"
+description: "Propose a new feature for The Craft Beer Store"
+title: "[Feature]: (fill in)"
+labels:
+  - feature
+body:
+- type: markdown
+  attributes:
+    value: Thanks for leave us your proposal!
+- type: input
+  attributes:
+    label: Section
+    description: What page section are you talking about?
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Feature details
+    description: What new behaviour are you waiting for?
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Example situation
+    description: If you can, please provide some example images or code for starting the new feature.
+    render: js
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Additional comments
+    description: Is there anything else that's important for the team to know?
