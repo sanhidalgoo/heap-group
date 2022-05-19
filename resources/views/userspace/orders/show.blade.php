@@ -1,5 +1,9 @@
 @extends('userspace.layouts.app')
 @section('title', __('orders.title'))
+@section('breadcrumbs')
+    {{ Breadcrumbs::render(__('navigation.orders').'.show', $viewData['order']) }}
+@endsection
+
 @section('content')
     <div class="card mb-3 px-2">
         <div class="card-body">

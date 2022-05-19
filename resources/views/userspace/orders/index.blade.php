@@ -1,5 +1,9 @@
 @extends('userspace.layouts.app')
 @section('title', __('orders.title'))
+@section('breadcrumbs')
+    {{ Breadcrumbs::render(__('navigation.orders')) }}
+@endsection
+
 @section('content')
     <table class="table">
         <thead>

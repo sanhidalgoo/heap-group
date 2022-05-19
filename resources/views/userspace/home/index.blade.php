@@ -2,6 +2,10 @@
 @section('title')
     Welcome
 @endsection
+@section('breadcrumbs')
+    {{ Breadcrumbs::render(__('navigation.home')) }}
+@endsection
+
 @section('content')
     {{ __('messages.description') }}
     <div class="w-100 mb-5">
