@@ -39,7 +39,7 @@ class ReviewController extends Controller
         try {
             $beerId = Review::findOrFail($id)->getBeerId();
             $review = Review::destroy($id);
-            return redirect()->route('user.beers.show', ['id' => $beerId])->with('delete', __('reviews.delete.success'))->with('viewData', $viewData);
+            return redirect()->route('user.beers.show', ['id' => $beerId])->with('delete', __('reviews.delete.success'));
         } catch (ModelNotFoundException $e) {
             return redirect()->route('user.beers.index');
         }

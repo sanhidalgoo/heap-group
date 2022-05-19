@@ -22,6 +22,10 @@ return [
     'address' => 'Address',
     'created.date' => 'Creation Date',
     'details' => 'Details',
+    'updated-at' => 'Updated at',
+    'user-id' => 'User Id',
+    'order-id' => 'Order Id',
+    'refund-order-id' => 'Refund order id',
 
     'title' => 'Orders',
     'cost' => 'Cost',
@@ -52,4 +56,7 @@ return [
 
     'refund.motive' => 'Motive',
     'refund.button' => 'Refund',
+    'refund.request-date' => 'Request date',
+    'refund.approval-date' => 'Approval date',
+    'refund.delivery-date' => 'Delivery date',
 ];
