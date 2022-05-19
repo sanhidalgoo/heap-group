@@ -56,6 +56,9 @@ Route::group([
 ], function (Router $router) {
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('beers', BeerController::class);
+    $router->resource('orders', OrderController::class);
+    $router->resource('refund-orders', RefundOrderController::class);
+    $router->resource('reviews', ReviewController::class);
 });
 
 /*
