@@ -1,7 +1,7 @@
 @extends('userspace.layouts.app')
 @section('title', $viewData['subtitle'])
 @section('breadcrumbs')
-    {{ Breadcrumbs::render(__('navigation.beers').'.show', $viewData['beer']) }}
+    {{ Breadcrumbs::render(__('navigation.beers') . '.show', $viewData['beer']) }}
 @endsection
 
 @section('content')
@@ -18,12 +18,18 @@
                         </h3>
                         <div class="flex flex-col justify-center mb-2">
                             <div class="text-amber-500">
-                                <span class="fa fa-star {{ $viewData['beer']->getRating() >= 0.5 ? 'checked' : '' }}"></span>
-                                <span class="fa fa-star {{ $viewData['beer']->getRating() >= 1.5 ? 'checked' : '' }}"></span>
-                                <span class="fa fa-star {{ $viewData['beer']->getRating() >= 2.5 ? 'checked' : '' }}"></span>
-                                <span class="fa fa-star {{ $viewData['beer']->getRating() >= 3.5 ? 'checked' : '' }}"></span>
-                                <span class="fa fa-star {{ $viewData['beer']->getRating() >= 4.5 ? 'checked' : '' }}"></span>
-                                <span class="ml-2 text-black">{{ $viewData['reviews']->count() . ' ' . __('beers.reviews') }}</span>
+                                <span
+                                    class="ratingStar fa fa-star {{ $viewData['beer']->getRating() >= 0.5 ? 'checked' : '' }}"></span>
+                                <span
+                                    class="ratingStar fa fa-star {{ $viewData['beer']->getRating() >= 1.5 ? 'checked' : '' }}"></span>
+                                <span
+                                    class="ratingStar fa fa-star {{ $viewData['beer']->getRating() >= 2.5 ? 'checked' : '' }}"></span>
+                                <span
+                                    class="ratingStar fa fa-star {{ $viewData['beer']->getRating() >= 3.5 ? 'checked' : '' }}"></span>
+                                <span
+                                    class="ratingStar fa fa-star {{ $viewData['beer']->getRating() >= 4.5 ? 'checked' : '' }}"></span>
+                                <span
+                                    class="ml-2 text-black">{{ $viewData['reviews']->count() . ' ' . __('beers.reviews') }}</span>
                             </div>
                         </div>
                     </div>
@@ -107,19 +113,26 @@
                                     </p>
                                     <div class="flex flex-col justify-center mb-2">
                                         <div class="text-amber-500">
-                                            <span class="fa fa-star {{ $viewData['beer']->getRating() >= 0.5 ? 'checked' : '' }}"></span>
-                                            <span class="fa fa-star {{ $viewData['beer']->getRating() >= 1.5 ? 'checked' : '' }}"></span>
-                                            <span class="fa fa-star {{ $viewData['beer']->getRating() >= 2.5 ? 'checked' : '' }}"></span>
-                                            <span class="fa fa-star {{ $viewData['beer']->getRating() >= 3.5 ? 'checked' : '' }}"></span>
-                                            <span class="fa fa-star {{ $viewData['beer']->getRating() >= 4.5 ? 'checked' : '' }}"></span>
-                                            <span class="ml-2 text-black">{{ $review->getScore() }} / 5 {{ __('beers.score') }}</span>
+                                            <span
+                                                class="fa fa-star {{ $viewData['beer']->getRating() >= 0.5 ? 'checked' : '' }}"></span>
+                                            <span
+                                                class="fa fa-star {{ $viewData['beer']->getRating() >= 1.5 ? 'checked' : '' }}"></span>
+                                            <span
+                                                class="fa fa-star {{ $viewData['beer']->getRating() >= 2.5 ? 'checked' : '' }}"></span>
+                                            <span
+                                                class="fa fa-star {{ $viewData['beer']->getRating() >= 3.5 ? 'checked' : '' }}"></span>
+                                            <span
+                                                class="fa fa-star {{ $viewData['beer']->getRating() >= 4.5 ? 'checked' : '' }}"></span>
+                                            <span class="ml-2 text-black">{{ $review->getScore() }} / 5
+                                                {{ __('beers.score') }}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="w-24">
                                     @auth
                                         @if ($review->user->getId() == Auth::user()->getId())
-                                            <x-userspace.form-button color="danger solid" route="user.reviews.delete" :params="['id' => $review->getId()]">
+                                            <x-userspace.form-button color="danger solid" route="user.reviews.delete"
+                                                :params="['id' => $review->getId()]">
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </x-userspace.form-button>
                                         @endif

@@ -32,7 +32,7 @@
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
                             </form>
-                            <span class="fw-bold">
+                            <span class="fw-bold" dusk="beers-quantity">
                                 {{ $beerItem['quantity'] }}
                             </span>
 
@@ -85,8 +85,8 @@
             </div>
             <div class="row">
                 <div class="col-4">
-                    <input type="text" class="form-control mb-2" placeholder={{ __('billing.department') }} name="department"
-                        value="{{ old('department') }}" />
+                    <input type="text" class="form-control mb-2" placeholder={{ __('billing.department') }}
+                        name="department" value="{{ old('department') }}" />
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control mb-2" placeholder={{ __('billing.city') }} name="city"
@@ -97,7 +97,8 @@
                         value="{{ old('address') }}" />
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary beer-card__btn beer-card__btn--block">{{ __('cart.confirm') }}</button>
+            <button type="submit"
+                class="btn btn-primary beer-card__btn beer-card__btn--block">{{ __('cart.confirm') }}</button>
         </form>
     @else
         <div class="row justify-content-center align-items-center">
