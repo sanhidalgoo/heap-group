@@ -27,16 +27,16 @@ class OrderController extends AdminController
         $grid = new Grid(new Order());
 
         $grid->column('id', __('Id'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-        $grid->column('total', __('Total'));
-        $grid->column('order_state', __('Order state'));
-        $grid->column('payment_method', __('Payment method'));
-        $grid->column('department', __('Department'));
-        $grid->column('city', __('City'));
-        $grid->column('address', __('Address'));
-        $grid->column('user_id', __('User id'));
-        $grid->column('refund_order_id', __('Refund order id'));
+        $grid->column('created_at', __('orders.created.date'));
+        $grid->column('updated_at', __('orders.updated-at'));
+        $grid->column('total', __('orders.total'));
+        $grid->column('order_state', __('orders.order.state'));
+        $grid->column('payment_method', __('orders.payment.method'));
+        $grid->column('department', __('orders.department'));
+        $grid->column('city', __('orders.city'));
+        $grid->column('address', __('orders.address'));
+        $grid->column('user_id', __('orders.user-id'));
+        $grid->column('refund_order_id', __('orders.refund-order-id'));
 
         return $grid;
     }
@@ -52,16 +52,16 @@ class OrderController extends AdminController
         $show = new Show(Order::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
-        $show->field('total', __('Total'));
-        $show->field('order_state', __('Order state'));
-        $show->field('payment_method', __('Payment method'));
-        $show->field('department', __('Department'));
-        $show->field('city', __('City'));
-        $show->field('address', __('Address'));
-        $show->field('user_id', __('User id'));
-        $show->field('refund_order_id', __('Refund order id'));
+        $show->field('created_at', __('orders.created.date'));
+        $show->field('updated_at', __('orders.updated-at'));
+        $show->field('total', __('orders.total'));
+        $show->field('order_state', __('orders.order.state'));
+        $show->field('payment_method', __('orders.payment.method'));
+        $show->field('department', __('orders.department'));
+        $show->field('city', __('orders.city'));
+        $show->field('address', __('orders.address'));
+        $show->field('user_id', __('orders.user-id'));
+        $show->field('refund_order_id', __('orders.refund-order-id'));
 
         return $show;
     }
@@ -75,14 +75,14 @@ class OrderController extends AdminController
     {
         $form = new Form(new Order());
 
-        $form->decimal('total', __('Total'));
-        $form->text('order_state', __('Order state'));
-        $form->text('payment_method', __('Payment method'));
-        $form->text('department', __('Department'));
-        $form->text('city', __('City'));
-        $form->text('address', __('Address'));
-        $form->number('user_id', __('User id'));
-        $form->number('refund_order_id', __('Refund order id'));
+        $form->decimal('total', __('orders.total'));
+        $form->text('order_state', __('orders.order.state'));
+        $form->text('payment_method', __('orders.payment.method'));
+        $form->text('department', __('orders.department'));
+        $form->text('city', __('orders.city'));
+        $form->text('address', __('orders.address'));
+        $form->number('user_id', __('orders.user-id'));
+        $form->number('refund_order_id', __('orders.refund-order-id'));
 
         return $form;
     }

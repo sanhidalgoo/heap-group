@@ -27,19 +27,19 @@ class BeerController extends AdminController
         $grid = new Grid(new Beer());
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
-        $grid->column('brand', __('Brand'));
-        $grid->column('origin', __('Origin'));
-        $grid->column('abv', __('Abv'));
-        $grid->column('ingredient', __('Ingredient'));
-        //$grid->column('flavor', __('Flavor'));
-        $grid->column('format', __('Format'));
-        $grid->column('price', __('Price'));
+        $grid->column('name', __('beers.name'));
+        $grid->column('brand', __('beers.brand'));
+        $grid->column('origin', __('beers.origin'));
+        $grid->column('abv', __('beers.abv'));
+        $grid->column('ingredient', __('beers.ingredient'));
+        //$grid->column('flavor', __('beers.flavor'));
+        $grid->column('format', __('beers.format'));
+        $grid->column('price', __('beers.price'));
         //$grid->column('details', __('Details'));
-        $grid->column('quantity_available', __('Quantity available'));
-        $grid->column('image_url', __('Image url'))->image();
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('quantity_available', __('beers.quantity'));
+        $grid->column('image_url', __('beers.image-url'))->image();
+        $grid->column('created_at', __('beers.created-at'));
+        $grid->column('updated_at', __('beers.updated-at'));
 
         return $grid;
     }
@@ -55,19 +55,19 @@ class BeerController extends AdminController
         $show = new Show(Beer::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('name', __('Name'));
-        $show->field('brand', __('Brand'));
-        $show->field('origin', __('Origin'));
-        $show->field('abv', __('Abv'));
-        $show->field('ingredient', __('Ingredient'));
-        $show->field('flavor', __('Flavor'));
-        $show->field('format', __('Format'));
-        $show->field('price', __('Price'));
-        $show->field('details', __('Details'));
-        $show->field('quantity_available', __('Quantity available'));
-        $show->field('image_url', __('Image url'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
+        $show->field('name', __('beers.name'));
+        $show->field('brand', __('beers.brand'));
+        $show->field('origin', __('beers.origin'));
+        $show->field('abv', __('beers.abv'));
+        $show->field('ingredient', __('beers.ingredient'));
+        $show->field('flavor', __('beers.flavor'));
+        $show->field('format', __('beers.format'));
+        $show->field('price', __('beers.price'));
+        $show->field('details', __('beers.details'));
+        $show->field('quantity_available', __('beers.quantity'));
+        $show->field('image_url', __('beers.image-url'));
+        $show->field('created_at', __('beers.created-at'));
+        $show->field('updated_at', __('beers.updated-at'));
 
         return $show;
     }
@@ -81,17 +81,17 @@ class BeerController extends AdminController
     {
         $form = new Form(new Beer());
 
-        $form->text('name', __('Name'));
-        $form->text('brand', __('Brand'));
-        $form->text('origin', __('Origin'));
-        $form->decimal('abv', __('Abv'));
-        $form->text('ingredient', __('Ingredient'));
-        $form->text('flavor', __('Flavor'));
-        $form->text('format', __('Format'));
-        $form->decimal('price', __('Price'));
-        $form->textarea('details', __('Details'));
-        $form->number('quantity_available', __('Quantity available'));
-        $form->text('image_url', __('Image url'));
+        $form->text('name', __('beers.name'));
+        $form->text('brand', __('beers.brand'));
+        $form->text('origin', __('beers.origin'));
+        $form->decimal('abv', __('beers.abv'));
+        $form->text('ingredient', __('beers.ingredient'));
+        $form->text('flavor', __('beers.flavor'));
+        $form->text('format', __('beers.format'));
+        $form->decimal('price', __('beers.price'));
+        $form->textarea('details', __('beers.details'));
+        $form->number('quantity_available', __('beers.quantity'));
+        $form->text('image_url', __('beers.image-url'));
 
         return $form;
     }
