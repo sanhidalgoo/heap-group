@@ -1,5 +1,9 @@
 @extends('userspace.layouts.app')
 @section('title', __('beers.title'))
+@section('breadcrumbs')
+    {{ Breadcrumbs::render(__('navigation.beers')) }}
+@endsection
+
 @section('content')
     <div id="filterbox-open" class="text-center px-3 py-1 bg-[#604028] hover:bg-[#2b1e14] text-white transition">
         <i class="fa-solid fa-filter"></i>

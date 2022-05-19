@@ -1,5 +1,9 @@
 @extends('userspace.layouts.app')
 @section('title', __('cart.title'))
+@section('breadcrumbs')
+    {{ Breadcrumbs::render(__('navigation.cart')) }}
+@endsection
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">

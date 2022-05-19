@@ -15,6 +15,10 @@ return [
     |
     */
 
+    'created-at' => 'Created at',
+    'updated-at' => 'Updated at',
+    'user-id' => 'User id',
+    'beer-id' => 'Beer id',
     'title' => 'Reviews',
     'score' => 'Score',
     'comment' => 'Comment',

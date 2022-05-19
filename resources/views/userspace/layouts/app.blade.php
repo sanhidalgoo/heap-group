@@ -16,6 +16,7 @@
         <x-userspace.sidebar />
         <main class="flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
             <x-userspace.header />
+            @yield('breadcrumbs', '')
             <div class="flex flex-col flex-grow px-5">
                 <x-typography.subtitle>
                     @yield('title')

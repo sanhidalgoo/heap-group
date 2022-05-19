@@ -1,5 +1,9 @@
 @extends('userspace.layouts.app')
 @section('title', __('beers.ranking.title'))
+@section('breadcrumbs')
+    {{ Breadcrumbs::render(__('navigation.ranking')) }}
+@endsection
+
 @section('content')
     <div class="card-grid row align-items-center">
         @forelse ($viewData["beers"] as $beer)

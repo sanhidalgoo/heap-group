@@ -36,6 +36,9 @@ php artisan migrate
 # Run seeder
 php artisan db:seed
 
+# For admin
+php artisan admin:generate-menu
+
 # Run the application
 php artisan serve
 ```

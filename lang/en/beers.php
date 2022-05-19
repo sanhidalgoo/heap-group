@@ -24,6 +24,8 @@ return [
     'details' => 'Details',
     'quantity' => 'In Stock',
     'image-url' => 'Image URL',
+    'created-at' => 'Created at',
+    'updated-at' => 'Updated at',
 
     'title' => 'Beers',
     'ranking.title' => 'Beers ranking',
