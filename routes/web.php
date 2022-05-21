@@ -71,5 +71,5 @@ Route::group([
 
     Route::post('/orders/save', 'OrderController@save')->name('orders.save');
     Route::get('/orders/{id}', 'OrderController@show')->name('orders.show');
-    Route::get('/orders/{id}/download', 'OrderController@download')->name('orders.download');
+    Route::get('/orders/{id}/download-{type}', 'OrderController@download')->name('orders.download');
 });

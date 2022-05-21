@@ -12,9 +12,14 @@
                     # {{ $viewData['order']->getId() }}
                 </h3>
                 <a class="col-2 btn btn-primary"
-                    href="{{ route('user.orders.download', ['id' => $viewData['order']->getId()]) }}">
+                    href="{{ route('user.orders.download', ['id' => $viewData['order']->getId(), 'type' => 'pdf']) }}">
                     <i class="fa-solid fa-file-pdf"></i>
                     Download PDF
+                </a>
+                <a class="col-2 btn btn-primary"
+                    href="{{ route('user.orders.download', ['id' => $viewData['order']->getId(), 'type' => 'csv']) }}">
+                    <i class="fa-solid fa-file-csv"></i>
+                    Download CSV
                 </a>
                 <a class="col-2 btn btn-danger"
                     href="{{ route('user.orders.refund', ['id' => $viewData['order']->getId()]) }}">
