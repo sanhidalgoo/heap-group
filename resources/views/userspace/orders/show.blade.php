@@ -1,7 +1,7 @@
 @extends('userspace.layouts.app')
 @section('title', __('orders.title'))
 @section('breadcrumbs')
-    {{ Breadcrumbs::render(__('navigation.orders').'.show', $viewData['order']) }}
+    {{ Breadcrumbs::render(__('navigation.orders.show'), $viewData['order']) }}
 @endsection
 
 @section('content')

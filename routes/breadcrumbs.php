@@ -11,7 +11,7 @@ Breadcrumbs::for(__('navigation.beers'), function ($trail) {
     $trail->push(__('navigation.beers'), route('user.beers.index'));
 });
 
-Breadcrumbs::for(__('navigation.beers').'.show', function ($trail, $beer) {
+Breadcrumbs::for(__('navigation.beers.show'), function ($trail, $beer) {
     $trail->parent(__('navigation.beers'));
     $trail->push($beer->getName(), route('user.beers.show', $beer->getId()));
 });
@@ -31,7 +31,12 @@ Breadcrumbs::for(__('navigation.orders'), function ($trail) {
     $trail->push(__('navigation.orders'), route('user.orders.index'));
 });
 
-Breadcrumbs::for(__('navigation.orders').'.show', function ($trail, $order) {
+Breadcrumbs::for(__('navigation.orders.show'), function ($trail, $order) {
     $trail->parent(__('navigation.orders'));
     $trail->push($order->getId(), route('user.orders.show', $order->getId()));
+});
+
+Breadcrumbs::for(__('navigation.reviews.create'), function ($trail, $beer) {
+    $trail->parent(__('navigation.beers.show'), $beer);
+    $trail->push(__('navigation.reviews.create'), route('user.beers.show', $beer->getId()));
 });

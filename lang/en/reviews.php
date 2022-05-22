@@ -26,4 +26,6 @@ return [
     'add.description' => 'Add review of a beer',
     'create.success' => 'Review added!',
     'delete.success' => 'Review deleted!',
+
+    'submit.button' => 'Submit',
 ];

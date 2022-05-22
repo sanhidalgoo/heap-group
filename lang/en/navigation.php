@@ -25,4 +25,7 @@ return [
     'logout' => 'Logout',
     'ranking' => 'Ranking',
     'go.home' => 'Return to home',
+    'beers.show' => 'Beer',
+    'orders.show' => 'Order',
+    'reviews.create' => 'Add review',
 ];
