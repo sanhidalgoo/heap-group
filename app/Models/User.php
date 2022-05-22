@@ -25,6 +25,9 @@ class User extends Authenticatable
      * $this->attributes['address'] - string - contains the user address
      * $this->attributes['cash_available'] - string - contains the user cash available
      * $this->attributes['created_at'] - Date - is the user creation date
+     *
+     * USER RELATIONSHIPS
+     * reviews - Review - reviews that belong to the user
      */
 
     /**
