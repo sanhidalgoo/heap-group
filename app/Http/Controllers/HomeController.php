@@ -21,4 +21,9 @@ class HomeController extends Controller
 
         return view('userspace.home.index')->with("viewData", $viewdata);
     }
+
+    public function setLocale($locale){
+        session()->put('locale', $locale);
+        return back();
+    }
 }
