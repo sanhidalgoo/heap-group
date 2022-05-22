@@ -1,6 +1,6 @@
 @extends('userspace.layouts.app')
 @section('title')
-    Welcome
+    {{ __('messages.welcome')}}
 @endsection
 @section('breadcrumbs')
     {{ Breadcrumbs::render(__('navigation.home')) }}

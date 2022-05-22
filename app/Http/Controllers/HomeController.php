@@ -12,4 +12,9 @@ class HomeController extends Controller
     {
         return view('userspace.home.index');
     }
+
+    public function setLocale($locale){
+        session()->put('locale', $locale);
+        return back();
+    }
 }
