@@ -6,6 +6,11 @@ Breadcrumbs::for(__('navigation.home'), function ($trail) {
     $trail->push(__('navigation.home'), route('user.home.index'));
 });
 
+Breadcrumbs::for(__('navigation.allies'), function ($trail) {
+    $trail->parent(__('navigation.home'));
+    $trail->push(__('navigation.allies'), route('user.home.allies'));
+});
+
 Breadcrumbs::for(__('navigation.beers'), function ($trail) {
     $trail->parent(__('navigation.home'));
     $trail->push(__('navigation.beers'), route('user.beers.index'));

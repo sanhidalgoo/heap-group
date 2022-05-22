@@ -18,5 +18,6 @@ return [
     'store.description' => 'Una experiencia de cerveza artesanal colombiana nunca antes vista en el mundo',
     'store.name' => 'The Craft Beer Store',
     'no-data' => 'No hay datos para mostrar',
+    'allies' => 'Aliados',
 
 ];

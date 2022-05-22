@@ -45,6 +45,7 @@ Route::group([
 Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('user.home.index');
+Route::get('/productos-aliados', 'App\Http\Controllers\HomeController@allies')->name('user.home.allies');
 Route::get('/beers', 'App\Http\Controllers\User\BeerController@index')->name('user.beers.index');
 Route::get('/beers/ranking', 'App\Http\Controllers\User\BeerController@ranking')->name('user.beers.ranking');
 Route::get('/beers/{id}', 'App\Http\Controllers\User\BeerController@show')->name('user.beers.show');

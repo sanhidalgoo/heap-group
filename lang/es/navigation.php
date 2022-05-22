@@ -19,6 +19,7 @@ return [
     'beers' => 'Cervezas',
     'orders' => 'Pedidos',
     'cart' => 'Carrito de Compras',
+    'allies' => 'Aliados',
     'back' => 'Volver',
     'login' => 'Iniciar sesión',
     'signup' => 'Registrarse',
