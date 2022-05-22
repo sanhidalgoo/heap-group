@@ -34,6 +34,11 @@ class Beer extends Model
      * $this->attributes['image_url'] - string - contains the beer image url
      * $this->attributes['created_at'] - Date - Date of creation
      * $this->attributes['updated_at'] - Date - Date of update
+     *
+     *  BEERS RELATIONSHIPS
+     *  users - User - User that selected this beer
+     *  reviews - Review - Reviews that this beer contains
+     *
      */
 
     protected $fillable = [
@@ -176,16 +181,6 @@ class Beer extends Model
         return $this->attributes['image_url'];
     }
 
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
-
-    public function reviews()
-    {
-        return $this->hasMany(Review::class);
-    }
-
     public function getRating()
     {
         $this->attributes['average_rate'] = number_format($this->reviews->avg('score'), 1);
@@ -207,6 +202,16 @@ class Beer extends Model
         return $this->attributes['updated_at'];
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+    
     public function scopeFilter($query)
     {
         if (request('price_min')) {

@@ -6,7 +6,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 
 class Order extends Model
 {
@@ -23,6 +22,11 @@ class Order extends Model
      * $this->attributes['address'] - string - address of the destination
      * $this->attributes['created_at'] - Date - Date of creation
      * $this->attributes['updated_at'] - Date - Date of update
+     *
+     *  ORDER RELATIONSHIPS
+     *  user - User - order belongs to a user
+     *  orderItems - OrderItem - order items of the Order
+     *  refundOrder - RefundOrder - If the Order has a Refund, this order is associated with RefundOrder
      */
 
     protected $fillable = ['total', 'order_state', 'payment_method', 'department', 'city', 'address'];

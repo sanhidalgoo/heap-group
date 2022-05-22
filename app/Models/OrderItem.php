@@ -12,7 +12,7 @@ class OrderItem extends Model
 {
     use HasFactory;
     /**
-     * REVIEW ATTRIBUTES
+     * ORDER_ITEM ATTRIBUTES
      * $this->attributes['id'] - int - contains the review primary key (id)
      * $this->attributes['subtotal'] - float - contains subtotalprice of the item
      * $this->attributes['quantity'] - int - contains the quantity of the item
@@ -20,6 +20,10 @@ class OrderItem extends Model
      * $this->attributes['order_id']- int - id of the order to which belongs the item
      * $this->attributes['created_at'] - Date - Date of creation
      * $this->attributes['updated_at'] - Date - Date of update
+     *
+     *  ORDER_ITEM RELATIONSHIPS
+     *  beer - Beer - Beer of the Order Item
+     *  order - Order - OrderItem belongs to a specific Order
      */
 
     protected $fillable = ['subtotal', 'quantity'];

@@ -17,6 +17,10 @@ class Review extends Model
      * $this->attributes['score'] - int - contains the review score
      * $this->attributes['created_at'] - Date - Date of creation
      * $this->attributes['updated_at'] - Date - Date of update
+     *
+     * REVIEW RELATIONSHIPS
+     * user - User - user that makes the review
+     * beer - Beer - review belongs to a specific beer
      */
 
     protected $fillable = ['comment', 'score'];

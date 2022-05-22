@@ -11,13 +11,16 @@ class RefundOrder extends Model
 {
     use HasFactory;
     /**
-     * REVIEW ATTRIBUTES
+     * REFUND_ORDER ATTRIBUTES
      * $this->attributes['id'] - int - contains the review primary key (id)
      * $this->comment['motive'] - string - contains the motive for the refund
      * $this->attributes['requestDate'] - datetime - contains the datetime the request mas made
      * $this->attributes['approvalDate'] - datetime - contains the datetime the request mas approved
      * $this->attributes['deliveryDate'] - datetime - contains the datetime refund was made
      * $this->attributes['state'] - string - contains the current state of the orrder
+     *
+     * REFUND_ORDER RELATIONSHIPS
+     * order - Order - RefundOrder is associated with a specific order
      */
 
     protected $fillable = ['motive', 'request_date', 'approval_date', 'delivery_date', 'state'];
