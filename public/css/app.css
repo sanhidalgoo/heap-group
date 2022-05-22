@@ -802,6 +802,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-t {
   border-top-width: 1px;
 }
+.border-r-2 {
+  border-right-width: 2px;
+}
+.border-r-4 {
+  border-right-width: 4px;
+}
 .border-red-700 {
   --tw-border-opacity: 1;
   border-color: rgb(185 28 28 / var(--tw-border-opacity));
@@ -931,6 +937,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .p-8 {
   padding: 2rem;
+}
+.p-10 {
+  padding: 2.5rem;
+}
+.p-3 {
+  padding: 0.75rem;
+}
+.p-4 {
+  padding: 1rem;
 }
 .px-4 {
   padding-left: 1rem;
