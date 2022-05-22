@@ -26,6 +26,7 @@ return [
     'image-url' => 'URL de la imagen',
     'created-at' => 'Creadi el',
     'updated-at' => 'Actualizado el',
+    'amount' => 'Cantidad',
 
     'title' => 'Cervezas',
     'ranking.title' => 'Ranking de cervezas',

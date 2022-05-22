@@ -1,7 +1,7 @@
 @extends('userspace.layouts.app')
 @section('title', $viewData['subtitle'])
 @section('breadcrumbs')
-    {{ Breadcrumbs::render(__('navigation.beers') . '.show', $viewData['beer']) }}
+    {{ Breadcrumbs::render(__('navigation.beers.show'), $viewData['beer']) }}
 @endsection
 
 @section('content')

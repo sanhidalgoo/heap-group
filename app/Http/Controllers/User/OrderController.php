@@ -13,7 +13,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Beer;
-use PDF;
+use App\Interfaces\ReportFile;
 
 class OrderController extends Controller
 {
@@ -88,15 +88,15 @@ class OrderController extends Controller
         return redirect()->back()->with('success', __('orders.create.success'));
     }
 
-    public function download($id)
+    public function download($id, $type)
     {
         $order = Order::findOrFail($id);
         $viewData = [];
         $viewData["subtitle"] =  $order->getId();
         $viewData["order"] = $order;
         $viewData["orderItems"] = $order->orderItems()->get();
-        $pdf = PDF::loadView('userspace.orders.pdf', $viewData);
 
-        return $pdf->download($id . '-order.pdf');
+        $report = app(ReportFile::class, ['type' => $type]);
+        return $report->download('TheCraftBeer - Order #' . $id, $viewData);
     }
 }

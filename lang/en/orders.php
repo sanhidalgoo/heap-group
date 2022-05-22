@@ -59,4 +59,7 @@ return [
     'refund.request-date' => 'Request date',
     'refund.approval-date' => 'Approval date',
     'refund.delivery-date' => 'Delivery date',
+
+    'download' => 'Download',
+    'refund' => 'Refund',
 ];

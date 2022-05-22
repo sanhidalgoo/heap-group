@@ -17,8 +17,9 @@ class ReviewController extends Controller
 {
     public function create($beerId)
     {
+        $beer = Beer::findOrFail($beerId);
         $viewData = [];
-        $viewData['beerId'] = $beerId;
+        $viewData['beer'] = $beer;
         return view('userspace.reviews.create')->with('viewData', $viewData);
     }
 

@@ -5,109 +5,138 @@
 @endsection
 
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div>
-                @foreach ($viewData['beersInCart'] as $beerItem)
-                    <div class="row align-items-center mb-4">
-                        <div class="col-sm-1">
-                            <img src="{{ $beerItem['beer']->getURL() }}" class="img-fluid">
-                        </div>
-                        <div class="col-sm-5 col-lg-3">
-                            <h4 class="fw-bold">{{ $beerItem['beer']->getName() }}</h4>
-                            {{ $beerItem['beer']->getFormat() }}
-                            <span
-                                class="text-warning d-block mt-3 fw-bold">{{ $beerItem['beer']->getQuantity() . ' ' . __('cart.in.stock') }}</span>
-                        </div>
-                        <div class="col-sm-6 col-lg-2">
-                            <h5 class="fw-bold">{{ $beerItem['beer']->getPrice() . ' ' . __('beers.currency') }}
-                            </h5>
-                        </div>
-                        <div class="col-sm-6 col-lg-3 m-auto d-flex justify-content-between align-items-center">
-                            <form method="POST"
-                                action="{{ route('user.cart.decrement', ['id' => $beerItem['beer']->getId()]) }}"
-                                class="d-inline-block p-0">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
-                            </form>
-                            <span class="fw-bold" dusk="beers-quantity">
-                                {{ $beerItem['quantity'] }}
+    <table class="table bg-white rounded">
+        <thead>
+            <tr>
+                <th class="border-r-4 p-2 text-center" scope="col">{{ __('beers.title') }}</th>
+                <th class="p-2 text-center" scope="col">{{ __('beers.details') }}</th>
+                <th class="p-2 text-center" scope="col">{{ __('beers.index.col.price') }}</th>
+                <th class="p-2 text-center" scope="col">{{ __('beers.amount') }}</th>
+                <th class="p-2 text-center" scope="col">{{ __('beers.index.col.actions') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($viewData['beersInCart'] as $beerItem)
+                <tr>
+                    <th class="border-r-4 py-4" scope="row">
+                        <img class="my-0 mx-auto h-24" src="{{ $beerItem['beer']->getURL() }}" />
+                    </th>
+                    <td class="px-2 text-center">
+                    <h4 class="font-bold">{{ $beerItem['beer']->getName() }}</h4>
+                        {{ $beerItem['beer']->getFormat() }}
+                        <div class="mt-4 mb-8">
+                            <span class="text-bold bg-blue-100 border border-blue-400 text-blue-700 px-2 py-1 rounded relative">
+                                {{ $beerItem['beer']->getQuantity() . ' ' . __('cart.in.stock') }}
                             </span>
-
-                            <form method="POST"
-                                action="{{ route('user.cart.increment', ['id' => $beerItem['beer']->getId()]) }}"
-                                class="d-inline-block p-0">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </form>
+                        </div>
+                    </td>
+                    <td class="px-2 text-center">
+                        <p class="font-bold min-w-">
+                            {{ $beerItem['beer']->getPrice() . ' ' . __('beers.currency') }}
+                        </p>
+                    </td>
+                    <td class="px-2 text-center">
+                        <div class="flex">
+                            <x-userspace.form-button
+                                color="primary solid"
+                                route="user.cart.decrement"
+                                wrapperProps="flex-grow mx-0 min-w-[40px]"
+                                :params="['id' => $beerItem['beer']->getId()]"
+                            >
+                                <i class="fa-solid fa-minus"></i>
+                            </x-userspace.form-button>
+                            <p class="self-center w-10 font-bold">{{ $beerItem['quantity'] }}</p>
+                            <x-userspace.form-button
+                                color="primary solid"
+                                route="user.cart.increment"
+                                wrapperProps="flex-grow mx-0 min-w-[40px]"
+                                :params="['id' => $beerItem['beer']->getId()]"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </x-userspace.form-button>
 
                         </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <form method="POST"
-                                action="{{ route('user.cart.remove', ['id' => $beerItem['beer']->getId()]) }}"
-                                class="d-inline-block p-0">
-                                @csrf
-                                <button type="submit" class="btn btn-danger beer-card__btn--block">
-                                    {{ __('cart.remove.button') }}
-                                </button>
-                            </form>
-
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            @if (count($viewData['beersInCart']) > 0)
-                <h2 class="fw-bold text-center mb-5">
-                    {{ __('cart.total') }}: {{ $viewData['total'] . ' ' . __('beers.currency') }}
-                </h2>
-            @endif
-        </div>
-    </div>
+                    </td>
+                    <td class="px-2 text-center">
+                        <x-userspace.form-button
+                            route="user.cart.remove"
+                            color="danger solid"
+                            :params="['id' => $beerItem['beer']->getId()]"
+                        >
+                            {{ __('cart.remove.button') }}
+                        </x-userspace.form-button>
+                    </td>
+                    </th>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="6">
+                        <p class="font-bold text-center">{{ __('messages.no-data') }}</p>
+                    </td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+    @if (count($viewData['beersInCart']) > 0)
+        <h2 class="text-2xl font-bold text-center my-8">
+            {{ __('cart.total') }}: {{ $viewData['total'] . ' ' . __('beers.currency') }}
+        </h2>
+    @endif
 
     @if (count($viewData['beersInCart']) > 0)
-        <form method="POST" action="{{ route('user.orders.save') }}">
+        <form method="POST" action="{{ route('user.orders.save') }}" class="flex flex-col">
             @csrf
-            <h2 class="text-center">
+            <x-typography.subtitle>
                 {{ __('cart.order.title') }}
-            </h2>
-            <div class="row">
-                <div class="col-12 mb-2">
-                    <select class="form-select" name="paymentMethod">
+            </x-typography.subtitle>
+            <div class="flex">
+                <div class="flex-grow mx-4">
+                    <x-userspace.input
+                        label="{{ __('billing.department') }}"
+                        type="text"
+                        name="department"
+                        autocomplete="department"
+                        required
+                        errorClass="{{ $errors->has('department') ? 'ring-red-700 border-red-700' : '' }}"
+                        :value="old('department')"
+                    />
+                    <x-userspace.input
+                        label="{{ __('billing.city') }}"
+                        type="text"
+                        name="city"
+                        autocomplete="city"
+                        required
+                        errorClass="{{ $errors->has('city') ? 'ring-red-700 border-red-700' : '' }}"
+                        :value="old('city')"
+                    />
+                    <x-userspace.input
+                        label="{{ __('billing.address') }}"
+                        type="text"
+                        name="address"
+                        autocomplete="address"
+                        required
+                        errorClass="{{ $errors->has('address') ? 'ring-red-700 border-red-700' : '' }}"
+                        :value="old('address')"
+                    />
+                </div>
+                <div class="flex-grow mx-4">
+                    <label for="paymentMethod" class="block mb-2 text-md font-medium text-gray-900">
+                        <strong>{{ __('billing.payment-method') }}</strong>
+                    </label>
+                    <select
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        name="paymentMethod"
+                    >
                         <option value="CREDIT_CARD">{{ __('billing.payment-method.credit-card') }}</option>
                         <option value="CASH">{{ __('billing.payment-method.cash') }}</option>
                         <option value="PSE">{{ __('billing.payment-method.pse') }}</option>
                     </select>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4">
-                    <input type="text" class="form-control mb-2" placeholder={{ __('billing.department') }}
-                        name="department" value="{{ old('department') }}" />
-                </div>
-                <div class="col-4">
-                    <input type="text" class="form-control mb-2" placeholder={{ __('billing.city') }} name="city"
-                        value="{{ old('city') }}" />
-                </div>
-                <div class="col-4">
-                    <input type="text" class="form-control mb-2" placeholder={{ __('billing.address') }} name="address"
-                        value="{{ old('address') }}" />
-                </div>
-            </div>
-            <button type="submit"
-                class="btn btn-primary beer-card__btn beer-card__btn--block">{{ __('cart.confirm') }}</button>
+            <x-userspace.button color="success solid" render="button type=submit">
+                {{ __('cart.confirm') }}
+            </x-userspace.button>
         </form>
-    @else
-        <div class="row justify-content-center align-items-center">
-            <div class="col py-5">
-                <p class="fw-bold text-center">{{ __('messages.no-data') }}</p>
-            </div>
-        </div>
     @endif
-    <br />
-    <br />
     <br />
 @endsection
