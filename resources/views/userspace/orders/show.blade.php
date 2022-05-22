@@ -5,68 +5,71 @@
 @endsection
 
 @section('content')
-    <div class="card mb-3 px-2">
-        <div class="card-body">
-            <div class="row mb-4">
-                <h3 class="col-8 fw-bold">
+    <div class="px-2">
+        <div class="mb-8">
+            <div class="flex justify-between mb-5">
+                <x-typography.subtitle>
                     # {{ $viewData['order']->getId() }}
-                </h3>
-                <a class="col-2 btn btn-primary"
-                    href="{{ route('user.orders.download', ['id' => $viewData['order']->getId(), 'type' => 'pdf']) }}">
-                    <i class="fa-solid fa-file-pdf"></i>
-                    Download PDF
-                </a>
-                <a class="col-2 btn btn-primary"
-                    href="{{ route('user.orders.download', ['id' => $viewData['order']->getId(), 'type' => 'csv']) }}">
-                    <i class="fa-solid fa-file-csv"></i>
-                    Download CSV
-                </a>
-                <a class="col-2 btn btn-danger"
-                    href="{{ route('user.orders.refund', ['id' => $viewData['order']->getId()]) }}">
-                    <i class="fa-solid fa-file-pdf"></i>
-                    Refund Order
-                </a>
+                </x-typography.subtitle>
+                <div class="flex flex-col md:flex-row">
+                    <x-userspace.button color="danger solid" route="user.orders.download" :params="['id' => $viewData['order']->getId(), 'type' => 'pdf']">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        Download PDF
+                    </x-userspace.button>
+                    <x-userspace.button color="success solid" route="user.orders.download" :params="['id' => $viewData['order']->getId(), 'type' => 'csv']">
+                        <i class="fa-solid fa-file-csv"></i>
+                        Download CSV
+                    </x-userspace.button>
+                    <x-userspace.button color="danger solid" route="user.orders.refund" :params="['id' => $viewData['order']->getId()]">
+                        Refund Order
+                    </x-userspace.button>
+                </div>
             </div>
-            <div class="row">
-                <p class="col-6">
+            <div class="flex flex-col justify-around md:flex-row">
+                <div class="mb-2 bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative">
                     <strong>{{ __('orders.order.state') }}:</strong>
-                    {{ $viewData['order']->getOrderState() }}
-                </p>
-                <h5 class="col-6 fw-bold text-end">
+                    <br/>
+                    <span class="block sm:inline">{{ $viewData['order']->getOrderState() }}</span>
+                </div>
+                <div class="mb-2 bg-gray-100 border border-gray-400 text-gray-700 px-4 py-3 rounded relative">
+                    <strong>{{ __('orders.created.date') }}:</strong>
+                    <br/>
                     {{ $viewData['order']->getCreatedAt() }}
-                </h5>
+                </div>
+                <div class="mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+                    <strong>
+                        {{ __('orders.address') }}:
+                    </strong>
+                    <br/>
+                    {{ $viewData['order']->getAddress() }},
+                    {{ $viewData['order']->getCity() }},
+                    {{ $viewData['order']->getDepartment() }}
+                </div>
+                <div class="mb-2 bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative">
+                    <strong>{{ __('orders.payment.method') }}:</strong>
+                    <br/>
+                    {{ $viewData['order']->getPaymentMethod() }}
+                </div>
             </div>
-            <div class="row">
-                <p class="card-text col"><strong>{{ __('orders.city') }}:
-                    </strong>{{ $viewData['order']->getCity() }}</p>
-                <p class="card-text col"><strong>{{ __('orders.department') }}:
-                    </strong>{{ $viewData['order']->getDepartment() }}</p>
-                <p class="card-text col"><strong>{{ __('orders.address') }}:
-                    </strong>{{ $viewData['order']->getAddress() }}</p>
-            </div>
-            <p class="card-text">
-                <strong>{{ __('orders.payment.method') }}:</strong>
-                {{ $viewData['order']->getPaymentMethod() }}
-            </p>
         </div>
-        <div class="card-body">
+        <div class="block">
             @foreach ($viewData['orderItems'] as $orderItem)
-                <div class="row align-items-center text-center mb-4">
-                    <div class="col-sm-4">
+                <div class="bg-white shadow-md px-10 py-4 grid grid-cols-3 gap-4 place-items-center">
+                    <div>
                         <img style="height: 125px" src="{{ $orderItem->beer->getURL() }}" class="img-fluid">
                     </div>
-                    <div class="col-sm-4">
-                        <h4 class="fw-bold">{{ $orderItem->beer->getName() }}</h4>
+                    <div>
+                        <h4 class="font-bold">{{ $orderItem->beer->getName() }}</h4>
                         {{ $orderItem->beer->getFormat() }}
                         <br />
                         {{ 'Quantity: ' . $orderItem->getQuantity() }}
                     </div>
-                    <div class="col-sm-4">
-                        <h5 class="fw-bold">{{ $orderItem->beer->getPrice() . ' ' . __('beers.currency') }}</h5>
+                    <div>
+                        <p class="text-xl font-bold">{{ $orderItem->beer->getPrice() . ' ' . __('beers.currency') }}</p>
                     </div>
                 </div>
             @endforeach
-            <h2 class="fw-bold text-center mb-5">
+            <h2 class="font-bold text-center my-8">
                 {{ __('cart.total') }}: {{ $viewData['order']->getTotal() . ' ' . __('beers.currency') }}
             </h2>
         </div>
