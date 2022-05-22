@@ -2,6 +2,7 @@
 
 namespace App\Interfaces;
 
-interface ReportFile {
+interface ReportFile
+{
     public function download($name, $data);
 }

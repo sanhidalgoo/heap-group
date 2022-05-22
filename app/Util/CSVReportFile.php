@@ -5,8 +5,10 @@ namespace App\Util;
 use App\Interfaces\ReportFile;
 use SoapBox\Formatter\Formatter;
 
-class CSVReportFile implements ReportFile {
-    public function download($name, $data) {
+class CSVReportFile implements ReportFile
+{
+    public function download($name, $data)
+    {
         //Serializer
         $data = $data["orderItems"];
 
