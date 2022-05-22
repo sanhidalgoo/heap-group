@@ -23,6 +23,9 @@
             <x-userspace.sidebar-item route="user.beers.ranking">
                 {{ __('navigation.ranking') }}
             </x-userspace.sidebar-item>
+            <x-userspace.sidebar-item route="user.home.allies">
+                {{ __('navigation.allies') }}
+            </x-userspace.sidebar-item>
             @auth
                 <x-userspace.sidebar-item route="user.orders.index">
                     {{ __('navigation.orders') }}

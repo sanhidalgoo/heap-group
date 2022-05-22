@@ -20,6 +20,15 @@ class HomeController extends Controller
         return view('userspace.home.index')->with("viewData", $viewData);
     }
 
+    public function allies()
+    {
+        $computers = Http::get('http://34.122.198.163/public/api/computers')->json();
+
+        $viewData = [];
+        $viewData['computers'] = $computers['data'];
+        return view('userspace.home.allies')->with("viewData", $viewData);
+    }
+
     public function setLocale($locale)
     {
         session()->put('locale', $locale);

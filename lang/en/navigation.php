@@ -19,6 +19,7 @@ return [
     'beers' => 'Beers',
     'orders' => 'Orders',
     'cart' => 'Shopping Cart',
+    'allies' => 'Allies',
     'back' => 'Go back',
     'login' => 'Login',
     'signup' => 'Signup',

@@ -18,5 +18,6 @@ return [
     'store.description' => 'A Colombian craft beer experience has never been seen before in the world.',
     'store.name' => 'The Craft Beer Store',
     'no-data' => 'No data to show',
+    'allies' => 'Allies',
 
 ];
