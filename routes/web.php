@@ -48,6 +48,7 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('user.home.in
 Route::get('/beers', 'App\Http\Controllers\User\BeerController@index')->name('user.beers.index');
 Route::get('/beers/ranking', 'App\Http\Controllers\User\BeerController@ranking')->name('user.beers.ranking');
 Route::get('/beers/{id}', 'App\Http\Controllers\User\BeerController@show')->name('user.beers.show');
+Route::get('/locale/{locale}', 'App\Http\Controllers\HomeController@setLocale')->name('user.locale');
 
 Route::group([
     'namespace'     => 'App\\Http\\Controllers\\User',

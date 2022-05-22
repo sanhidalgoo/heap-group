@@ -15,15 +15,15 @@ return [
     |
     */
 
-    'title' => 'Reviews',
-    'created-at' => 'Created at',
-    'updated-at' => 'Updated at',
-    'user-id' => 'User id',
-    'beer-id' => 'Beer id',
-    'title' => 'Reviews',
-    'score' => 'Score',
-    'comment' => 'Comment',
-    'add.description' => 'Add review of a beer',
-    'create.success' => 'Review added!',
-    'delete.success' => 'Review deleted!',
+    'title' => 'Reseñas',
+    'created-at' => 'Creado el',
+    'updated-at' => 'Actualizado el',
+    'user-id' => 'Id de usuario',
+    'beer-id' => 'Id usuario',
+    'title' => 'Reseñas',
+    'score' => 'Puntaje',
+    'comment' => 'Comentario',
+    'add.description' => 'Añadir una reseña de una cerveza',
+    'create.success' => 'Reseña añadida!',
+    'delete.success' => 'Reseña eliminada!',
 ];

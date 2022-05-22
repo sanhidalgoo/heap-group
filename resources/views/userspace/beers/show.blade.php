@@ -98,7 +98,7 @@
             <div class="d-flex flex-column justify-content-center text-center">
                 @if (count($viewData['reviews']) > 0)
                     <x-typography.subtitle>
-                        Reviews
+                        {{ __('reviews.title') }}
                     </x-typography.subtitle>
                     @foreach ($viewData['reviews'] as $review)
                         <div class="my-5 p-8 bg-white shadow-md">
