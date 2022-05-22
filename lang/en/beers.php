@@ -26,6 +26,7 @@ return [
     'image-url' => 'Image URL',
     'created-at' => 'Created at',
     'updated-at' => 'Updated at',
+    'amount' => 'Amount',
 
     'title' => 'Beers',
     'ranking.title' => 'Beers ranking',

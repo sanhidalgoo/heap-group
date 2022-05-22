@@ -59,4 +59,7 @@ return [
     'refund.request-date' => 'Fecha de solicitud',
     'refund.approval-date' => 'Fecha de aprobación',
     'refund.delivery-date' => 'Fecha de entrega',
+
+    'download' => 'Descargar',
+    'refund' => 'Reembolso',
 ];

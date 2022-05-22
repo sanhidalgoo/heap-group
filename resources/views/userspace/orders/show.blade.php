@@ -14,14 +14,14 @@
                 <div class="flex flex-col md:flex-row">
                     <x-userspace.button color="danger solid" route="user.orders.download" :params="['id' => $viewData['order']->getId(), 'type' => 'pdf']">
                         <i class="fa-solid fa-file-pdf"></i>
-                        Download PDF
+                        {{ __('orders.download') }} PDF
                     </x-userspace.button>
                     <x-userspace.button color="success solid" route="user.orders.download" :params="['id' => $viewData['order']->getId(), 'type' => 'csv']">
                         <i class="fa-solid fa-file-csv"></i>
-                        Download CSV
+                        {{ __('orders.download') }} CSV
                     </x-userspace.button>
                     <x-userspace.button color="danger solid" route="user.orders.refund" :params="['id' => $viewData['order']->getId()]">
-                        Refund Order
+                        {{ __('orders.refund') }}
                     </x-userspace.button>
                 </div>
             </div>

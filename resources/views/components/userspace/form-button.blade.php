@@ -1,4 +1,4 @@
-@props(['color' => 'primary solid', 'route', 'params' => []])
+@props(['color' => 'primary solid', 'route', 'wrapperProps' => '', 'params' => []])
 
 @if(str_contains($color, "primary"))
     @if(str_contains($color, "solid"))
@@ -20,7 +20,7 @@
     @endif
 @endif
 
-<div class="transition hover:transition mx-4 my-1 border-4 rounded-md text-center {{ $color }}">
+<div class="transition hover:transition mx-4 my-1 border-4 rounded-md text-center {{ $color }} {{ $wrapperProps }}">
     <form method="POST" action="{{ route($route, $params) }}" class="w-full h-full">
         @csrf
         <button type="submit" class="inline-block py-2 rounded-md font-bold w-full h-full">
