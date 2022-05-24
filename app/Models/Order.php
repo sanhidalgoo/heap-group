@@ -123,16 +123,19 @@ class Order extends Model
         return $this->attributes['updated_at'];
     }
 
+    /*gets the user the order belogs to */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /*gets the order items included in the order*/
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
     }
 
+    /*gets the refund order associated to the order*/
     public function refundOrder()
     {
         return $this->hasOne(RefundOrder::class);

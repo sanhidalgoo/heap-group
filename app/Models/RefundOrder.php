@@ -87,6 +87,7 @@ class RefundOrder extends Model
         return $this->attributes['order_id'];
     }
 
+    /* gets the order related to the refund order*/
     public function order()
     {
         return $this->belongsTo(Order::class);

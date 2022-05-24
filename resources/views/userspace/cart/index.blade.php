@@ -45,7 +45,7 @@
                             >
                                 <i class="fa-solid fa-minus"></i>
                             </x-userspace.form-button>
-                            <p class="self-center w-10 font-bold">{{ $beerItem['quantity'] }}</p>
+                            <p dusk="beers-quantity" class="self-center w-10 font-bold">{{ $beerItem['quantity'] }}</p>
                             <x-userspace.form-button
                                 color="primary solid"
                                 route="user.cart.increment"

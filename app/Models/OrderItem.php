@@ -88,16 +88,19 @@ class OrderItem extends Model
         return $this->attributes['updated_at'];
     }
 
+    /*gets the beer related to the order item*/
     public function beer()
     {
         return $this->hasOne(Beer::class, 'id', 'beer_id');
     }
 
+    /*gets the order related to the order item*/
     public function order()
     {
         return $this->belongsTo(Order::class);
     }
 
+    /*validates the values required for the creation of a new order item*/
     public static function validate(Request $request)
     {
         $request->validate([
