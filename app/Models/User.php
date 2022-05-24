@@ -140,11 +140,13 @@ class User extends Authenticatable
         return $this->attributes['created_at'];
     }
 
+    /* gets the favourite beers of the user */
     public function favoriteBeers()
     {
         return $this->belongsToMany(Beer::class);
     }
 
+    /* gets the reviews made by the user */
     public function reviews()
     {
         return $this->hasMany(Review::class);

@@ -85,11 +85,13 @@ class Review extends Model
         return $this->attributes['updated_at'];
     }
 
+    /*gets the user the review belongs to */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /*gets the beer related to the review*/
     public function beer()
     {
         return $this->belongsTo(Beer::class);

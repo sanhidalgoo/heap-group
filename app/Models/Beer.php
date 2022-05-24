@@ -38,7 +38,6 @@ class Beer extends Model
      *  BEERS RELATIONSHIPS
      *  users - User - User that selected this beer
      *  reviews - Review - Reviews that this beer contains
-     *
      */
 
     protected $fillable = [
@@ -181,12 +180,14 @@ class Beer extends Model
         return $this->attributes['image_url'];
     }
 
+    /*gets the avereage score of the reviews for a beer*/
     public function getRating()
     {
         $this->attributes['average_rate'] = number_format($this->reviews->avg('score'), 1);
         return $this->attributes['average_rate'];
     }
 
+    /*gets the orderItems related to a beer*/
     public function orderItems()
     {
         return $this->belongsToMany(OrderItem::class);
@@ -202,16 +203,19 @@ class Beer extends Model
         return $this->attributes['updated_at'];
     }
 
+    /*gets the users that have labeled the beer as a favorite*/
     public function users()
     {
         return $this->belongsToMany(User::class);
     }
 
+    /*gets the reviews related to the beer*/
     public function reviews()
     {
         return $this->hasMany(Review::class);
     }
-    
+
+    /*filters the beers according to a superior or an inferior price limit*/
     public function scopeFilter($query)
     {
         if (request('price_min')) {
